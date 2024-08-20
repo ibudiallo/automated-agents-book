@@ -1,0 +1,3 @@
+This is the book I wish had existed before I began working on chatbots. As someone who was vaguely familiar with AI but unsure of where to start in building a tool to resolve customer issues, I often found myself navigating through scattered resources and hype. Now that the initial excitement around chatbots has subsided, it's still not easy to find comprehensive information about the components of an effective chatbot.
+
+This book is my attempt to provide that missing guide, offering both technical and non-technical readers a clear path to understanding and building successful chatbot systems.

@@ -1,0 +1,16 @@
+{
+  "name": "chatbook",
+  "version": "1.0.0",
+  "description": "Building Effective Chatbots",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/index.js"
+  },
+  "author": "Ibrahim Diallo",
+  "license": "ISC",
+  "dependencies": {
+    "commonmark": "^0.31.1"
+  },
+  "type": "module"
+}

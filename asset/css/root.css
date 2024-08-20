@@ -1,0 +1,46 @@
+:root {
+	/* Primary */
+	--primary-color-900: #FF9800;
+	--primary-color-700: #c0392b;
+	--primary-color-600: #e24b3c;
+	--primary-color-500: #d96659;
+	--primary-color-300: #e38c82;
+	--primary-color-100: #fbefee;
+
+	/* Neutral */
+	--neutral-color-900: #212934;
+	--neutral-color-700: #5f6b7a;
+	--neutral-color-600: #7e8b9a;
+	--neutral-color-500: #b8c4ce;
+	--neutral-color-300: #cfd6de;
+	--neutral-color-100: #f8f9fa;
+
+	/* Blue */
+	--accent-blue-900: #113a56;
+	--accent-blue-700: #246896;
+	--accent-blue-500: #3498db;
+	--accent-blue-300: #5db7f3;
+	--accent-blue-100: #d5eeff;
+
+	/* Accent Green */
+	--accent-green-900: #145238;
+	--accent-green-700: #259d58;
+	--accent-green-500: #38c172;
+	--accent-green-300: #74d99f;
+	--accent-green-100: #e3fceb;
+
+	/* Accent Yellow */
+	--accent-yellow-900: #5c4813;
+	--accent-yellow-700: #8c6d1e;
+	--accent-yellow-500: #caa53d;
+	--accent-yellow-300: #fae29e;
+	--accent-yellow-100: #fffcf4;
+}
+
+body {
+	background-color: #2c3e50;
+}
+
+main {
+	display: flex;
+}
