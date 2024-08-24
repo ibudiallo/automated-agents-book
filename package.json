@@ -5,12 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js -e \"js json html md css\"",
     "start": "node ./src/index.js"
   },
   "author": "Ibrahim Diallo",
   "license": "ISC",
   "dependencies": {
     "commonmark": "^0.31.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "nodemonConfig": {
+    "ignore": ["**/dist/**"]
   },
   "type": "module"
 }

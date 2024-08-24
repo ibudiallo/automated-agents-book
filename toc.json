@@ -1,0 +1,59 @@
+{
+	"front": {
+		"template": "front.template.html",
+		"content": "front.md"
+	},
+	"sections": {
+		
+		"parts": [
+			{
+				"name": "Introduction",
+				"title": "Introduction",
+				"content": "intro.md",
+				"template": "intro.template.html",
+				"order": 0
+			},
+			{
+				"name": "Part One",
+				"title": "Part One",
+				"folder": "part-one",
+				"content": "intro.md",
+				"template": "part.template.html",
+				"order": 0,
+				"chapters": [
+					{
+						"name": "Chapter 1",
+						"title": "something",
+						"content": "c01.md",
+						"template": "chapter.template.html"
+					},
+					{
+						"name": "Chapter 2",
+						"title": "something",
+						"content": "c02.md",
+						"template": "chapter.template.html"
+					},
+					{
+						"name": "Chapter 3",
+						"title": "something",
+						"content": "c03.md",
+						"template": "chapter.template.html"
+					},
+					{
+						"name": "Chapter 4",
+						"title": "something",
+						"content": "c04.md",
+						"template": "chapter.template.html"
+					},
+					{
+						"name": "Chapter 5",
+						"title": "something",
+						"content": "c05.md",
+						"template": "chapter.template.html"
+					}
+				]
+
+			}
+		]
+	}
+}

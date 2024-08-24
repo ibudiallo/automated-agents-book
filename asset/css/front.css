@@ -86,6 +86,24 @@ main {
 .front-wip {
 	font-size: 1.3em;
 }
+.front-read {
+	padding: 2em 1em;
+}
+.front-read a {
+	display: block;
+	padding: 1em 2em;
+	background-color: #3498db;
+	color: #fff;
+	border-radius: 6px;
+	margin: 0 auto;
+	max-width: 200px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.front-read a:hover {
+	background-color: #2980b9;
+}
 
 footer {
 	padding: 2em 1.5em;

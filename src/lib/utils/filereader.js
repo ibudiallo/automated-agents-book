@@ -6,4 +6,9 @@ export const readFileSync = (path) => {
 
 export const listDir = (folderPath) => {
 	return fs.readdirSync(folderPath);
-}
+};
+
+export const readJsonFile = (file) => {
+	const content = readFileSync(file);
+	return JSON.parse(content);
+};
