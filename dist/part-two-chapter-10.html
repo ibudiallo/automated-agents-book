@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chapter 10</title>
+	<link rel="stylesheet" type="text/css" href="../asset/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/root.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/intro.css">
+</head>
+<body>
+<main>
+	<section class="nav">
+		<div class="sidebar">
+	<header class="nav-hdr">
+		<h1>Automated <span>Agents</span></h1>
+	</header>
+	<nav class="nav-list">
+		<ul class="sidebar"><li class="nav-part "><h2><a href="intro.html">Introduction</a></h2></li><li class="nav-part "><h2><a href="part-one-intro.html">Part One</a></h2><li class="nav-chapt "><a href="part-one-chapter-1.html">Chapter 1</a></li><li class="nav-chapt "><a href="part-one-chapter-2.html">Chapter 2</a></li><li class="nav-chapt "><a href="part-one-chapter-3.html">Chapter 3</a></li><li class="nav-chapt "><a href="part-one-chapter-4.html">Chapter 4</a></li><li class="nav-chapt "><a href="part-one-chapter-5.html">Chapter 5</a></li></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Part Two</a></h2><li class="nav-chapt "><a href="part-two-chapter-6.html">Chapter 6</a></li><li class="nav-chapt "><a href="part-two-chapter-7.html">Chapter 7</a></li><li class="nav-chapt "><a href="part-two-chapter-8.html">Chapter 8</a></li><li class="nav-chapt "><a href="part-two-chapter-9.html">Chapter 9</a></li><li class="nav-chapt selected"><a href="part-two-chapter-10.html">Chapter 10</a></li></li></ul>
+	</nav>
+</div>
+	</section>
+	<section class="content">
+		<article>
+			<h1>Chapter 10: Designing a Company Policy Processor</h1>
+<p>A well-designed company policy processor is essential for ensuring that customer interactions are handled according to specific business rules and service-level agreements. This processor can be thought of as a series of nodes, each responsible for performing a specific action or decision, to guide the chatbot's response.</p>
+<h2>The Flow of a Ticket</h2>
+<p>The process begins when the application receives a new ticket from the helpdesk. Here's how it typically unfolds:</p>
+<ol>
+<li><strong>Receive the Ticket</strong>: The system retrieves the ticket from the helpdesk platform. This includes all messages in the thread, but we first check whether it’s the initial message to avoid disrupting an ongoing conversation with a human agent.</li>
+<li><strong>Process the Message</strong>: We clean up the message, removing unnecessary characters, fixing common typos, and structuring it for easier processing.</li>
+<li><strong>Classify the Intent</strong>: The clean message is passed to our AI classifier, which identifies the customer's intent. For this example, we assume the intent is classified as a &quot;Tracking Order&quot; request.</li>
+<li><strong>Load the Policy Processor</strong>: Based on the identified intent, the relevant policy processor is loaded—in this case, the <strong>Tracking Order Policy Processor</strong>. This policy processor defines the rules for handling a tracking-related inquiry.</li>
+</ol>
+<h2>Node System for Policy Design</h2>
+<p>The policy processor is built using a <strong>node system</strong>, where each node represents a specific task or decision point in the flow. You can think of this system as a visual workflow, allowing you to create complex processes without writing code for each individual step.</p>
+<p>Here are some of the key node types and their roles:</p>
+<ul>
+<li><strong>Get Order Number Node</strong>: This node retrieves the order number from the eCommerce integration using the customer’s information (e.g., email or order ID). This step is essential for ensuring that the correct order is being tracked.</li>
+<li><strong>Extract Tracking Number Node</strong>: Once the order information is retrieved, this node extracts the tracking number associated with the order. This tracking number is used in subsequent steps.</li>
+<li><strong>Tracking Information Node</strong>: This node utilizes the carrier integration to retrieve the latest tracking information. It pulls key data such as the current status, the last known location, and the estimated delivery date.</li>
+<li><strong>Reply Node</strong>: After gathering all the necessary information, this node generates a response message that is sent back to the customer. This message can vary depending on the information retrieved.</li>
+<li><strong>Condition Node</strong>: A condition node is used to make decisions based on the data. For example, if the package status is &quot;In Transit,&quot; the chatbot sends a message with the estimated delivery date. If the status is &quot;Delivered,&quot; a different response is generated. These decision-making nodes allow for dynamic responses based on real-time information.</li>
+</ul>
+<p>Below is a simple example of how the flow might look:</p>
+<p><img src="../asset/images/policy-process.svg" alt="" /></p>
+<h2>Example: Tracking Order Policy</h2>
+<p>In the case of a <strong>Tracking Order Policy</strong>, here’s a sample scenario:</p>
+<ol>
+<li><strong>Receive Ticket</strong>: A customer submits a query asking about the status of their order.</li>
+<li><strong>Process Message &amp; Classify Intent</strong>: The system identifies the query as a tracking request.</li>
+<li><strong>Get Order Number</strong>: The policy processor retrieves the order number using the customer's email.</li>
+<li><strong>Extract Tracking Number</strong>: The system fetches the tracking number associated with the order.</li>
+<li><strong>Get Tracking Information</strong>: The carrier integration provides the tracking status, such as &quot;In Transit.&quot;</li>
+<li><strong>Condition Node</strong>: Depending on the tracking status:
+<ul>
+<li>If the status is &quot;In Transit,&quot; respond with the estimated delivery date.</li>
+<li>If the status is &quot;Delivered,&quot; confirm the delivery and ask if the customer received the package.</li>
+</ul>
+</li>
+<li><strong>Reply Node</strong>: The system sends the appropriate response to the customer.</li>
+</ol>
+<h2>Visual Node Design Tools</h2>
+<p>Several open-source tools can be used to design and manage this node system visually. One popular choice is <strong>Rete.js</strong> on GitHub, which provides a graphical interface for building and connecting nodes. This approach allows you to visually map out complex decision trees and workflows, making it easier to adapt your policies as your business rules evolve.</p>
+<h2>Customizing the Experience with Company Policy</h2>
+<p>By using a node system to design your policy processors, you can cater specifically to your business’s unique needs. This customization ensures that customer inquiries are handled according to your specific rules, timelines, and priorities. Each node in the system represents a step that can be easily modified, expanded, or fine-tuned as your business grows and customer expectations evolve.</p>
+<p>This architecture empowers your chatbot to function as an extension of your customer service team, adhering strictly to company policy while providing real-time responses based on dynamic data.</p>
+
+
+			<div class="article-nav">
+				<div>
+					<a href="part-two-chapter-9.html">&larr; Chapter 9</a>
+				</div>
+				<div>
+					
+				</div>
+			</div>
+			<div class="github">
+				<p><a href="https://github.com/ibudiallo/automated-agents-book/blob/master/book/part-two/c10.md">github source page</a></p>
+			</div>
+		</article>
+
+	</section>
+</main>
+</body>
+</html>

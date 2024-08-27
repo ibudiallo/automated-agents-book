@@ -111,6 +111,14 @@ article li {
 	line-height: 1.35em;
 	font-family: times, georgia, serif;
 }
+article pre {
+	padding: 1em;
+	background-color: #e1d5ce;
+	font-family: monospace;
+	margin-bottom: 1em;
+	overflow: auto;
+	font-size: .9em;
+}
 .article-nav {
 	display: flex;
 	justify-content: space-between;
@@ -124,4 +132,14 @@ article li {
 }
 .article-nav a:hover {
 	background-color: #eee4df;
+}
+.github {
+	text-align: center;
+}
+.github a{
+	text-decoration: none;
+	color: #aaa;
+}
+.github a:hover {
+	color: #555;
 }

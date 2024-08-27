@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chapter 8</title>
+	<link rel="stylesheet" type="text/css" href="../asset/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/root.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/intro.css">
+</head>
+<body>
+<main>
+	<section class="nav">
+		<div class="sidebar">
+	<header class="nav-hdr">
+		<h1>Automated <span>Agents</span></h1>
+	</header>
+	<nav class="nav-list">
+		<ul class="sidebar"><li class="nav-part "><h2><a href="intro.html">Introduction</a></h2></li><li class="nav-part "><h2><a href="part-one-intro.html">Part One</a></h2><li class="nav-chapt "><a href="part-one-chapter-1.html">Chapter 1</a></li><li class="nav-chapt "><a href="part-one-chapter-2.html">Chapter 2</a></li><li class="nav-chapt "><a href="part-one-chapter-3.html">Chapter 3</a></li><li class="nav-chapt "><a href="part-one-chapter-4.html">Chapter 4</a></li><li class="nav-chapt "><a href="part-one-chapter-5.html">Chapter 5</a></li></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Part Two</a></h2><li class="nav-chapt "><a href="part-two-chapter-6.html">Chapter 6</a></li><li class="nav-chapt "><a href="part-two-chapter-7.html">Chapter 7</a></li><li class="nav-chapt selected"><a href="part-two-chapter-8.html">Chapter 8</a></li><li class="nav-chapt "><a href="part-two-chapter-9.html">Chapter 9</a></li><li class="nav-chapt "><a href="part-two-chapter-10.html">Chapter 10</a></li></li></ul>
+	</nav>
+</div>
+	</section>
+	<section class="content">
+		<article>
+			<h1>Chapter 8: Integrating an eCommerce Platform</h1>
+<p>Just as integrating with a helpdesk system is crucial for managing customer service interactions, integrating with an eCommerce platform is vital for accessing order and customer data. Whether you're using Shopify, Magento, WooCommerce, or another platform, the primary focus is to retrieve and manage customer and order information effectively.</p>
+<p>At a high level, we need to perform a few key actions:</p>
+<ul>
+<li><strong>Get order by ID</strong></li>
+<li><strong>Get order by customer email</strong></li>
+<li><strong>Retrieve customer information by email</strong></li>
+<li><strong>Get product information by ID</strong></li>
+<li><strong>Cancel an order</strong></li>
+<li><strong>Process a return</strong></li>
+</ul>
+<p>While all eCommerce platforms should offer these core features, some platforms may also support additional features like subscriptions, which require further support for actions such as pausing or canceling a subscription.</p>
+<h2>Example with Shopify</h2>
+<p>Let's take Shopify as an example and implement a generic JavaScript integration for these functions. Shopify provides a well-documented API that allows developers to perform the necessary operations to retrieve and manage orders, customers, and products.</p>
+<p>Here’s a simple implementation of these functions in JavaScript:</p>
+<pre><code class="language-JavaScript">const axios = require('axios');
+
+const SHOPIFY_API_URL = 'https://your_store.myshopify.com/admin/api/2023-07';  
+const SHOPIFY_ACCESS_TOKEN = 'your_access_token';
+
+// Set up Axios for API calls  
+const shopifyApi = axios.create({  
+    baseURL: SHOPIFY_API_URL,  
+    headers: {  
+        'X-Shopify-Access-Token': SHOPIFY_ACCESS_TOKEN,  
+        'Content-Type': 'application/json'  
+    }  
+});
+
+// Function to get order by ID  
+async function getOrderById(orderId) {  
+    try {  
+        const response = await shopifyApi.get(`/orders/${orderId}.json`);  
+        return response.data.order;  
+    } catch (error) {  
+        console.error('Error fetching order by ID:', error);  
+        throw error;  
+    }  
+}
+
+// Function to get order by customer email  
+async function getOrderByEmail(email) {  
+    try {  
+        const response = await shopifyApi.get('/orders.json', {  
+            params: {  
+                email: email  
+            }  
+        });  
+        return response.data.orders;  
+    } catch (error) {  
+        console.error('Error fetching orders by email:', error);  
+        throw error;  
+    }  
+}
+
+// Function to get customer information by email  
+async function getCustomerByEmail(email) {  
+    try {  
+        const response = await shopifyApi.get('/customers/search.json', {  
+            params: {  
+                query: `email:${email}`  
+            }  
+        });  
+        return response.data.customers[0];  
+    } catch (error) {  
+        console.error('Error fetching customer by email:', error);  
+        throw error;  
+    }  
+}
+
+// Function to get product information by ID  
+async function getProductById(productId) {  
+    try {  
+        const response = await shopifyApi.get(`/products/${productId}.json`);  
+        return response.data.product;  
+    } catch (error) {  
+        console.error('Error fetching product by ID:', error);  
+        throw error;  
+    }  
+}
+
+// Function to cancel an order  
+async function cancelOrder(orderId) {  
+    try {  
+        const response = await shopifyApi.post(`/orders/${orderId}/cancel.json`);  
+        return response.data.order;  
+    } catch (error) {  
+        console.error('Error canceling order:', error);  
+        throw error;  
+    }  
+}
+
+// Function to process a return  
+async function returnOrder(orderId, reason) {  
+    // Assuming the platform has an API for handling returns  
+    try {  
+        const response = await shopifyApi.post(`/orders/${orderId}/return.json`, {  
+            reason: reason  
+        });  
+        return response.data.return;  
+    } catch (error) {   
+        console.error('Error processing return:', error);  
+        throw error;  
+    }  
+}
+
+// Example usage:  
+(async () =&gt; {  
+    const orderId = 1234567890; // Example order ID  
+    const email = &quot;customer@example.com&quot;; // Example customer email  
+    const productId = 987654321; // Example product ID
+
+    const order = await getOrderById(orderId);  
+    const customerOrders = await getOrderByEmail(email);  
+    const customer = await getCustomerByEmail(email);  
+    const product = await getProductById(productId);
+
+    console.log('Order:', order);  
+    console.log('Customer Orders:', customerOrders);  
+    console.log('Customer:', customer);  
+    console.log('Product:', product);
+
+    await cancelOrder(orderId);  
+    await returnOrder(orderId, &quot;Damaged item&quot;);  
+})();
+</code></pre>
+<h2>Handling Subscriptions</h2>
+<p>If your platform supports subscriptions, you might also need to include additional functions for managing these. For instance, you may need to:</p>
+<ul>
+<li>Pause a subscription</li>
+<li>Cancel a subscription</li>
+<li>Retrieve subscription details</li>
+</ul>
+<p>While Shopify offers some subscription functionality through third-party apps, platforms like ReCharge have their own API for subscription management, which would require a separate integration.</p>
+<h2>Integrating with the Company Policy Processor</h2>
+<p>The Company Policy Processor, introduced earlier, will manage all of these eCommerce functions. It ensures that customer interactions adhere to the policies you’ve defined. For example, if a customer requests a return after the allowed window has passed, the policy processor will check the policy before initiating the return.</p>
+<p>The Company Policy Processor will call the appropriate eCommerce functions depending on the situation—whether it's fetching an order, processing a return, or canceling a subscription—ensuring that the chatbot operates within your defined guidelines.</p>
+<p>By integrating your chatbot with an eCommerce platform, you ensure that it has real-time access to the customer and order data it needs to resolve issues quickly and efficiently, reducing the burden on human agents while maintaining high-quality customer service.</p>
+
+
+			<div class="article-nav">
+				<div>
+					<a href="part-two-chapter-7.html">&larr; Chapter 7</a>
+				</div>
+				<div>
+					<a href="part-two-chapter-9.html">Chapter 9 &rarr;</a>
+				</div>
+			</div>
+			<div class="github">
+				<p><a href="https://github.com/ibudiallo/automated-agents-book/blob/master/book/part-two/c08.md">github source page</a></p>
+			</div>
+		</article>
+
+	</section>
+</main>
+</body>
+</html>

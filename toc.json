@@ -58,6 +58,52 @@
 					}
 				]
 
+			},
+			{
+				"name": "Part Two",
+				"title": "Part Two",
+				"folder": "part-two",
+				"slug": "part-two-intro.html",
+				"content": "intro.md",
+				"template": "part.template.html",
+				"chapters": [
+					{
+						"name": "Chapter 6",
+						"title": "Chapter 6",
+						"slug": "chapter-6.html",
+						"content": "c06.md",
+						"template": "chapter.template.html"
+					},
+					{
+						"name": "Chapter 7",
+						"title": "Chapter 7",
+						"slug": "chapter-7.html",
+						"content": "c07.md",
+						"template": "chapter.template.html"
+					},
+					{
+						"name": "Chapter 8",
+						"title": "Chapter 8",
+						"slug": "chapter-8.html",
+						"content": "c08.md",
+						"template": "chapter.template.html"
+					},
+					{
+						"name": "Chapter 9",
+						"title": "Chapter 9",
+						"slug": "chapter-9.html",
+						"content": "c09.md",
+						"template": "chapter.template.html"
+					},
+					{
+						"name": "Chapter 10",
+						"title": "Chapter 10",
+						"slug": "chapter-10.html",
+						"content": "c10.md",
+						"template": "chapter.template.html"
+					}
+				]
+
 			}
 		]
 	}

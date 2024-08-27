@@ -10,6 +10,7 @@ const toc = readJsonFile("./toc.json");
 const BOOK_PATH = "book";
 const OUT_PATH = "dist";
 const ASSET_PATH = "..";
+const GITROOT = "https://github.com/ibudiallo/automated-agents-book/blob/master/book";
 
 const notEmpty = (a) => !!a;
 
@@ -29,7 +30,6 @@ const buildSidebar = (selectedPart, selectedChapt) => {
 			return h("li", { class: ["nav-part", partSelectedClass] }, [
 				h("h2", {}, h("a", { href: li.slug }, li.title)),
 				...chapts.map(chapt => {
-					console.log("aaaaa", chapt)
 					const chaptSelected = li.slug === selectedPart.slug && chapt.slug === selectedChapt?.slug ? "selected" : "";
 					const chaptSlug = [li.folder, chapt.slug].join("-");
 					return h("li", { class: ["nav-chapt", chaptSelected] }, 
@@ -94,7 +94,7 @@ const nextChapterLink = (part, index) => {
 			return "";
 		}
 		const slug = [nextPart.folder, nextPart.slug].join("-");
-		return html(h("a", { href: part.slug}, nextPart.title+ " &rarr;"));
+		return html(h("a", { href: nextPart.slug}, nextPart.title+ " &rarr;"));
 	}
 	const next = part.chapters[index + 1];
 	const slug = [part.folder, next.slug].join("-");
@@ -109,12 +109,14 @@ function buildParts() {
 		const fullPath = [BOOK_PATH, part.folder, part.content].filter(notEmpty);
 		const contentPath = path.join(...fullPath);
 		const templatePath = path.join("src", "templates", part.template);
+		const giturl = [GITROOT, part.folder, part.content].join("/");
 		const output = renderPaths(contentPath, templatePath, {
 			sidebar,
 			TITLE: part.title,
 			ASSET_PATH,
 			PreviousURL: getPreviousPartLink(part, index),
 			NextURL: getNextLink(part, index),
+			GITURL: html(h("a", { href: giturl }, "github source page")),
 		});
 		const outFilename = [part.folder, dropExtension(part.content)]
 			.filter(notEmpty).join("-") + ".html";
@@ -127,12 +129,14 @@ function buildParts() {
 			const sidebar = buildSidebar(part, chapt);
 			const chapTemplate = path.join("src", "templates", "chapt.template.html");
 			const contentPath = path.join("book", part.folder, chapt.content);
+			const giturl = [GITROOT, part.folder, chapt.content].join("/");
 			const output = renderPaths(contentPath, chapTemplate, {
 				sidebar,
 				TITLE: chapt.title,
 				ASSET_PATH,
 				PreviousURL: prevChapterLink(part, i),
 				NextURL: nextChapterLink(part, i),
+				GITURL: html(h("a", { href: giturl }, "github source page")),
 			});
 
 			const outputFilename = [part.folder, chapt.slug].join("-");
@@ -141,7 +145,6 @@ function buildParts() {
 
 	});
 	return obj;
-
 }
 
 const structure = {

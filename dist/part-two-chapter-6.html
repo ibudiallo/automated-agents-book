@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chapter 6</title>
+	<link rel="stylesheet" type="text/css" href="../asset/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/root.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/intro.css">
+</head>
+<body>
+<main>
+	<section class="nav">
+		<div class="sidebar">
+	<header class="nav-hdr">
+		<h1>Automated <span>Agents</span></h1>
+	</header>
+	<nav class="nav-list">
+		<ul class="sidebar"><li class="nav-part "><h2><a href="intro.html">Introduction</a></h2></li><li class="nav-part "><h2><a href="part-one-intro.html">Part One</a></h2><li class="nav-chapt "><a href="part-one-chapter-1.html">Chapter 1</a></li><li class="nav-chapt "><a href="part-one-chapter-2.html">Chapter 2</a></li><li class="nav-chapt "><a href="part-one-chapter-3.html">Chapter 3</a></li><li class="nav-chapt "><a href="part-one-chapter-4.html">Chapter 4</a></li><li class="nav-chapt "><a href="part-one-chapter-5.html">Chapter 5</a></li></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Part Two</a></h2><li class="nav-chapt selected"><a href="part-two-chapter-6.html">Chapter 6</a></li><li class="nav-chapt "><a href="part-two-chapter-7.html">Chapter 7</a></li><li class="nav-chapt "><a href="part-two-chapter-8.html">Chapter 8</a></li><li class="nav-chapt "><a href="part-two-chapter-9.html">Chapter 9</a></li><li class="nav-chapt "><a href="part-two-chapter-10.html">Chapter 10</a></li></li></ul>
+	</nav>
+</div>
+	</section>
+	<section class="content">
+		<article>
+			<h1>Chapter 6: Integrating AI</h1>
+<p>Incorporating AI into your chatbot doesn’t mean you have to build everything from scratch. There are powerful, well-established tools that can streamline this process, allowing you to focus on integrating and refining AI components rather than reinventing the wheel.</p>
+<p>One such tool is <strong>spaCy</strong>, an advanced Natural Language Processing (NLP) library that's well-suited for many of the tasks required in an eCommerce chatbot. SpaCy offers out-of-the-box solutions for essential functions like entity recognition, intent classification, and sentiment analysis. These capabilities can be leveraged to enhance your chatbot's ability to understand and respond to customer queries effectively.</p>
+<p><strong>1. Entity Recognition</strong>: SpaCy’s entity recognition models can identify important pieces of information within customer messages, such as order numbers, product names, or dates. By recognizing these entities, your application can better understand the context of the customer’s request.</p>
+<p><strong>2. Intent Classification</strong>: One of the most crucial tasks for any chatbot is determining what the customer wants—whether they're asking about an order, inquiring about return policies, or seeking product information. SpaCy can be used to build an intent classifier, a model that categorizes customer messages into predefined intents.</p>
+<p><strong>3. Sentiment Analysis</strong>: Understanding the tone of a customer’s message can be just as important as understanding its content. By incorporating sentiment analysis, your chatbot can detect whether a customer is frustrated, confused, or satisfied, allowing it to adjust its responses accordingly.</p>
+<h2><strong>Building AI Services Independently</strong></h2>
+<p>To integrate these AI capabilities, you can develop an independent service that takes different models as parameters to fulfill specific needs. This modular approach allows you to scale and customize your AI components as your chatbot's requirements evolve.</p>
+<p><strong>Pretrained Models as a Baseline</strong></p>
+<p>Starting from scratch isn’t necessary when there are numerous pretrained models available online. These models serve as a solid baseline, allowing you to focus on refining and adapting them to your specific use cases. By creating a training pipeline, you can continuously improve these models based on real-world data from your application.</p>
+<h2>Example: Classifying &quot;Where is My Order&quot; (WISMO) Intents</h2>
+<p>Let's take a closer look at how you might use spaCy to build a classifier for &quot;Where is My Order&quot; (WISMO) intents. Below is a simplified example in pseudo code:</p>
+<pre><code class="language-python">import spacy  
+from spacy.util import minibatch, compounding
+
+# Load a pretrained spaCy model  
+nlp = spacy.load(&quot;en_core_web_sm&quot;)
+
+# Define training data  
+training_data = [  
+    (&quot;Where is my order?&quot;, {&quot;cats&quot;: {&quot;WISMO&quot;: 1.0, &quot;Other&quot;: 0.0}}),  
+    (&quot;I need to know the status of my package&quot;, {&quot;cats&quot;: {&quot;WISMO&quot;: 1.0, &quot;Other&quot;: 0.0}}),  
+    (&quot;What is your return policy?&quot;, {&quot;cats&quot;: {&quot;WISMO&quot;: 0.0, &quot;Other&quot;: 1.0}}),  
+    # Add more examples  
+]
+
+# Add the text categorizer to the pipeline if it doesn't exist  
+if &quot;textcat&quot; not in nlp.pipe_names:  
+    textcat = nlp.create_pipe(&quot;textcat&quot;)  
+    nlp.add_pipe(textcat, last=True)  
+else:  
+    textcat = nlp.get_pipe(&quot;textcat&quot;)
+
+# Add labels to the text classifier  
+textcat.add_label(&quot;WISMO&quot;)  
+textcat.add_label(&quot;Other&quot;)
+
+# Training loop  
+optimizer = nlp.begin_training()  
+for epoch in range(10):  
+    losses = {}  
+    batches = minibatch(training_data, size=compounding(4.0, 32.0, 1.001))  
+    for batch in batches:  
+        texts, annotations = zip(*batch)  
+        nlp.update(texts, annotations, sgd=optimizer, drop=0.2, losses=losses)  
+    print(losses)
+
+# Save the model  
+nlp.to_disk(&quot;wismo_classifier&quot;)
+
+# Test the classifier  
+doc = nlp(&quot;Can you tell me where my order is?&quot;)  
+print(doc.cats)
+</code></pre>
+<p>In this pseudo code, we've defined a simple pipeline using spaCy to train a classifier for WISMO intents. This classifier can then be integrated into your chatbot's AI service to detect when customers are inquiring about their order status.</p>
+<h2><strong>Exploring Other Tools</strong></h2>
+<p>While spaCy is a powerful and versatile tool, it's just one of many options available. For example, <strong>FastText</strong> is another widely-used NLP library that excels in text classification tasks. Depending on your specific needs, you might find that other open-source tools better fit your use case.</p>
+<p>The key takeaway is that integrating AI into your chatbot doesn't require building everything from scratch. By leveraging existing tools and resources, you can rapidly develop and deploy AI components that enhance your chatbot's ability to serve customers effectively.</p>
+
+
+			<div class="article-nav">
+				<div>
+					<a href="part-two-intro.html">&larr; Part Two</a>
+				</div>
+				<div>
+					<a href="part-two-chapter-7.html">Chapter 7 &rarr;</a>
+				</div>
+			</div>
+			<div class="github">
+				<p><a href="https://github.com/ibudiallo/automated-agents-book/blob/master/book/part-two/c06.md">github source page</a></p>
+			</div>
+		</article>
+
+	</section>
+</main>
+</body>
+</html>

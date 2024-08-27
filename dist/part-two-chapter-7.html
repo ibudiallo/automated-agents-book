@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chapter 7</title>
+	<link rel="stylesheet" type="text/css" href="../asset/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/root.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/intro.css">
+</head>
+<body>
+<main>
+	<section class="nav">
+		<div class="sidebar">
+	<header class="nav-hdr">
+		<h1>Automated <span>Agents</span></h1>
+	</header>
+	<nav class="nav-list">
+		<ul class="sidebar"><li class="nav-part "><h2><a href="intro.html">Introduction</a></h2></li><li class="nav-part "><h2><a href="part-one-intro.html">Part One</a></h2><li class="nav-chapt "><a href="part-one-chapter-1.html">Chapter 1</a></li><li class="nav-chapt "><a href="part-one-chapter-2.html">Chapter 2</a></li><li class="nav-chapt "><a href="part-one-chapter-3.html">Chapter 3</a></li><li class="nav-chapt "><a href="part-one-chapter-4.html">Chapter 4</a></li><li class="nav-chapt "><a href="part-one-chapter-5.html">Chapter 5</a></li></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Part Two</a></h2><li class="nav-chapt "><a href="part-two-chapter-6.html">Chapter 6</a></li><li class="nav-chapt selected"><a href="part-two-chapter-7.html">Chapter 7</a></li><li class="nav-chapt "><a href="part-two-chapter-8.html">Chapter 8</a></li><li class="nav-chapt "><a href="part-two-chapter-9.html">Chapter 9</a></li><li class="nav-chapt "><a href="part-two-chapter-10.html">Chapter 10</a></li></li></ul>
+	</nav>
+</div>
+	</section>
+	<section class="content">
+		<article>
+			<h1>Chapter 7: Integrating a Help Desk</h1>
+<p>When building a chatbot for eCommerce, integrating with a helpdesk system is crucial to ensure smooth communication and efficient resolution of customer issues. Every helpdesk platform, from Zendesk to Freshdesk, has its own set of features, strengths, and weaknesses. However, they all share some fundamental capabilities that we can leverage to build robust integrations.</p>
+<p>Key functions like retrieving a ticket, fetching the latest customer message, replying to that message, assigning the ticket to a particular agent, handing off to a human agent, or adding internal notes are essential for a well-rounded integration. The goal is to streamline these actions so that the chatbot can effectively manage customer interactions—from classification and response to collaboration with human agents.</p>
+<p>Helpdesk platforms typically provide comprehensive API documentation, which can be used to implement these functions precisely. This documentation allows developers to interact with the helpdesk’s backend, perform necessary actions, and integrate them seamlessly into the chatbot’s workflow.</p>
+<p>Below is an example of how an integration with Zendesk’s API might look in JavaScript:</p>
+<pre><code class="language-JavaScript">const axios = require('axios');
+
+const ZENDESK_API_URL = 'https://your_subdomain.zendesk.com/api/v2';  
+const ZENDESK_API_TOKEN = 'your_api_token';  
+const ZENDESK_EMAIL = 'your_email@example.com';
+
+// Set up Axios for API calls  
+const zendeskApi = axios.create({  
+    baseURL: ZENDESK_API_URL,  
+    auth: {  
+        username: ZENDESK_EMAIL,  
+        password: ZENDESK_API_TOKEN  
+    },  
+    headers: {  
+        'Content-Type': 'application/json'  
+    }  
+});
+
+// Function to get a ticket by ID  
+async function getTicket(ticketId) {  
+    try {  
+        const response = await zendeskApi.get(`/tickets/${ticketId}.json`);  
+        return response.data.ticket;  
+    } catch (error) {  
+        console.error('Error fetching ticket:', error);  
+        throw error;  
+    }  
+}
+
+// Function to get the latest message from a ticket  
+async function getLatestMessage(ticketId) {  
+    try {  
+        const ticket = await getTicket(ticketId);  
+        return ticket.latest_comment;  
+    } catch (error) {  
+        console.error('Error fetching latest message:', error);  
+        throw error;  
+    }  
+}
+
+// Function to reply to a ticket  
+async function replyToTicket(ticketId, message) {  
+    try {  
+        const response = await zendeskApi.post(`/tickets/${ticketId}.json`, {  
+            ticket: {  
+                comment: {  
+                    body: message,  
+                    public: true  
+                }  
+            }  
+        });  
+        return response.data.ticket;  
+    } catch (error) {  
+        console.error('Error replying to ticket:', error);  
+        throw error;  
+    }  
+}
+
+// Function to assign the ticket to an agent  
+async function assignTicket(ticketId, agentId) {  
+    try {  
+        const response = await zendeskApi.put(`/tickets/${ticketId}.json`, {  
+            ticket: {  
+                assignee_id: agentId  
+            }  
+        });  
+        return response.data.ticket;  
+    } catch (error) {  
+        console.error('Error assigning ticket:', error);  
+        throw error;  
+    }  
+}
+
+// Function to add a note to the ticket  
+async function addNoteToTicket(ticketId, note) {  
+    try {  
+        const response = await zendeskApi.post(`/tickets/${ticketId}.json`, {  
+            ticket: {  
+                comment: {  
+                    body: note,  
+                    public: false  
+                }  
+            }  
+        });  
+        return response.data.ticket;  
+    } catch (error) {  
+        console.error('Error adding note to ticket:', error);  
+        throw error;  
+    }  
+}
+
+// Example usage:  
+(async () =&gt; {  
+    const ticketId = 123456; // Example ticket ID  
+    const agentId = 78910; // Example agent ID  
+    const message = &quot;Here is the update you requested.&quot;;  
+    const note = &quot;Customer mentioned a possible return request.&quot;;
+
+    await replyToTicket(ticketId, message);  
+    await assignTicket(ticketId, agentId);  
+    await addNoteToTicket(ticketId, note);
+
+    console.log('Actions completed successfully.');  
+})();
+</code></pre>
+<p>This code demonstrates how to interact with Zendesk’s API to perform key actions. These actions—getting a ticket, responding to messages, assigning tickets, and adding notes—are fundamental to the chatbot's ability to handle customer interactions effectively.</p>
+<p>Later in our discussion on the <strong>Company Policy Processor</strong>, we'll show how this help desk integration plays a crucial role. For instance, after the chatbot classifies an intent (such as a &quot;Where is my order?&quot; request), it can use this integration to log the interaction, add notes for human agents, and send a response, all while adhering to company policy guidelines.</p>
+<p>By understanding and implementing these integrations, we can build a chatbot that not only responds to customer queries but also operates seamlessly within the existing customer service infrastructure, ensuring efficient and accurate resolutions.</p>
+
+
+			<div class="article-nav">
+				<div>
+					<a href="part-two-chapter-6.html">&larr; Chapter 6</a>
+				</div>
+				<div>
+					<a href="part-two-chapter-8.html">Chapter 8 &rarr;</a>
+				</div>
+			</div>
+			<div class="github">
+				<p><a href="https://github.com/ibudiallo/automated-agents-book/blob/master/book/part-two/c07.md">github source page</a></p>
+			</div>
+		</article>
+
+	</section>
+</main>
+</body>
+</html>

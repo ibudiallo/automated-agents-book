@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/index.js -e \"js json html md css\"",
+    "dev": "nodemon --exec './scripts/build.sh && node src/index.js' -e \"js json html md css\"",
     "start": "node ./src/index.js"
   },
   "author": "Ibrahim Diallo",
