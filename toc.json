@@ -9,45 +9,50 @@
 			{
 				"name": "Introduction",
 				"title": "Introduction",
+				"slug": "intro.html",
 				"content": "intro.md",
-				"template": "intro.template.html",
-				"order": 0
+				"template": "intro.template.html"
 			},
 			{
 				"name": "Part One",
 				"title": "Part One",
 				"folder": "part-one",
+				"slug": "part-one-intro.html",
 				"content": "intro.md",
 				"template": "part.template.html",
-				"order": 0,
 				"chapters": [
 					{
 						"name": "Chapter 1",
-						"title": "something",
+						"title": "Chapter 1",
+						"slug": "chapter-1.html",
 						"content": "c01.md",
 						"template": "chapter.template.html"
 					},
 					{
 						"name": "Chapter 2",
-						"title": "something",
+						"title": "Chapter 2",
+						"slug": "chapter-2.html",
 						"content": "c02.md",
 						"template": "chapter.template.html"
 					},
 					{
 						"name": "Chapter 3",
-						"title": "something",
+						"title": "Chapter 3",
+						"slug": "chapter-3.html",
 						"content": "c03.md",
 						"template": "chapter.template.html"
 					},
 					{
 						"name": "Chapter 4",
-						"title": "something",
+						"title": "Chapter 4",
+						"slug": "chapter-4.html",
 						"content": "c04.md",
 						"template": "chapter.template.html"
 					},
 					{
 						"name": "Chapter 5",
-						"title": "something",
+						"title": "Chapter 5",
+						"slug": "chapter-5.html",
 						"content": "c05.md",
 						"template": "chapter.template.html"
 					}

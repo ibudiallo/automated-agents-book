@@ -8,7 +8,7 @@ Much like how businesses once scrambled to secure catchy domain names without a 
 
 Now that we have the benefit of hindsight, what makes a good chatbot? How does it work? What are some of the assumptions that we left behind? If I were to build one today, what would it look like?
 
----- 
+---
 
 This document will be split into three parts to cater to different audiences and provide a comprehensive understanding of chatbots in ecommerce. 
 

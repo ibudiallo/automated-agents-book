@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chapter 4</title>
+	<link rel="stylesheet" type="text/css" href="../asset/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/root.css">
+	<link rel="stylesheet" type="text/css" href="../asset/css/intro.css">
+</head>
+<body>
+<main>
+	<section class="nav">
+		<div class="sidebar">
+	<header class="nav-hdr">
+		<h1>Automated <span>Agents</span></h1>
+	</header>
+	<nav class="nav-list">
+		<ul class="sidebar"><li class="nav-part "><h2><a href="intro.html">Introduction</a></h2></li><li class="nav-part selected"><h2><a href="part-one-intro.html">Part One</a></h2><li class="nav-chapt "><a href="part-one-chapter-1.html">Chapter 1</a></li><li class="nav-chapt "><a href="part-one-chapter-2.html">Chapter 2</a></li><li class="nav-chapt "><a href="part-one-chapter-3.html">Chapter 3</a></li><li class="nav-chapt selected"><a href="part-one-chapter-4.html">Chapter 4</a></li><li class="nav-chapt "><a href="part-one-chapter-5.html">Chapter 5</a></li></li></ul>
+	</nav>
+</div>
+	</section>
+	<section class="content">
+		<article>
+			<h1>Chapter 4: AI</h1>
+<h2>Do we need more AI?</h2>
+<p>The process I described can resolve the majority of issues, but there is always room for improvement. When we think of AI in the context of chatbots, it’s easy to imagine a single, all-encompassing model that handles everything from understanding the user’s intent to generating a response. But in reality, we can leverage multiple AI models, each with their own unique specialty. This approach can improve the user’s experience and can also give us a way to introduce new features.</p>
+<p>For example, consider the original user input. Instead of sending it through a single AI model, we can have it go through multiple passes.</p>
+<ol>
+<li>Classifier: The first pass involves a classifier to determine the type of action the user wants. It could be asking about an order, returning a product, or needing technical support.</li>
+<li>Sentiment Analysis: The next pass could perform sentiment analysis to gauge the tone of the message. Understanding whether the customer is happy, frustrated, or neutral can influence how the chatbot responds. An angry customer likely doesn’t want any peppy talk. They just want their problem to be solved and be done with it.</li>
+<li>Reason Classification: Another pass could classify the reason behind the customer’s original message. For example, if a customer wants to return an order, they may include a reason. Such as the product not meeting their expectations. Extracting this information upfront can be valuable for tailoring the response.</li>
+</ol>
+<p>By using multiple AI passes, we can extract more nuanced information from user messages, making the chatbot not only more responsive but also more empathetic and contextually aware. This multi-layered approach ensures that the chatbot isn’t just reacting to what the customer is saying but is also considering how they are saying it and why they might be saying it. Each additional AI model we add becomes a new feature that can enhance the chatbot’s effectiveness in resolving customer issues.</p>
+<h2>The Hand off (WIP)</h2>
+<p>What to do when the AI can’t help?</p>
+<h2>What is company policy?</h2>
+<p>Every eCommerce business operates under a set of policies that define how they interact with customers and fulfill their commitments. These policies are not just guidelines; they are promises made to customers, and they play a crucial role in how the company responds to customer inquiries.</p>
+<p>For example, a company might have the following commitments:</p>
+<ul>
+<li><strong>Shipping Policy:</strong> All purchased items will be shipped within 2 business days.</li>
+<li><strong>Service Level Agreement (SLA):</strong> Orders should arrive within 3 to 5 business days.</li>
+<li><strong>Return Policy:</strong> Items can be returned, no questions asked, within 30 days of purchase.</li>
+<li><strong>Refund/Replacement Policy:</strong> Damaged items reported within the first 10 days can be refunded or replaced. After 10 days, only replacements are offered.</li>
+</ul>
+<p>These policies are not part of the AI model’s training. Instead, they are implemented at the application level, as a manual process that ensures alignment with the specific policies of the company. This distinction is crucial because it underscores that the chatbot’s role is to apply these predefined rules consistently, rather than relying on the AI to make decisions based on generalized training data.</p>
+<p>For instance, if a customer asks for tracking information 10 minutes after placing an order, the AI isn’t making an arbitrary decision. Instead, the application applies the company’s shipping policy: &quot;Your order is currently being processed and should ship within 2 business days. Once it ships, you’ll receive an email with the tracking information.&quot;</p>
+<p>By embedding company policies into the application’s logic, you ensure that customer interactions are consistent and aligned with your business's commitments. This process requires manual configuration to match the company’s specific rules and policies, ensuring that the chatbot’s responses are accurate and reliable.</p>
+<p>These policies can be structured into a decision tree that guides the chatbot’s responses for different scenarios:</p>
+<ul>
+<li><strong>Order Status Inquiries:</strong> If a customer asks about their order before it’s shipped, the chatbot refers to the processing time. If it’s within the SLA window, the chatbot provides reassurance that the order is on track. If it’s beyond the SLA, the chatbot can escalate the issue or provide a more detailed explanation.</li>
+<li><strong>Return Requests:</strong> When a customer requests a return within the allowed 30-day window, the chatbot can immediately initiate the return process. If the request comes after 30 days, the chatbot might offer alternative solutions, such as store credit or an exchange, based on the company’s policy.</li>
+<li><strong>Refund or Replacement for Damaged Items:</strong> The chatbot can automatically check the date of the order and, if within the first 10 days, offer a refund or replacement. If it’s after 10 days, the chatbot follows the policy by offering only a replacement.</li>
+</ul>
+<p>Integrating these policies into the chatbot at the application level, rather than through AI model training, not only ensures compliance but also enhances the customer experience by providing clear, consistent, and policy-driven responses. This reduces ambiguity, prevents potential disputes, and aligns the chatbot’s behavior with the company’s values and commitments.</p>
+<h2>Keeping the AI Models up to date</h2>
+<p>AI models are only as good as the data they are trained on, and in the diverse world of eCommerce, customer communication varies significantly across different platforms and product types. For example, customers buying digital goods often use jargon that is unique to the tech-savvy community, while those purchasing physical arts and craft may use language that is more descriptive and emotive.</p>
+<p>This variation in language can become a challenge for AI models, especially when they are trained primarily on data from one type of customer. An AI model optimized for handling inquiries about software downloads might struggle to accurately classify and respond to questions about handcrafted jewelry.</p>
+<p>This is why it is important to have a robust training pipeline in place to allow regular updates of the AI models. This pipeline should focus on three areas in order of priority:</p>
+<ol>
+<li>Handling False Positives:<br />
+False positives occur when the AI misclassifies a customer inquiry, leading to an incorrect or irrelevant response. By having a path in place to identify and report these errors, the model can be improved immediately.</li>
+<li>Addressing Low Confidence Scores:<br />
+When the AI encounters a message it is unsure about, it gives it a low score. These low score interactions are a goldmine for improving the model.</li>
+<li>Random Sample of new messages:<br />
+When starting integration with a new company, it is important to grab a random sample of the messages they receive and train the models with it. This ensures that false positives are less likely to occur.</li>
+</ol>
+<p>Regularly updating the AI models through this pipeline not only improves their ability to classify and respond to a wider range of customer inquiries but also ensures that the chatbot remains relevant as customer communication styles evolve. Continuous training allows the chatbot to adapt to new trends, slang, and industry-specific language, ultimately expanding the number of customers it can assist effectively.</p>
+<p>Training the model means having humans look at customer messages and decide what they actually mean. This means exposing customer personal information. To properly perform training, we need to take security and data privacy into account.</p>
+<p><img src="../asset/images/training.svg" alt="Training" /></p>
+
+
+			<div class="article-nav">
+				<div>
+					<a href="part-one-chapter-3.html">&larr; Chapter 3</a>
+				</div>
+				<div>
+					<a href="part-one-chapter-5.html">Chapter 5 &rarr;</a>
+				</div>
+			</div>
+		</article>
+
+	</section>
+</main>
+</body>
+</html>

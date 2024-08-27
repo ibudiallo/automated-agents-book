@@ -11,6 +11,7 @@
 .nav-hdr {
 	padding: 2em;
 	margin-bottom: 2em;
+	border-bottom: 1px solid #786e52;
 }
 .nav-hdr h1 {	
 	font-size: 2.5em;
@@ -22,6 +23,29 @@
 .nav-hdr h1 span {
 	display: block;
 	font-size: 1.6em;
+}
+.nav-list {
+	padding: 1em 2em;
+}
+.nav-list h2 {
+	background-color: rgba(242, 177,56, .1);
+	padding: .7em 1em;
+	font-weight: bold;
+	margin-bottom: .5em;
+}
+.nav-list h2 a {
+	text-decoration: none;
+	color: #f2b138;
+}
+.nav-chapt {
+	padding: .5em 1em;
+}
+.nav-chapt a {
+	text-decoration: none;
+	color: #bd9f45;
+}
+.nav-part.selected h2 a, .nav-chapt.selected a {
+	color: #fef5d9;
 }
 /* Nav End */
 
@@ -38,17 +62,54 @@ article h1 {
 	margin-bottom: .7em;
 	color: #cb8709;
 }
+article h2 {
+	font-size: 2.5em;
+	line-height: 1.3em;
+	margin-bottom: .7em;
+	color: #cb8709;
+}
+article h3 {
+	font-size: 2em;
+	line-height: 1.3em;
+	margin-bottom: .7em;
+	color: #cb8709;
+}
+article h4 {
+	font-size: 1.7em;
+	line-height: 1.3em;
+	margin-bottom: .7em;
+	color: #cb8709;
+}
 article p {
 	font-size: 1.2em;
 	margin-bottom: 1.3em;
 	line-height: 1.35em;
 	font-family: times, georgia, serif;
 }
-
+article p img{
+	max-width: 100%;
+}
 article hr {
 	width: 100px;
 	display: block;
 	margin: 2em auto;
+}
+article ol {
+	list-style-type: decimal;
+	margin-left: 1em;
+}
+article ul {
+	list-style-type: disc;
+	margin-left: 1em;
+}
+article > ul, article ol {
+	margin-bottom: 1em;
+}
+article li {
+	margin-bottom: .5em;
+	font-size: 1.1em;
+	line-height: 1.35em;
+	font-family: times, georgia, serif;
 }
 .article-nav {
 	display: flex;
