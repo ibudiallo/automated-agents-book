@@ -8,8 +8,8 @@ import path from "path";
 const toc = readJsonFile("./toc.json");
 
 const BOOK_PATH = "book";
-const OUT_PATH = "dist";
-const ASSET_PATH = "..";
+const OUT_PATH = "website";
+const ASSET_PATH = ".";
 const GITROOT = "https://github.com/ibudiallo/automated-agents-book/blob/master/book";
 
 const notEmpty = (a) => !!a;

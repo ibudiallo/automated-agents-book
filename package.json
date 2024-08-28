@@ -17,7 +17,7 @@
     "nodemon": "^1.19.4"
   },
   "nodemonConfig": {
-    "ignore": ["**/dist/**"]
+    "ignore": ["**/website/**"]
   },
   "type": "module"
 }
