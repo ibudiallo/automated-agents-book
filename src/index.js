@@ -44,6 +44,33 @@ const buildSidebar = (selectedPart, selectedChapt) => {
 	return html(obj);
 };
 
+const buildTOC = () => {
+	const elements = [];
+	toc.sections.parts.map(part => {
+		const chapts = (() => {
+			if(!part.chapters) return [];
+			return h("ul", {}, part.chapters.map((c) => {
+				return h("li", {}, h("a", { href: [part.folder, c.slug].join("-")}, c.title ));
+			}))
+		})();
+
+		elements.push(
+			h("li", { class: "toc-list"}, 
+				h("div", { }, [
+					h("h2", {}, h("a", { href: part.slug }, part.title)),
+					chapts,
+				])
+			)
+		)
+	});
+	const output = html(h("ul", {}, elements));
+	const templatePath = path.join("src", "templates", "toc.template.html")
+	return render(templatePath, {
+		content: output,
+		TITLE: "Table of Content",
+		ASSET_PATH,
+	});
+};
 
 function buildFront() {
 	const contentPath = path.join(BOOK_PATH, toc.front.content);
@@ -105,6 +132,11 @@ function buildParts() {
 	const obj = {};
 
 	toc.sections.parts.map( (part, index) => {
+		if (part.name === "toc") {
+			const content = buildTOC();
+			obj[part.slug] = content;
+			return ;
+		}
 		const sidebar = buildSidebar(part);
 		const fullPath = [BOOK_PATH, part.folder, part.content].filter(notEmpty);
 		const contentPath = path.join(...fullPath);

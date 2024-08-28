@@ -1,3 +1,4 @@
 #!/bin/bash 
 
-echo hello
+echo "clear dist"
+rm -f dist/*.html 

@@ -119,6 +119,20 @@ article pre {
 	overflow: auto;
 	font-size: .9em;
 }
+
+/** TOC**/
+.toc-list {
+	list-style-type: none;
+	margin-left: 0;
+}
+.toc-list h2 {
+	font-size: 2em;
+}
+.toc-list h2 a {
+	color: #cb8709;
+	text-decoration: none;
+}
+
 .article-nav {
 	display: flex;
 	justify-content: space-between;
