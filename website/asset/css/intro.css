@@ -124,9 +124,16 @@ article pre {
 .toc-list {
 	list-style-type: none;
 	margin-left: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	margin-bottom: 1em;
+}
+.toc-list a {
 }
 .toc-list h2 {
-	font-size: 2em;
+	font-size: 1.3em;
+	text-transform: uppercase;
+	color: #4d3509;
+	margin-bottom: .5em;
 }
 .toc-list h2 a {
 	color: #cb8709;
@@ -134,10 +141,12 @@ article pre {
 }
 .toc-list ul {
 	margin-left: 2em;
+	list-style-type: none;
 }
 .toc-list ul a {
 	text-decoration: none;
 	color: #966711;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 .article-nav {

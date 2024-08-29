@@ -1,7 +1,8 @@
 {
 	"front": {
 		"template": "front.template.html",
-		"content": "front.md"
+		"content": "front.md",
+		"slug": "index.html"
 	},
 	"sections": {
 		
@@ -14,15 +15,19 @@
 				"template": "toc.template.html"
 			},
 			{
-				"name": "Introduction",
-				"title": "Introduction",
-				"slug": "intro.html",
-				"content": "intro.md",
-				"template": "intro.template.html"
+				"title": "Front",
+				"chapters": [
+					{
+						"title": "Introduction",
+						"slug": "intro.html",
+						"content": "intro.md",
+						"template": "content.template.html"
+					}
+				]
 			},
 			{
 				"name": "Part One",
-				"title": "Part One",
+				"title": "Understanding Chatbots",
 				"folder": "part-one",
 				"slug": "part-one-intro.html",
 				"content": "intro.md",
@@ -68,7 +73,7 @@
 			},
 			{
 				"name": "Part Two",
-				"title": "Part Two",
+				"title": "Under the Hood",
 				"folder": "part-two",
 				"slug": "part-two-intro.html",
 				"content": "intro.md",

@@ -16,7 +16,7 @@ const notEmpty = (a) => !!a;
 
 const dropExtension = (filename) => filename.replace(path.extname(filename), "");
 
-const getIntroUrl = () => dropExtension(toc.sections.parts[0].content) + ".html";
+const getIntroUrl = () => toc.sections.parts[0].slug;
 
 const buildSidebar = (selectedPart, selectedChapt) => {
 
@@ -31,9 +31,8 @@ const buildSidebar = (selectedPart, selectedChapt) => {
 				h("h2", {}, h("a", { href: li.slug }, li.title)),
 				...chapts.map(chapt => {
 					const chaptSelected = li.slug === selectedPart.slug && chapt.slug === selectedChapt?.slug ? "selected" : "";
-					const chaptSlug = [li.folder, chapt.slug].join("-");
 					return h("li", { class: ["nav-chapt", chaptSelected] }, 
-						h("a", { href: chaptSlug }, chapt.name)
+						h("a", { href: chapt.slug }, chapt.name)
 					);
 				})
 			]);
@@ -46,18 +45,19 @@ const buildSidebar = (selectedPart, selectedChapt) => {
 
 const buildTOC = () => {
 	const elements = [];
-	toc.sections.parts.map(part => {
+	const roman = ["0", "0", "I", "II", "III", "IV", "V"];
+	toc.sections.parts.map( (part, index) => {
 		const chapts = (() => {
 			if(!part.chapters) return [];
 			return h("ul", {}, part.chapters.map((c) => {
-				return h("li", {}, h("a", { href: [part.folder, c.slug].join("-")}, c.title ));
+				return h("li", {}, h("a", { href: c.slug}, c.title ));
 			}))
 		})();
-
+		const rank = index < 2 ? part.title : `Part ${roman[index]}: ${part.title}`;
 		elements.push(
 			h("li", { class: "toc-list"}, 
 				h("div", { }, [
-					h("h2", {}, h("a", { href: part.slug }, part.title)),
+					h("h2", {}, part.slug ? h("a", { href: part.slug }, rank) : rank),
 					chapts,
 				])
 			)
@@ -76,7 +76,7 @@ function buildFront() {
 	const contentPath = path.join(BOOK_PATH, toc.front.content);
 	const frontTemplate = path.join("src", "templates", toc.front.template);
 	const output = renderPaths(contentPath, frontTemplate, {
-		ASSET_PATH, 
+		ASSET_PATH,
 		FRONT_URL: getIntroUrl(),
 	});
 	return output;
@@ -88,6 +88,34 @@ function getPreviousPartLink(current, index) {
 	}
 	const part = toc.sections.parts[index - 1];
 	return html(h("a", { href: part.slug }, "&larr; " + part.title));;
+}
+
+function getPreviousLink(partIndex, chaptIndex) {
+	if (chaptIndex === null) {
+		const part = toc.sections.parts[partIndex - 1];
+		if (!part) {
+			return "";
+		}
+
+		if (part && !part.chapters) {
+			return html(h("a", { href: part.slug }, "&larr; " + part.title));
+		}
+		chaptIndex = part.chapters.length - 1;
+		const chapt = part.chapters[chaptIndex];
+		return html(h("a", { href: chapt.slug }, "&larr; " + chapt.title));
+	}
+
+	chaptIndex--;
+	if(chaptIndex < 0) {
+		const part = toc.sections.parts[partIndex];
+		return html(h("a", { href: part.slug }, "&larr; " + part.title));
+	}
+	const part = toc.sections.parts[partIndex]
+	if (!part.chapters) {
+		return html(h("a", { href: part.slug }, "&larr; " + part.title));
+	}
+	const chapt = part.chapters[chaptIndex];
+	return html(h("a", { href: chapt.slug }, "&larr; " + chapt.title));
 }
 
 function getNextLink(current, index) {
@@ -130,49 +158,46 @@ const nextChapterLink = (part, index) => {
 
 function buildParts() {
 	const obj = {};
+	obj["content.html"] = buildTOC();
 
-	toc.sections.parts.map( (part, index) => {
+	toc.sections.parts.map( (part, partIndex) => {
 		if (part.name === "toc") {
-			const content = buildTOC();
-			obj[part.slug] = content;
 			return ;
 		}
-		const sidebar = buildSidebar(part);
-		const fullPath = [BOOK_PATH, part.folder, part.content].filter(notEmpty);
-		const contentPath = path.join(...fullPath);
-		const templatePath = path.join("src", "templates", part.template);
-		const giturl = [GITROOT, part.folder, part.content].join("/");
-		const output = renderPaths(contentPath, templatePath, {
-			sidebar,
-			TITLE: part.title,
-			ASSET_PATH,
-			PreviousURL: getPreviousPartLink(part, index),
-			NextURL: getNextLink(part, index),
-			GITURL: html(h("a", { href: giturl }, "github source page")),
-		});
-		const outFilename = [part.folder, dropExtension(part.content)]
-			.filter(notEmpty).join("-") + ".html";
-		obj[outFilename] = output;
 
+		if (part.template) {
+			const sidebar = buildSidebar(part);
+			const fullPath = [BOOK_PATH, part.folder, part.content].filter(notEmpty);
+			const contentPath = path.join(...fullPath);
+			const templatePath = path.join("src", "templates", part.template);
+			const giturl = [GITROOT, part.folder, part.content].join("/");
+			const output = renderPaths(contentPath, templatePath, {
+				sidebar,
+				TITLE: part.title,
+				ASSET_PATH,
+				PreviousURL: getPreviousLink(partIndex, null),
+				NextURL: getNextLink(part, partIndex),
+				GITURL: html(h("a", { href: giturl, target: "_blank" }, "github source page")),
+			});
+			obj[part.slug] = output;
+		}
 		// chapter
 		if (!part.chapters) { return; }
 
-		part.chapters.map((chapt, i) => {
+		part.chapters.map((chapt, chaptIndex) => {
 			const sidebar = buildSidebar(part, chapt);
-			const chapTemplate = path.join("src", "templates", "chapt.template.html");
-			const contentPath = path.join("book", part.folder, chapt.content);
+			const chapTemplate = path.join("src", "templates", chapt.template);
+			const contentPath = path.join(...["book", part.folder, chapt.content].filter(notEmpty));
 			const giturl = [GITROOT, part.folder, chapt.content].join("/");
 			const output = renderPaths(contentPath, chapTemplate, {
 				sidebar,
 				TITLE: chapt.title,
 				ASSET_PATH,
-				PreviousURL: prevChapterLink(part, i),
-				NextURL: nextChapterLink(part, i),
-				GITURL: html(h("a", { href: giturl }, "github source page")),
+				PreviousURL: getPreviousLink(partIndex, chaptIndex),
+				NextURL: nextChapterLink(part, chaptIndex),
+				GITURL: html(h("a", { href: giturl, target: "_blank" }, "github source page")),
 			});
-
-			const outputFilename = [part.folder, chapt.slug].join("-");
-			obj[outputFilename] = output;
+			obj[chapt.slug] = output;
 		});
 
 	});
@@ -180,7 +205,7 @@ function buildParts() {
 }
 
 const structure = {
-	"front.html": buildFront(),
+	"index.html": buildFront(),
 	...buildParts(),
 }
 Object.keys(structure)

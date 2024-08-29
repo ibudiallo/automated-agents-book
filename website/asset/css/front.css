@@ -80,6 +80,10 @@ main {
 	border-top: 1px solid orange;
 	border-bottom: 1px solid orange;
 }
+.front-wip p {
+	line-height: 1.3em;
+	margin-bottom: .5em;
+}
 .front-wip i img {
 	width: 18px;
 }
