@@ -26,21 +26,24 @@ const buildSidebar = (selectedPart, selectedChapt) => {
 	const obj = h("ul", { class: "sidebar"}, [
 		...parts.map(li => {
 			const chapts = li.chapters ?? [];
+			if (li.title === "Front") {
+			}
 			const partSelectedClass = li.slug === selectedPart.slug ? "selected" : "";
 			return h("li", { class: ["nav-part", partSelectedClass] }, [
-				h("h2", {}, h("a", { href: li.slug }, li.title)),
-				...chapts.map(chapt => {
-					const chaptSelected = li.slug === selectedPart.slug && chapt.slug === selectedChapt?.slug ? "selected" : "";
-					return h("li", { class: ["nav-chapt", chaptSelected] }, 
-						h("a", { href: chapt.slug }, chapt.name)
-					);
-				})
+				h("h2", {}, li.slug ? h("a", { href: li.slug }, li.title) : li.title),
+				chapts.length ? h("ul", {}, [
+					...chapts.map(chapt => {
+						const chaptSelected = li.slug === selectedPart.slug && chapt.slug === selectedChapt?.slug ? "selected" : "";
+						return h("li", { class: ["nav-chapt", chaptSelected] }, 
+							h("a", { href: chapt.slug }, chapt.title)
+						);
+					})
+				]) : "",
 			]);
 		})
 	]);
 	const out = html(obj);
 	return render(filepath, { sidebar: out})
-	return html(obj);
 };
 
 const buildTOC = () => {
@@ -82,14 +85,6 @@ function buildFront() {
 	return output;
 }
 
-function getPreviousPartLink(current, index) {
-	if (index < 1) {
-		return "";
-	}
-	const part = toc.sections.parts[index - 1];
-	return html(h("a", { href: part.slug }, "&larr; " + part.title));;
-}
-
 function getPreviousLink(partIndex, chaptIndex) {
 	if (chaptIndex === null) {
 		const part = toc.sections.parts[partIndex - 1];
@@ -118,24 +113,37 @@ function getPreviousLink(partIndex, chaptIndex) {
 	return html(h("a", { href: chapt.slug }, "&larr; " + chapt.title));
 }
 
-function getNextLink(current, index) {
-	if (!current.chapters) {
-		return "";
+function getNextLink(partIndex, chaptIndex) {
+	// moving from part to next chapter
+	if (chaptIndex === null) {
+		const part = toc.sections.parts[partIndex];
+		if (!part) {
+			return "";
+		}
+		if (!part.chapters) {
+			return  html(h("a", { href: part.slug }, part.title + " &rarr;"));
+		}
+		const chapt = part.chapters[0];
+		return html(h("a", { href: chapt.slug }, chapt.title + " &rarr;"));
 	}
-	const chapter = current.chapters[0];
-	const slug = [current.folder, chapter.slug].join("-");
-	const name = chapter.name;
-	return html(h("a", { href: slug }, name + " &rarr;"));
-}
 
-const prevChapterLink = (part, index) => {
-	if (index < 1) {
-		return html(h("a", { href: part.slug}, "&larr; " + part.title));
+	// moving from chapter to next part
+	chaptIndex++;
+	if (chaptIndex >= toc.sections.parts[partIndex].chapters.length) {
+		chaptIndex = 0;
+		partIndex++;
+		const part = toc.sections.parts[partIndex];
+		if (!part) {
+			return "";
+		}
+		return  html(h("a", { href: part.slug }, part.title + " &rarr;"));
 	}
-	const prev = part.chapters[index - 1];
-	const slug = [part.folder, prev.slug].join("-");
-	return html(h("a", { href: slug}, "&larr; " + prev.title));
-};
+
+	// moving to the next chapter
+	const part = toc.sections.parts[partIndex];
+	const chapt = part.chapters[chaptIndex];
+	return html(h("a", { href: chapt.slug }, chapt.title + " &rarr;"));
+}
 
 const nextChapterLink = (part, index) => {
 	if (part.chapters.length - 1 === index) {
@@ -176,7 +184,7 @@ function buildParts() {
 				TITLE: part.title,
 				ASSET_PATH,
 				PreviousURL: getPreviousLink(partIndex, null),
-				NextURL: getNextLink(part, partIndex),
+				NextURL: getNextLink(partIndex, null),
 				GITURL: html(h("a", { href: giturl, target: "_blank" }, "github source page")),
 			});
 			obj[part.slug] = output;
@@ -194,7 +202,7 @@ function buildParts() {
 				TITLE: chapt.title,
 				ASSET_PATH,
 				PreviousURL: getPreviousLink(partIndex, chaptIndex),
-				NextURL: nextChapterLink(part, chaptIndex),
+				NextURL: getNextLink(partIndex, chaptIndex),
 				GITURL: html(h("a", { href: giturl, target: "_blank" }, "github source page")),
 			});
 			obj[chapt.slug] = output;

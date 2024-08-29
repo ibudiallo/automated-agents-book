@@ -1,4 +1,4 @@
 #!/bin/bash 
 
-echo "clear dist"
+echo "regenerate html"
 rm -f website/*.html 
