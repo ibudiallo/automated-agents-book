@@ -6,6 +6,9 @@
 	background-color: #f9fcff;
 	width: 100%;
 }
+@media (max-width: 768px) {
+	
+}
 
 /* Nav */
 .nav-hdr {
@@ -16,9 +19,12 @@
 .nav-hdr h1 {	
 	font-size: 2.5em;
 	line-height: 1.2em;
-	color: #f2b138;
 	text-transform: uppercase;
 	text-align: right;
+}
+.nav-hdr h1 a {
+	text-decoration: none;
+	color: #f2b138;
 }
 .nav-hdr h1 span {
 	display: block;
@@ -48,6 +54,22 @@
 .nav-part.selected h2 a, .nav-chapt.selected a {
 	color: #fef5d9;
 }
+@media (max-width: 768px) {
+	.nav-hdr {
+		margin-bottom: 0;
+	}
+	.nav-hdr h1 {
+		font-size: 2em;
+	}
+	.nav-list {
+		display: none;
+	}
+	.nav-hdr h1 span {
+		display: inline;
+		font-size: unset;
+		font-weight: bold;
+	}
+}
 /* Nav End */
 
 article {
@@ -57,11 +79,15 @@ article {
 	box-shadow: 0 0 16px rgba(0, 0, 0, .1);
 	min-height: 100vh;
 }
+article h1, article h2, article h3, article h4, article h5, article h6 {
+	font-family: "Roboto", sans-serif;
+}
 article h1 {
 	font-size: 3em;
 	line-height: 1.3em;
 	margin-bottom: .7em;
 	color: #cb8709;
+	font-weight: 100;
 }
 article h2 {
 	font-size: 2em;
@@ -69,6 +95,7 @@ article h2 {
 	margin-bottom: .7em;
 	color: #cb8709;
 	margin-top: 2em;
+	font-weight: 300;
 }
 article h3 {
 	font-size: 1.8em;
@@ -134,8 +161,7 @@ article pre {
 	color: #8b7f6a;
 }
 .chapt-hdr__title {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 2.5em;
+	font-size: 3em;
 	margin-bottom: .5em;
 }
 

@@ -49,6 +49,22 @@ main {
 	font-size: 2em;
 	color: #ffedd3;
 }
+
+@media (max-width: 768px) {
+	.hero-hdr {
+		height: 250px;
+	}
+	.hero-hdr__title {
+		position: static;
+		padding: 3em 0;
+	}
+	.hero-hdr__title h1 {
+		font-size: 2em;
+		text-align: center;
+	}
+}
+
+
 .front-content {
 	display: flex;
 	padding: 2em 3em;
@@ -107,6 +123,15 @@ main {
 }
 .front-read a:hover {
 	background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+	.front-content {
+		display: block;
+	}
+	.front-moto, .front-copy {
+		width: auto;
+	}
 }
 
 footer {
