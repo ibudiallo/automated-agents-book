@@ -81,35 +81,35 @@
 				"chapters": [
 					{
 						"name": "Chapter 6",
-						"title": "Chapter 6",
+						"title": "Integrating AI",
 						"slug": "chapter-6.html",
 						"content": "c06.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 7",
-						"title": "Chapter 7",
+						"title": "Integrating a Help Desk",
 						"slug": "chapter-7.html",
 						"content": "c07.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 8",
-						"title": "Chapter 8",
+						"title": "Integrating an eCommerce Platform",
 						"slug": "chapter-8.html",
 						"content": "c08.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 9",
-						"title": "Chapter 9",
+						"title": "Integrating a Carrier",
 						"slug": "chapter-9.html",
 						"content": "c09.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 10",
-						"title": "Chapter 10",
+						"title": "Designing a Company Policy Processor",
 						"slug": "chapter-10.html",
 						"content": "c10.md",
 						"template": "content.template.html"

@@ -14,20 +14,31 @@ const GITROOT = "https://github.com/ibudiallo/automated-agents-book/blob/master/
 
 const notEmpty = (a) => !!a;
 
+const leadingZero = (num) => (num < 10 ? `0${num}`: `${num}`);
+
+const chaptFormat = (chapt) => {
+	if (!chapt.name) {
+		return chapt.title;
+	}
+	const num = +(chapt.name.split(" ")[1]);
+
+	return `CH${leadingZero(num)}: ${chapt.title}`;
+};
+
+const partFormat = (part) => {
+	if (!part.name) {
+		return part.title;
+	}
+	return `${part.name}: ${part.title}`;
+};
+
 const dropExtension = (filename) => filename.replace(path.extname(filename), "");
 
 const getIntroUrl = () => toc.sections.parts[0].slug;
 
 const buildSidebar = (selectedPart, selectedChapt) => {
-	const leadingZero = (num) => (num < 10 ? `0${num}`: `${num}`);
-	const chaptFormat = (chapt) => {
-		if (!chapt.name) {
-			return chapt.title;
-		}
-		const num = +(chapt.name.split(" ")[1]);
-
-		return `CH${leadingZero(num)}: ${chapt.title}`;
-	}
+	
+	
 
 	const filepath = path.join("src", "templates", "sidebar.template.html");
 	const content = readFileSync(filepath);
@@ -102,24 +113,24 @@ function getPreviousLink(partIndex, chaptIndex) {
 		}
 
 		if (part && !part.chapters) {
-			return html(h("a", { href: part.slug }, "&larr; " + part.title));
+			return html(h("a", { href: part.slug }, "&larr; " + partFormat(part)));
 		}
 		chaptIndex = part.chapters.length - 1;
 		const chapt = part.chapters[chaptIndex];
-		return html(h("a", { href: chapt.slug }, "&larr; " + chapt.title));
+		return html(h("a", { href: chapt.slug }, "&larr; " + chaptFormat(chapt)));
 	}
 
 	chaptIndex--;
 	if(chaptIndex < 0) {
 		const part = toc.sections.parts[partIndex];
-		return html(h("a", { href: part.slug }, "&larr; " + part.title));
+		return html(h("a", { href: part.slug }, "&larr; " + partFormat(part)));
 	}
 	const part = toc.sections.parts[partIndex]
 	if (!part.chapters) {
-		return html(h("a", { href: part.slug }, "&larr; " + part.title));
+		return html(h("a", { href: part.slug }, "&larr; " + partFormat(part)));
 	}
 	const chapt = part.chapters[chaptIndex];
-	return html(h("a", { href: chapt.slug }, "&larr; " + chapt.title));
+	return html(h("a", { href: chapt.slug }, "&larr; " + chaptFormat(chapt)));
 }
 
 function getNextLink(partIndex, chaptIndex) {
@@ -130,10 +141,10 @@ function getNextLink(partIndex, chaptIndex) {
 			return "";
 		}
 		if (!part.chapters) {
-			return  html(h("a", { href: part.slug }, part.title + " &rarr;"));
+			return  html(h("a", { href: part.slug }, partFormat(part) + " &rarr;"));
 		}
 		const chapt = part.chapters[0];
-		return html(h("a", { href: chapt.slug }, chapt.title + " &rarr;"));
+		return html(h("a", { href: chapt.slug }, chaptFormat(chapt) + " &rarr;"));
 	}
 
 	// moving from chapter to next part
@@ -145,13 +156,13 @@ function getNextLink(partIndex, chaptIndex) {
 		if (!part) {
 			return "";
 		}
-		return  html(h("a", { href: part.slug }, part.title + " &rarr;"));
+		return  html(h("a", { href: part.slug }, partFormat(part) + " &rarr;"));
 	}
 
 	// moving to the next chapter
 	const part = toc.sections.parts[partIndex];
 	const chapt = part.chapters[chaptIndex];
-	return html(h("a", { href: chapt.slug }, chapt.title + " &rarr;"));
+	return html(h("a", { href: chapt.slug }, chaptFormat(chapt) + " &rarr;"));
 }
 
 const formatChapterHeader = (chapt, title) => {

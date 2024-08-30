@@ -113,7 +113,8 @@ article p {
 	font-size: 1.2em;
 	margin-bottom: 1.3em;
 	line-height: 1.35em;
-	font-family: times, georgia, serif;
+	font-family: Georgia, serif;
+	color: #333;
 }
 article p img{
 	max-width: 100%;
