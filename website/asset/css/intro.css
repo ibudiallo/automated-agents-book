@@ -78,6 +78,7 @@ article {
 	background-color: #fef6f1;
 	box-shadow: 0 0 16px rgba(0, 0, 0, .1);
 	min-height: 100vh;
+	font-family: Georgia, serif;
 }
 article h1, article h2, article h3, article h4, article h5, article h6 {
 	font-family: "Roboto", sans-serif;
@@ -102,6 +103,7 @@ article h3 {
 	line-height: 1.3em;
 	margin-bottom: .7em;
 	color: #cb8709;
+	font-weight: 300;
 }
 article h4 {
 	font-size: 1.6em;
@@ -113,7 +115,6 @@ article p {
 	font-size: 1.2em;
 	margin-bottom: 1.3em;
 	line-height: 1.35em;
-	font-family: Georgia, serif;
 	color: #333;
 }
 article p img{
@@ -126,11 +127,11 @@ article hr {
 }
 article ol {
 	list-style-type: decimal;
-	margin-left: 1em;
+	margin-left: 1.3em;
 }
 article ul {
 	list-style-type: disc;
-	margin-left: 1em;
+	margin-left: 1.3em;
 }
 article > ul, article ol {
 	margin-bottom: 1em;
@@ -140,6 +141,12 @@ article li {
 	font-size: 1.1em;
 	line-height: 1.35em;
 	font-family: times, georgia, serif;
+
+	padding-left: 1em;
+}
+article li::marker {
+	font-weight: 600;
+	font-family: Helvetica, Arial;
 }
 article pre {
 	padding: 1em;
@@ -147,6 +154,28 @@ article pre {
 	font-family: monospace;
 	margin-bottom: 1em;
 	overflow: auto;
+	font-size: .9em;
+}
+
+article .block-meta,
+article .block-instruct {
+	padding: 1em;
+	margin-bottom: 2em;
+}
+article .block-meta h3,
+article .block-instruct h3 {
+	text-transform: uppercase;
+	color: #806431;
+	font-size: 1.3em;
+}
+article .block-meta {
+	background-color: #f3e8e2;
+}
+article .block-instruct {
+	background-color: #f3e8e2;
+}
+article .block-instruct p {
+	font-family: Roboto, Arial, sans-serif;
 	font-size: .9em;
 }
 
@@ -195,6 +224,15 @@ article pre {
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+.toc-chapt__name {
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: .8em;
+}
+.toc-chapt__title {
+	font-style: italic;
+}
+
 .article-nav {
 	display: flex;
 	justify-content: space-between;
@@ -211,6 +249,14 @@ article pre {
 }
 .github {
 	text-align: center;
+	margin: 1em 0;
+}
+.github p {
+	font-size: 1.5em;
+
+}
+.github img{
+	width: .8em;
 }
 .github a{
 	text-decoration: none;
@@ -218,4 +264,20 @@ article pre {
 }
 .github a:hover {
 	color: #555;
+}
+
+
+footer {
+	padding: 2em 1.5em;
+	text-align: center;
+	background-color: #f9f3e6;
+
+}
+footer p {
+	font-family: Roboto, Arial, sans-serif;
+	color: #b48d5f;
+	margin: 0;
+}
+footer p span {
+	color: #9e9488;
 }
