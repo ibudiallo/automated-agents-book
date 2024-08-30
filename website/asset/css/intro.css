@@ -64,19 +64,20 @@ article h1 {
 	color: #cb8709;
 }
 article h2 {
-	font-size: 2.5em;
+	font-size: 2em;
 	line-height: 1.3em;
 	margin-bottom: .7em;
 	color: #cb8709;
+	margin-top: 2em;
 }
 article h3 {
-	font-size: 2em;
+	font-size: 1.8em;
 	line-height: 1.3em;
 	margin-bottom: .7em;
 	color: #cb8709;
 }
 article h4 {
-	font-size: 1.7em;
+	font-size: 1.6em;
 	line-height: 1.3em;
 	margin-bottom: .7em;
 	color: #cb8709;
@@ -119,6 +120,23 @@ article pre {
 	margin-bottom: 1em;
 	overflow: auto;
 	font-size: .9em;
+}
+
+/** Article Header **/
+.chapt-hdr {
+	border-bottom: 1px solid #e2cca4;
+	margin-bottom: 2em;
+}
+.chapt-hdr__sub {
+	text-transform: uppercase;
+	font-family: Helvetica, Arial, sans-serif;
+	margin-bottom: 0em;
+	color: #8b7f6a;
+}
+.chapt-hdr__title {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 2.5em;
+	margin-bottom: .5em;
 }
 
 /** TOC**/
