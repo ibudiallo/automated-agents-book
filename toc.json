@@ -35,7 +35,7 @@
 				"chapters": [
 					{
 						"name": "Chapter 1",
-						"title": "A place to Start",
+						"title": "A Place to Start",
 						"slug": "chapter-1.html",
 						"content": "c01.md",
 						"template": "content.template.html"
