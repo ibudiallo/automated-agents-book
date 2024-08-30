@@ -19,6 +19,15 @@ const dropExtension = (filename) => filename.replace(path.extname(filename), "")
 const getIntroUrl = () => toc.sections.parts[0].slug;
 
 const buildSidebar = (selectedPart, selectedChapt) => {
+	const leadingZero = (num) => (num < 10 ? `0${num}`: `${num}`);
+	const chaptFormat = (chapt) => {
+		if (!chapt.name) {
+			return chapt.title;
+		}
+		const num = +(chapt.name.split(" ")[1]);
+
+		return `CH${leadingZero(num)}: ${chapt.title}`;
+	}
 
 	const filepath = path.join("src", "templates", "sidebar.template.html");
 	const content = readFileSync(filepath);
@@ -35,7 +44,7 @@ const buildSidebar = (selectedPart, selectedChapt) => {
 					...chapts.map(chapt => {
 						const chaptSelected = li.slug === selectedPart.slug && chapt.slug === selectedChapt?.slug ? "selected" : "";
 						return h("li", { class: ["nav-chapt", chaptSelected] }, 
-							h("a", { href: chapt.slug }, chapt.title)
+							h("a", { href: chapt.slug, title: chapt.title}, chaptFormat(chapt)),
 						);
 					})
 				]) : "",
@@ -145,23 +154,13 @@ function getNextLink(partIndex, chaptIndex) {
 	return html(h("a", { href: chapt.slug }, chapt.title + " &rarr;"));
 }
 
-const nextChapterLink = (part, index) => {
-	if (part.chapters.length - 1 === index) {
-		let m = 0;
-		toc.sections.parts.some( (p, i) => {
-			m = i;
-			return p.name === part.name;
-		});
-		const nextPart = toc.sections.parts[m + 1];
-		if (!nextPart) {
-			return "";
-		}
-		const slug = [nextPart.folder, nextPart.slug].join("-");
-		return html(h("a", { href: nextPart.slug}, nextPart.title+ " &rarr;"));
-	}
-	const next = part.chapters[index + 1];
-	const slug = [part.folder, next.slug].join("-");
-	return html(h("a", { href: slug}, next.title + " &rarr;"));
+const formatChapterHeader = (chapt, title) => {
+	return html(
+		h("header", { class: "chapt-hdr"}, [
+			h("p", { class: "chapt-hdr__sub" }, h("strong", {}, chapt)),
+			h("h1", { class: "chapt-hdr__title" }, title)
+		])
+	);
 };
 
 function buildParts() {
@@ -181,7 +180,7 @@ function buildParts() {
 			const giturl = [GITROOT, part.folder, part.content].join("/");
 			const output = renderPaths(contentPath, templatePath, {
 				sidebar,
-				TITLE: part.title,
+				TITLE: html(h("h1", {}, part.title)),
 				ASSET_PATH,
 				PreviousURL: getPreviousLink(partIndex, null),
 				NextURL: getNextLink(partIndex, null),
@@ -199,7 +198,7 @@ function buildParts() {
 			const giturl = [GITROOT, part.folder, chapt.content].join("/");
 			const output = renderPaths(contentPath, chapTemplate, {
 				sidebar,
-				TITLE: chapt.title,
+				TITLE: formatChapterHeader(chapt.name, chapt.title),
 				ASSET_PATH,
 				PreviousURL: getPreviousLink(partIndex, chaptIndex),
 				NextURL: getNextLink(partIndex, chaptIndex),
