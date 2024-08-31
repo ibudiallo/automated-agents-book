@@ -35,59 +35,59 @@
 <p>Let’s take UPS as an example to demonstrate how you might implement a generic JavaScript integration to retrieve tracking information.</p>
 <p>UPS provides a well-documented API, but you’ll need an API key and authentication setup to access it. Once authenticated, you can query their API to retrieve the package status and history.</p>
 <p>Here’s a simple implementation of a function to get tracking information from UPS:</p>
-<pre><code class="language-JavaScript">const axios = require('axios');
+<pre><code class="language-JavaScript"><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;axios&#x27;</span>);
 
-const UPS_API_URL = 'https://onlinetools.ups.com/track/v1/details';  
-const UPS_ACCESS_KEY = 'your_access_key';  
-const UPS_USERNAME = 'your_username';  
-const UPS_PASSWORD = 'your_password';
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">UPS_API_URL</span> = <span class="hljs-string">&#x27;https://onlinetools.ups.com/track/v1/details&#x27;</span>;  
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">UPS_ACCESS_KEY</span> = <span class="hljs-string">&#x27;your_access_key&#x27;</span>;  
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">UPS_USERNAME</span> = <span class="hljs-string">&#x27;your_username&#x27;</span>;  
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">UPS_PASSWORD</span> = <span class="hljs-string">&#x27;your_password&#x27;</span>;
 
-// Function to get tracking info from UPS  
-async function getTrackingInfo(trackingNumber) {  
-    try {  
-        const response = await axios.post(UPS_API_URL, {  
-            &quot;UPSSecurity&quot;: {  
-                &quot;UsernameToken&quot;: {  
-                    &quot;Username&quot;: UPS_USERNAME,  
-                    &quot;Password&quot;: UPS_PASSWORD  
+<span class="hljs-comment">// Function to get tracking info from UPS  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getTrackingInfo</span>(<span class="hljs-params">trackingNumber</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">post</span>(<span class="hljs-variable constant_">UPS_API_URL</span>, {  
+            <span class="hljs-string">&quot;UPSSecurity&quot;</span>: {  
+                <span class="hljs-string">&quot;UsernameToken&quot;</span>: {  
+                    <span class="hljs-string">&quot;Username&quot;</span>: <span class="hljs-variable constant_">UPS_USERNAME</span>,  
+                    <span class="hljs-string">&quot;Password&quot;</span>: <span class="hljs-variable constant_">UPS_PASSWORD</span>  
                 },  
-                &quot;ServiceAccessToken&quot;: {  
-                    &quot;AccessLicenseNumber&quot;: UPS_ACCESS_KEY  
+                <span class="hljs-string">&quot;ServiceAccessToken&quot;</span>: {  
+                    <span class="hljs-string">&quot;AccessLicenseNumber&quot;</span>: <span class="hljs-variable constant_">UPS_ACCESS_KEY</span>  
                 }  
             },  
-            &quot;TrackRequest&quot;: {  
-                &quot;Request&quot;: {  
-                    &quot;RequestOption&quot;: &quot;1&quot;  
+            <span class="hljs-string">&quot;TrackRequest&quot;</span>: {  
+                <span class="hljs-string">&quot;Request&quot;</span>: {  
+                    <span class="hljs-string">&quot;RequestOption&quot;</span>: <span class="hljs-string">&quot;1&quot;</span>  
                 },  
-                &quot;InquiryNumber&quot;: trackingNumber  
+                <span class="hljs-string">&quot;InquiryNumber&quot;</span>: trackingNumber  
             }  
         }, {  
-            headers: {  
-                'Content-Type': 'application/json'  
+            <span class="hljs-attr">headers</span>: {  
+                <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>  
             }  
         });
 
-        const trackingData = response.data.TrackResponse.Shipment;  
-        return parseTrackingData(trackingData);  
-    } catch (error) {  
-        console.error('Error fetching tracking info:', error);  
-        throw error;  
+        <span class="hljs-keyword">const</span> trackingData = response.<span class="hljs-property">data</span>.<span class="hljs-property">TrackResponse</span>.<span class="hljs-property">Shipment</span>;  
+        <span class="hljs-keyword">return</span> <span class="hljs-title function_">parseTrackingData</span>(trackingData);  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching tracking info:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-// Helper function to parse tracking data  
-function parseTrackingData(trackingData) {  
-    const status = trackingData.Package.Activity[0].Status.Description;  
-    const shipDate = trackingData.ShipmentInformation.ShipDate;  
-    const lastScan = trackingData.Package.Activity[0].Date;  
-    const expectedDeliveryDate = trackingData.ScheduledDeliveryDate;  
-    const transitHistory = trackingData.Package.Activity.map(activity =&gt; ({  
-        status: activity.Status.Description,  
-        date: activity.Date,  
-        location: `${activity.ActivityLocation.City}, ${activity.ActivityLocation.StateProvinceCode}`  
+<span class="hljs-comment">// Helper function to parse tracking data  </span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">parseTrackingData</span>(<span class="hljs-params">trackingData</span>) {  
+    <span class="hljs-keyword">const</span> status = trackingData.<span class="hljs-property">Package</span>.<span class="hljs-property">Activity</span>[<span class="hljs-number">0</span>].<span class="hljs-property">Status</span>.<span class="hljs-property">Description</span>;  
+    <span class="hljs-keyword">const</span> shipDate = trackingData.<span class="hljs-property">ShipmentInformation</span>.<span class="hljs-property">ShipDate</span>;  
+    <span class="hljs-keyword">const</span> lastScan = trackingData.<span class="hljs-property">Package</span>.<span class="hljs-property">Activity</span>[<span class="hljs-number">0</span>].<span class="hljs-property">Date</span>;  
+    <span class="hljs-keyword">const</span> expectedDeliveryDate = trackingData.<span class="hljs-property">ScheduledDeliveryDate</span>;  
+    <span class="hljs-keyword">const</span> transitHistory = trackingData.<span class="hljs-property">Package</span>.<span class="hljs-property">Activity</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">activity</span> =&gt;</span> ({  
+        <span class="hljs-attr">status</span>: activity.<span class="hljs-property">Status</span>.<span class="hljs-property">Description</span>,  
+        <span class="hljs-attr">date</span>: activity.<span class="hljs-property">Date</span>,  
+        <span class="hljs-attr">location</span>: <span class="hljs-string">`<span class="hljs-subst">${activity.ActivityLocation.City}</span>, <span class="hljs-subst">${activity.ActivityLocation.StateProvinceCode}</span>`</span>  
     }));
 
-    return {  
+    <span class="hljs-keyword">return</span> {  
         status,  
         shipDate,  
         lastScan,  
@@ -96,12 +96,12 @@ function parseTrackingData(trackingData) {
     };  
 }
 
-// Example usage  
-(async () =&gt; {  
-    const trackingNumber = '1Z12345E0205271688'; // Example tracking number
+<span class="hljs-comment">// Example usage  </span>
+(<span class="hljs-title function_">async</span> () =&gt; {  
+    <span class="hljs-keyword">const</span> trackingNumber = <span class="hljs-string">&#x27;1Z12345E0205271688&#x27;</span>; <span class="hljs-comment">// Example tracking number</span>
 
-    const trackingInfo = await getTrackingInfo(trackingNumber);  
-    console.log('Tracking Info:', trackingInfo);  
+    <span class="hljs-keyword">const</span> trackingInfo = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getTrackingInfo</span>(trackingNumber);  
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Tracking Info:&#x27;</span>, trackingInfo);  
 })();
 </code></pre>
 <h2>Key Information to Retrieve</h2>

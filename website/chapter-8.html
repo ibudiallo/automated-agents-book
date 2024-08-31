@@ -43,115 +43,115 @@
 <h2>Example with Shopify</h2>
 <p>Let's take Shopify as an example and implement a generic JavaScript integration for these functions. Shopify provides a well-documented API that allows developers to perform the necessary operations to retrieve and manage orders, customers, and products.</p>
 <p>Here’s a simple implementation of these functions in JavaScript:</p>
-<pre><code class="language-JavaScript">const axios = require('axios');
+<pre><code class="language-JavaScript"><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;axios&#x27;</span>);
 
-const SHOPIFY_API_URL = 'https://your_store.myshopify.com/admin/api/2023-07';  
-const SHOPIFY_ACCESS_TOKEN = 'your_access_token';
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SHOPIFY_API_URL</span> = <span class="hljs-string">&#x27;https://your_store.myshopify.com/admin/api/2023-07&#x27;</span>;  
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SHOPIFY_ACCESS_TOKEN</span> = <span class="hljs-string">&#x27;your_access_token&#x27;</span>;
 
-// Set up Axios for API calls  
-const shopifyApi = axios.create({  
-    baseURL: SHOPIFY_API_URL,  
-    headers: {  
-        'X-Shopify-Access-Token': SHOPIFY_ACCESS_TOKEN,  
-        'Content-Type': 'application/json'  
+<span class="hljs-comment">// Set up Axios for API calls  </span>
+<span class="hljs-keyword">const</span> shopifyApi = axios.<span class="hljs-title function_">create</span>({  
+    <span class="hljs-attr">baseURL</span>: <span class="hljs-variable constant_">SHOPIFY_API_URL</span>,  
+    <span class="hljs-attr">headers</span>: {  
+        <span class="hljs-string">&#x27;X-Shopify-Access-Token&#x27;</span>: <span class="hljs-variable constant_">SHOPIFY_ACCESS_TOKEN</span>,  
+        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>  
     }  
 });
 
-// Function to get order by ID  
-async function getOrderById(orderId) {  
-    try {  
-        const response = await shopifyApi.get(`/orders/${orderId}.json`);  
-        return response.data.order;  
-    } catch (error) {  
-        console.error('Error fetching order by ID:', error);  
-        throw error;  
+<span class="hljs-comment">// Function to get order by ID  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getOrderById</span>(<span class="hljs-params">orderId</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>.json`</span>);  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">order</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching order by ID:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-// Function to get order by customer email  
-async function getOrderByEmail(email) {  
-    try {  
-        const response = await shopifyApi.get('/orders.json', {  
-            params: {  
-                email: email  
+<span class="hljs-comment">// Function to get order by customer email  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getOrderByEmail</span>(<span class="hljs-params">email</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/orders.json&#x27;</span>, {  
+            <span class="hljs-attr">params</span>: {  
+                <span class="hljs-attr">email</span>: email  
             }  
         });  
-        return response.data.orders;  
-    } catch (error) {  
-        console.error('Error fetching orders by email:', error);  
-        throw error;  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">orders</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching orders by email:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-// Function to get customer information by email  
-async function getCustomerByEmail(email) {  
-    try {  
-        const response = await shopifyApi.get('/customers/search.json', {  
-            params: {  
-                query: `email:${email}`  
+<span class="hljs-comment">// Function to get customer information by email  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getCustomerByEmail</span>(<span class="hljs-params">email</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/customers/search.json&#x27;</span>, {  
+            <span class="hljs-attr">params</span>: {  
+                <span class="hljs-attr">query</span>: <span class="hljs-string">`email:<span class="hljs-subst">${email}</span>`</span>  
             }  
         });  
-        return response.data.customers[0];  
-    } catch (error) {  
-        console.error('Error fetching customer by email:', error);  
-        throw error;  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">customers</span>[<span class="hljs-number">0</span>];  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching customer by email:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-// Function to get product information by ID  
-async function getProductById(productId) {  
-    try {  
-        const response = await shopifyApi.get(`/products/${productId}.json`);  
-        return response.data.product;  
-    } catch (error) {  
-        console.error('Error fetching product by ID:', error);  
-        throw error;  
+<span class="hljs-comment">// Function to get product information by ID  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getProductById</span>(<span class="hljs-params">productId</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/products/<span class="hljs-subst">${productId}</span>.json`</span>);  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">product</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching product by ID:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-// Function to cancel an order  
-async function cancelOrder(orderId) {  
-    try {  
-        const response = await shopifyApi.post(`/orders/${orderId}/cancel.json`);  
-        return response.data.order;  
-    } catch (error) {  
-        console.error('Error canceling order:', error);  
-        throw error;  
+<span class="hljs-comment">// Function to cancel an order  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">cancelOrder</span>(<span class="hljs-params">orderId</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">post</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>/cancel.json`</span>);  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">order</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error canceling order:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-// Function to process a return  
-async function returnOrder(orderId, reason) {  
-    // Assuming the platform has an API for handling returns  
-    try {  
-        const response = await shopifyApi.post(`/orders/${orderId}/return.json`, {  
-            reason: reason  
+<span class="hljs-comment">// Function to process a return  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">returnOrder</span>(<span class="hljs-params">orderId, reason</span>) {  
+    <span class="hljs-comment">// Assuming the platform has an API for handling returns  </span>
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">post</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>/return.json`</span>, {  
+            <span class="hljs-attr">reason</span>: reason  
         });  
-        return response.data.return;  
-    } catch (error) {   
-        console.error('Error processing return:', error);  
-        throw error;  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">return</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {   
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error processing return:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-// Example usage:  
-(async () =&gt; {  
-    const orderId = 1234567890; // Example order ID  
-    const email = &quot;customer@example.com&quot;; // Example customer email  
-    const productId = 987654321; // Example product ID
+<span class="hljs-comment">// Example usage:  </span>
+(<span class="hljs-title function_">async</span> () =&gt; {  
+    <span class="hljs-keyword">const</span> orderId = <span class="hljs-number">1234567890</span>; <span class="hljs-comment">// Example order ID  </span>
+    <span class="hljs-keyword">const</span> email = <span class="hljs-string">&quot;customer@example.com&quot;</span>; <span class="hljs-comment">// Example customer email  </span>
+    <span class="hljs-keyword">const</span> productId = <span class="hljs-number">987654321</span>; <span class="hljs-comment">// Example product ID</span>
 
-    const order = await getOrderById(orderId);  
-    const customerOrders = await getOrderByEmail(email);  
-    const customer = await getCustomerByEmail(email);  
-    const product = await getProductById(productId);
+    <span class="hljs-keyword">const</span> order = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getOrderById</span>(orderId);  
+    <span class="hljs-keyword">const</span> customerOrders = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getOrderByEmail</span>(email);  
+    <span class="hljs-keyword">const</span> customer = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getCustomerByEmail</span>(email);  
+    <span class="hljs-keyword">const</span> product = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getProductById</span>(productId);
 
-    console.log('Order:', order);  
-    console.log('Customer Orders:', customerOrders);  
-    console.log('Customer:', customer);  
-    console.log('Product:', product);
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Order:&#x27;</span>, order);  
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Customer Orders:&#x27;</span>, customerOrders);  
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Customer:&#x27;</span>, customer);  
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Product:&#x27;</span>, product);
 
-    await cancelOrder(orderId);  
-    await returnOrder(orderId, &quot;Damaged item&quot;);  
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">cancelOrder</span>(orderId);  
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">returnOrder</span>(orderId, <span class="hljs-string">&quot;Damaged item&quot;</span>);  
 })();
 </code></pre>
 <h2>Handling Subscriptions</h2>

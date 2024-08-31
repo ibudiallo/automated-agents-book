@@ -40,47 +40,47 @@
 <p>Starting from scratch isn’t necessary when there are numerous pretrained models available online. These models serve as a solid baseline, allowing you to focus on refining and adapting them to your specific use cases. By creating a training pipeline, you can continuously improve these models based on real-world data from your application.</p>
 <h2>Example: Classifying &quot;Where is My Order&quot; (WISMO) Intents</h2>
 <p>Let's take a closer look at how you might use spaCy to build a classifier for &quot;Where is My Order&quot; (WISMO) intents. Below is a simplified example in pseudo code:</p>
-<pre><code class="language-python">import spacy  
-from spacy.util import minibatch, compounding
+<pre><code class="language-python"><span class="hljs-keyword">import</span> spacy  
+<span class="hljs-keyword">from</span> spacy.util <span class="hljs-keyword">import</span> minibatch, compounding
 
-# Load a pretrained spaCy model  
-nlp = spacy.load(&quot;en_core_web_sm&quot;)
+<span class="hljs-comment"># Load a pretrained spaCy model  </span>
+nlp = spacy.load(<span class="hljs-string">&quot;en_core_web_sm&quot;</span>)
 
-# Define training data  
+<span class="hljs-comment"># Define training data  </span>
 training_data = [  
-    (&quot;Where is my order?&quot;, {&quot;cats&quot;: {&quot;WISMO&quot;: 1.0, &quot;Other&quot;: 0.0}}),  
-    (&quot;I need to know the status of my package&quot;, {&quot;cats&quot;: {&quot;WISMO&quot;: 1.0, &quot;Other&quot;: 0.0}}),  
-    (&quot;What is your return policy?&quot;, {&quot;cats&quot;: {&quot;WISMO&quot;: 0.0, &quot;Other&quot;: 1.0}}),  
-    # Add more examples  
+    (<span class="hljs-string">&quot;Where is my order?&quot;</span>, {<span class="hljs-string">&quot;cats&quot;</span>: {<span class="hljs-string">&quot;WISMO&quot;</span>: <span class="hljs-number">1.0</span>, <span class="hljs-string">&quot;Other&quot;</span>: <span class="hljs-number">0.0</span>}}),  
+    (<span class="hljs-string">&quot;I need to know the status of my package&quot;</span>, {<span class="hljs-string">&quot;cats&quot;</span>: {<span class="hljs-string">&quot;WISMO&quot;</span>: <span class="hljs-number">1.0</span>, <span class="hljs-string">&quot;Other&quot;</span>: <span class="hljs-number">0.0</span>}}),  
+    (<span class="hljs-string">&quot;What is your return policy?&quot;</span>, {<span class="hljs-string">&quot;cats&quot;</span>: {<span class="hljs-string">&quot;WISMO&quot;</span>: <span class="hljs-number">0.0</span>, <span class="hljs-string">&quot;Other&quot;</span>: <span class="hljs-number">1.0</span>}}),  
+    <span class="hljs-comment"># Add more examples  </span>
 ]
 
-# Add the text categorizer to the pipeline if it doesn't exist  
-if &quot;textcat&quot; not in nlp.pipe_names:  
-    textcat = nlp.create_pipe(&quot;textcat&quot;)  
-    nlp.add_pipe(textcat, last=True)  
-else:  
-    textcat = nlp.get_pipe(&quot;textcat&quot;)
+<span class="hljs-comment"># Add the text categorizer to the pipeline if it doesn&#x27;t exist  </span>
+<span class="hljs-keyword">if</span> <span class="hljs-string">&quot;textcat&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> nlp.pipe_names:  
+    textcat = nlp.create_pipe(<span class="hljs-string">&quot;textcat&quot;</span>)  
+    nlp.add_pipe(textcat, last=<span class="hljs-literal">True</span>)  
+<span class="hljs-keyword">else</span>:  
+    textcat = nlp.get_pipe(<span class="hljs-string">&quot;textcat&quot;</span>)
 
-# Add labels to the text classifier  
-textcat.add_label(&quot;WISMO&quot;)  
-textcat.add_label(&quot;Other&quot;)
+<span class="hljs-comment"># Add labels to the text classifier  </span>
+textcat.add_label(<span class="hljs-string">&quot;WISMO&quot;</span>)  
+textcat.add_label(<span class="hljs-string">&quot;Other&quot;</span>)
 
-# Training loop  
+<span class="hljs-comment"># Training loop  </span>
 optimizer = nlp.begin_training()  
-for epoch in range(10):  
+<span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):  
     losses = {}  
-    batches = minibatch(training_data, size=compounding(4.0, 32.0, 1.001))  
-    for batch in batches:  
-        texts, annotations = zip(*batch)  
-        nlp.update(texts, annotations, sgd=optimizer, drop=0.2, losses=losses)  
-    print(losses)
+    batches = minibatch(training_data, size=compounding(<span class="hljs-number">4.0</span>, <span class="hljs-number">32.0</span>, <span class="hljs-number">1.001</span>))  
+    <span class="hljs-keyword">for</span> batch <span class="hljs-keyword">in</span> batches:  
+        texts, annotations = <span class="hljs-built_in">zip</span>(*batch)  
+        nlp.update(texts, annotations, sgd=optimizer, drop=<span class="hljs-number">0.2</span>, losses=losses)  
+    <span class="hljs-built_in">print</span>(losses)
 
-# Save the model  
-nlp.to_disk(&quot;wismo_classifier&quot;)
+<span class="hljs-comment"># Save the model  </span>
+nlp.to_disk(<span class="hljs-string">&quot;wismo_classifier&quot;</span>)
 
-# Test the classifier  
-doc = nlp(&quot;Can you tell me where my order is?&quot;)  
-print(doc.cats)
+<span class="hljs-comment"># Test the classifier  </span>
+doc = nlp(<span class="hljs-string">&quot;Can you tell me where my order is?&quot;</span>)  
+<span class="hljs-built_in">print</span>(doc.cats)
 </code></pre>
 <p>In this pseudo code, we've defined a simple pipeline using spaCy to train a classifier for WISMO intents. This classifier can then be integrated into your chatbot's AI service to detect when customers are inquiring about their order status.</p>
 <h2><strong>Exploring Other Tools</strong></h2>

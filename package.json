@@ -11,13 +11,17 @@
   "author": "Ibrahim Diallo",
   "license": "ISC",
   "dependencies": {
-    "commonmark": "^0.31.1"
+    "commonmark": "^0.31.1",
+    "highlight.js": "^11.10.0",
+    "node-html-parser": "^6.1.13"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "nodemon": "^3.1.4"
   },
   "nodemonConfig": {
-    "ignore": ["**/website/**"]
+    "ignore": [
+      "**/website/**"
+    ]
   },
   "type": "module"
 }
