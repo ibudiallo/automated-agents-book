@@ -1,31 +1,27 @@
 import * as commonmark  from "commonmark";
 import { HighlightJS as hljs} from "highlight.js";
-import { parse as parseHTML } from "node-html-parser";
 
 const reader = new commonmark.Parser();
-const writer = new commonmark.HtmlRenderer();
+const writer = new commonmark.HtmlRenderer({ esc: (a) => (a) });
 
 export const parse = (content) => {
 	const parsed = reader.parse(content);
-	const output = writer.render(parsed);
-	return highlightCode(output);
+	//const output = writer.render(parsed);
+	//return highlightCode(output);
+	return hlCode(parsed);
 }
 
-function highlightCode(htmlStr) {
-	const root = parseHTML(htmlStr, { blockTextElements: { code: true }});
-	const elements = root.querySelectorAll("code");
-	elements.map(e => {
-		let lang = null;
-		let code = "";
-		if (e.attributes["class"]) {
-			lang = e.attributes["class"].split("-")[1];
-		}
-		if (lang) {
-			code = hljs.highlight(e.text, { language: lang}).value;
-		} else {
-			code = hljs.highlightAuto(e.text);
-		}
-		e.set_content(code);
-	});
-	return root.toString();
+function hlCode(parsed) {
+	const walker = parsed.walker();
+	let event;
+
+	while ((event = walker.next())) {
+	    const node = event.node;
+	    if (event.entering && node.type === 'code_block') {
+	    	const lang = node.info;
+			const highlightedCode = hljs.highlight(node.literal, { language: lang }).value;
+	        node.literal = highlightedCode;
+	    }
+	}
+	return writer.render(parsed);
 }

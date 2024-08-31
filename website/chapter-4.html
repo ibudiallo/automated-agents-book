@@ -55,7 +55,7 @@
 <li><strong>Refund/Replacement Policy:</strong> Damaged items reported within the first 10 days can be refunded or replaced. After 10 days, only replacements are offered.</li>
 </ul>
 <p>These policies are not part of the AI model’s training. Instead, they are implemented at the application level, as a manual process that ensures alignment with the specific policies of the company. This distinction is crucial because it underscores that the chatbot’s role is to apply these predefined rules consistently, rather than relying on the AI to make decisions based on generalized training data.</p>
-<p>For instance, if a customer asks for tracking information 10 minutes after placing an order, the AI isn’t making an arbitrary decision. Instead, the application applies the company’s shipping policy: &quot;Your order is currently being processed and should ship within 2 business days. Once it ships, you’ll receive an email with the tracking information.&quot;</p>
+<p>For instance, if a customer asks for tracking information 10 minutes after placing an order, the AI isn’t making an arbitrary decision. Instead, the application applies the company’s shipping policy: "Your order is currently being processed and should ship within 2 business days. Once it ships, you’ll receive an email with the tracking information."</p>
 <p>By embedding company policies into the application’s logic, you ensure that customer interactions are consistent and aligned with your business's commitments. This process requires manual configuration to match the company’s specific rules and policies, ensuring that the chatbot’s responses are accurate and reliable.</p>
 <p>These policies can be structured into a decision tree that guides the chatbot’s responses for different scenarios:</p>
 <ul>
@@ -69,16 +69,16 @@
 <p>This variation in language can become a challenge for AI models, especially when they are trained primarily on data from one type of customer. An AI model optimized for handling inquiries about software downloads might struggle to accurately classify and respond to questions about handcrafted jewelry.</p>
 <p>This is why it is important to have a robust training pipeline in place to allow regular updates of the AI models. This pipeline should focus on three areas in order of priority:</p>
 <ol>
-<li>Handling False Positives:<br>
+<li>Handling False Positives:<br />
 False positives occur when the AI misclassifies a customer inquiry, leading to an incorrect or irrelevant response. By having a path in place to identify and report these errors, the model can be improved immediately.</li>
-<li>Addressing Low Confidence Scores:<br>
+<li>Addressing Low Confidence Scores:<br />
 When the AI encounters a message it is unsure about, it gives it a low score. These low score interactions are a goldmine for improving the model.</li>
-<li>Random Sample of new messages:<br>
+<li>Random Sample of new messages:<br />
 When starting integration with a new company, it is important to grab a random sample of the messages they receive and train the models with it. This ensures that false positives are less likely to occur.</li>
 </ol>
 <p>Regularly updating the AI models through this pipeline not only improves their ability to classify and respond to a wider range of customer inquiries but also ensures that the chatbot remains relevant as customer communication styles evolve. Continuous training allows the chatbot to adapt to new trends, slang, and industry-specific language, ultimately expanding the number of customers it can assist effectively.</p>
 <p>Training the model means having humans look at customer messages and decide what they actually mean. This means exposing customer personal information. To properly perform training, we need to take security and data privacy into account.</p>
-<p><img src="./asset/images/training.svg" alt="Training" ></p>
+<p><img src="./asset/images/training.svg" alt="Training" /></p>
 
 
 			<div class="article-nav">
