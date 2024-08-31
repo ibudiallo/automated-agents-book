@@ -67,8 +67,10 @@ main {
 		height: 250px;
 	}
 	.hero-hdr__title {
-		position: static;
+		position: relative;
 		padding: 3em 0;
+		bottom: auto;
+		right: auto;
 	}
 	.hero-hdr__title h1 {
 		font-size: 2em;
