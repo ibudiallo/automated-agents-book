@@ -8,21 +8,24 @@ Current Status: **Draft**
 
 ## Table of Content
 
+:pencil2: Draft  
+:heavy_check_mark: Complete
 
-* **Part One:** Understanding Chatbots
-	* **Chapter 1:** A Place to Start
-	* **Chapter 2:** Solving People Problems
-	* **Chapter 3:** Integration
-	* **Chapter 4:** Artificial Intelligence
-	* **Chapter 5:** Protecting Users
-* **Part Two:** Under the Hood
-	* **Chapter 6:** Integrating AI 
-	* **Chapter 7:** Integrating a Help Desk
-	* **Chapter 8:** Integrating an eCommerce Platform
-	* **Chapter 9:** Integrating a Carrier
-	* **Chapter 10:** Designing a Company Policy Processor
-* **Part Three**
-	* TBD
+| # | Section | Title | Status |
+|---| ------- | ----- | ------ |
+| **1** | **Part One** | Understanding Chatbots  | :pencil2: |
+| 1.1 | Chapter 1 | A Place to Start | :pencil2: | 
+| 1.2 | Chapter 2 | Solving People Problems | :pencil2: | 
+| 1.3 | Chapter 3 | Integration| :pencil2: | 
+| 1.4 | Chapter 4 | Artificial Intelligence | :pencil2: | 
+| 1.5 | Chapter 5 | Protecting Users | :pencil2: |
+| **2** | **Part Two** | Understanding Chatbots  | :pencil2: |
+| 2.1 | Chapter 6 | Integrating AI | :pencil2: | 
+| 2.1 | Chapter 7 | Integrating a Help Desk | :pencil2: | 
+| 2.1 | Chapter 8 | Integrating an eCommerce Platform | :pencil2: | 
+| 2.1 | Chapter 9 | Integrating a Carrier | :pencil2: | 
+| 2.1 | Chapter 10 | Designing a Company Policy Processor | :pencil2: | 
+| **3** | **Part Three** | (title pending) | :pencil2: |
 
 ---
 
