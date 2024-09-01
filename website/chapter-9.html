@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 9</strong></p><h1 class="chapt-hdr__title">Integrating a Carrier</h1></header></title>
+	<title><header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 9</strong></p><h1 class="chapt-hdr__title">Integrating an eCommerce Platform</h1></header></title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
@@ -23,110 +23,159 @@
 		<h1><a href="/">Automated <span>Agents</span></a></h1>
 	</header>
 	<nav class="nav-list">
-		<ul class="sidebar"><li class="nav-part "><h2><a href="content.html">Table of Content</a></h2></li><li class="nav-part "><h2>Front</h2><ul><li class="nav-chapt "><a href="intro.html"  title="Introduction">Introduction</a></li></ul></li><li class="nav-part "><h2><a href="part-one-intro.html">Understanding Chatbots</a></h2><ul><li class="nav-chapt "><a href="chapter-1.html"  title="A Place to Start">CH01: A Place to Start</a></li><li class="nav-chapt "><a href="chapter-2.html"  title="Solving People Problems">CH02: Solving People Problems</a></li><li class="nav-chapt "><a href="chapter-3.html"  title="Integration">CH03: Integration</a></li><li class="nav-chapt "><a href="chapter-4.html"  title="Artificial Intelligence">CH04: Artificial Intelligence</a></li><li class="nav-chapt "><a href="chapter-5.html"  title="Protecting Users">CH05: Protecting Users</a></li></ul></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Under the Hood</a></h2><ul><li class="nav-chapt "><a href="chapter-6.html"  title="Integrating AI">CH06: Integrating AI</a></li><li class="nav-chapt "><a href="chapter-7.html"  title="Integrating a Help Desk">CH07: Integrating a Help Desk</a></li><li class="nav-chapt "><a href="chapter-8.html"  title="Integrating an eCommerce Platform">CH08: Integrating an eCommerce Platform</a></li><li class="nav-chapt selected"><a href="chapter-9.html"  title="Integrating a Carrier">CH09: Integrating a Carrier</a></li><li class="nav-chapt "><a href="chapter-10.html"  title="Designing a Company Policy Processor">CH10: Designing a Company Policy Processor</a></li></ul></li></ul>
+		<ul class="sidebar"><li class="nav-part "><h2><a href="content.html">Table of Content</a></h2></li><li class="nav-part "><h2>Front</h2><ul><li class="nav-chapt "><a href="intro.html"  title="Introduction">Introduction</a></li></ul></li><li class="nav-part "><h2><a href="part-one-intro.html">Understanding Chatbots</a></h2><ul><li class="nav-chapt "><a href="chapter-1.html"  title="A Place to Start">CH01: A Place to Start</a></li><li class="nav-chapt "><a href="chapter-2.html"  title="Solving People Problems">CH02: Solving People Problems</a></li><li class="nav-chapt "><a href="chapter-3.html"  title="Integration">CH03: Integration</a></li><li class="nav-chapt "><a href="chapter-4.html"  title="Artificial Intelligence">CH04: Artificial Intelligence</a></li><li class="nav-chapt "><a href="chapter-5.html"  title="Protecting Users">CH05: Protecting Users</a></li></ul></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Under the Hood</a></h2><ul><li class="nav-chapt "><a href="chapter-6.html"  title="The Chat Application">CH06: The Chat Application</a></li><li class="nav-chapt "><a href="chapter-7.html"  title="Integrating AI">CH07: Integrating AI</a></li><li class="nav-chapt "><a href="chapter-8.html"  title="Integrating a Help Desk">CH08: Integrating a Help Desk</a></li><li class="nav-chapt selected"><a href="chapter-9.html"  title="Integrating an eCommerce Platform">CH09: Integrating an eCommerce Platform</a></li><li class="nav-chapt "><a href="chapter-10.html"  title="Integrating a Carrier">CH10: Integrating a Carrier</a></li><li class="nav-chapt "><a href="chapter-11.html"  title="Designing a Company Policy Processor">CH11: Designing a Company Policy Processor</a></li></ul></li><li class="nav-part "><h2><a href="part-three-intro.html">Beyond eCommerce</a></h2></li></ul>
 	</nav>
 </div>
 	</section>
 	<section class="content">
 		<article>
-			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 9</strong></p><h1 class="chapt-hdr__title">Integrating a Carrier</h1></header>
+			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 9</strong></p><h1 class="chapt-hdr__title">Integrating an eCommerce Platform</h1></header>
 			
-			<p>Carrier integration is essential for tracking the status of a package. Whether your customers are using USPS, UPS, FedEx, or another shipping carrier, the goal is to provide real-time updates on their package status. However, each carrier varies in its API implementation, requiring different authorization schemes and sometimes complex access protocols to retrieve tracking information.</p>
-<p>Tracking integration typically serves one primary purpose: <strong>Given a tracking number, provide real-time status updates of the package</strong>. However, extracting detailed tracking history, such as the ship date, transit statuses, and expected delivery date, can provide valuable insights. This information helps your chatbot respond to customers in a more informed and precise manner, and the Company Policy Processor can use it to guide responses based on the current state of the shipment.</p>
-<h2>Example with UPS</h2>
-<p>Let’s take UPS as an example to demonstrate how you might implement a generic JavaScript integration to retrieve tracking information.</p>
-<p>UPS provides a well-documented API, but you’ll need an API key and authentication setup to access it. Once authenticated, you can query their API to retrieve the package status and history.</p>
-<p>Here’s a simple implementation of a function to get tracking information from UPS:</p>
+			<p>Just as integrating with a helpdesk system is crucial for managing customer service interactions, integrating with an eCommerce platform is vital for accessing order and customer data. Whether you're using Shopify, Magento, WooCommerce, or another platform, the primary focus is to retrieve and manage customer and order information effectively.</p>
+<p>At a high level, we need to perform a few key actions:</p>
+<ul>
+<li><strong>Get order by ID</strong></li>
+<li><strong>Get order by customer email</strong></li>
+<li><strong>Retrieve customer information by email</strong></li>
+<li><strong>Get product information by ID</strong></li>
+<li><strong>Cancel an order</strong></li>
+<li><strong>Process a return</strong></li>
+</ul>
+<p>While all eCommerce platforms should offer these core features, some platforms may also support additional features like subscriptions, which require further support for actions such as pausing or canceling a subscription.</p>
+<h2>Example with Shopify</h2>
+<p>Let's take Shopify as an example and implement a generic JavaScript integration for these functions. Shopify provides a well-documented API that allows developers to perform the necessary operations to retrieve and manage orders, customers, and products.</p>
+<p>Here’s a simple implementation of these functions in JavaScript:</p>
 <pre><code class="language-JavaScript"><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;axios&#x27;</span>);
 
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">UPS_API_URL</span> = <span class="hljs-string">&#x27;https://onlinetools.ups.com/track/v1/details&#x27;</span>;  
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">UPS_ACCESS_KEY</span> = <span class="hljs-string">&#x27;your_access_key&#x27;</span>;  
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">UPS_USERNAME</span> = <span class="hljs-string">&#x27;your_username&#x27;</span>;  
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">UPS_PASSWORD</span> = <span class="hljs-string">&#x27;your_password&#x27;</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SHOPIFY_API_URL</span> = <span class="hljs-string">&#x27;https://your_store.myshopify.com/admin/api/2023-07&#x27;</span>;  
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SHOPIFY_ACCESS_TOKEN</span> = <span class="hljs-string">&#x27;your_access_token&#x27;</span>;
 
-<span class="hljs-comment">// Function to get tracking info from UPS  </span>
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getTrackingInfo</span>(<span class="hljs-params">trackingNumber</span>) {  
+<span class="hljs-comment">// Set up Axios for API calls  </span>
+<span class="hljs-keyword">const</span> shopifyApi = axios.<span class="hljs-title function_">create</span>({  
+    <span class="hljs-attr">baseURL</span>: <span class="hljs-variable constant_">SHOPIFY_API_URL</span>,  
+    <span class="hljs-attr">headers</span>: {  
+        <span class="hljs-string">&#x27;X-Shopify-Access-Token&#x27;</span>: <span class="hljs-variable constant_">SHOPIFY_ACCESS_TOKEN</span>,  
+        <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>  
+    }  
+});
+
+<span class="hljs-comment">// Function to get order by ID  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getOrderById</span>(<span class="hljs-params">orderId</span>) {  
     <span class="hljs-keyword">try</span> {  
-        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> axios.<span class="hljs-title function_">post</span>(<span class="hljs-variable constant_">UPS_API_URL</span>, {  
-            <span class="hljs-string">&quot;UPSSecurity&quot;</span>: {  
-                <span class="hljs-string">&quot;UsernameToken&quot;</span>: {  
-                    <span class="hljs-string">&quot;Username&quot;</span>: <span class="hljs-variable constant_">UPS_USERNAME</span>,  
-                    <span class="hljs-string">&quot;Password&quot;</span>: <span class="hljs-variable constant_">UPS_PASSWORD</span>  
-                },  
-                <span class="hljs-string">&quot;ServiceAccessToken&quot;</span>: {  
-                    <span class="hljs-string">&quot;AccessLicenseNumber&quot;</span>: <span class="hljs-variable constant_">UPS_ACCESS_KEY</span>  
-                }  
-            },  
-            <span class="hljs-string">&quot;TrackRequest&quot;</span>: {  
-                <span class="hljs-string">&quot;Request&quot;</span>: {  
-                    <span class="hljs-string">&quot;RequestOption&quot;</span>: <span class="hljs-string">&quot;1&quot;</span>  
-                },  
-                <span class="hljs-string">&quot;InquiryNumber&quot;</span>: trackingNumber  
-            }  
-        }, {  
-            <span class="hljs-attr">headers</span>: {  
-                <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>  
-            }  
-        });
-
-        <span class="hljs-keyword">const</span> trackingData = response.<span class="hljs-property">data</span>.<span class="hljs-property">TrackResponse</span>.<span class="hljs-property">Shipment</span>;  
-        <span class="hljs-keyword">return</span> <span class="hljs-title function_">parseTrackingData</span>(trackingData);  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>.json`</span>);  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">order</span>;  
     } <span class="hljs-keyword">catch</span> (error) {  
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching tracking info:&#x27;</span>, error);  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching order by ID:&#x27;</span>, error);  
         <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-<span class="hljs-comment">// Helper function to parse tracking data  </span>
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">parseTrackingData</span>(<span class="hljs-params">trackingData</span>) {  
-    <span class="hljs-keyword">const</span> status = trackingData.<span class="hljs-property">Package</span>.<span class="hljs-property">Activity</span>[<span class="hljs-number">0</span>].<span class="hljs-property">Status</span>.<span class="hljs-property">Description</span>;  
-    <span class="hljs-keyword">const</span> shipDate = trackingData.<span class="hljs-property">ShipmentInformation</span>.<span class="hljs-property">ShipDate</span>;  
-    <span class="hljs-keyword">const</span> lastScan = trackingData.<span class="hljs-property">Package</span>.<span class="hljs-property">Activity</span>[<span class="hljs-number">0</span>].<span class="hljs-property">Date</span>;  
-    <span class="hljs-keyword">const</span> expectedDeliveryDate = trackingData.<span class="hljs-property">ScheduledDeliveryDate</span>;  
-    <span class="hljs-keyword">const</span> transitHistory = trackingData.<span class="hljs-property">Package</span>.<span class="hljs-property">Activity</span>.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">activity</span> =&gt;</span> ({  
-        <span class="hljs-attr">status</span>: activity.<span class="hljs-property">Status</span>.<span class="hljs-property">Description</span>,  
-        <span class="hljs-attr">date</span>: activity.<span class="hljs-property">Date</span>,  
-        <span class="hljs-attr">location</span>: <span class="hljs-string">`<span class="hljs-subst">${activity.ActivityLocation.City}</span>, <span class="hljs-subst">${activity.ActivityLocation.StateProvinceCode}</span>`</span>  
-    }));
-
-    <span class="hljs-keyword">return</span> {  
-        status,  
-        shipDate,  
-        lastScan,  
-        expectedDeliveryDate,  
-        transitHistory  
-    };  
+<span class="hljs-comment">// Function to get order by customer email  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getOrderByEmail</span>(<span class="hljs-params">email</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/orders.json&#x27;</span>, {  
+            <span class="hljs-attr">params</span>: {  
+                <span class="hljs-attr">email</span>: email  
+            }  
+        });  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">orders</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching orders by email:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
+    }  
 }
 
-<span class="hljs-comment">// Example usage  </span>
-(<span class="hljs-title function_">async</span> () =&gt; {  
-    <span class="hljs-keyword">const</span> trackingNumber = <span class="hljs-string">&#x27;1Z12345E0205271688&#x27;</span>; <span class="hljs-comment">// Example tracking number</span>
+<span class="hljs-comment">// Function to get customer information by email  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getCustomerByEmail</span>(<span class="hljs-params">email</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/customers/search.json&#x27;</span>, {  
+            <span class="hljs-attr">params</span>: {  
+                <span class="hljs-attr">query</span>: <span class="hljs-string">`email:<span class="hljs-subst">${email}</span>`</span>  
+            }  
+        });  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">customers</span>[<span class="hljs-number">0</span>];  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching customer by email:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
+    }  
+}
 
-    <span class="hljs-keyword">const</span> trackingInfo = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getTrackingInfo</span>(trackingNumber);  
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Tracking Info:&#x27;</span>, trackingInfo);  
+<span class="hljs-comment">// Function to get product information by ID  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getProductById</span>(<span class="hljs-params">productId</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/products/<span class="hljs-subst">${productId}</span>.json`</span>);  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">product</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching product by ID:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
+    }  
+}
+
+<span class="hljs-comment">// Function to cancel an order  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">cancelOrder</span>(<span class="hljs-params">orderId</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">post</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>/cancel.json`</span>);  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">order</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error canceling order:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
+    }  
+}
+
+<span class="hljs-comment">// Function to process a return  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">returnOrder</span>(<span class="hljs-params">orderId, reason</span>) {  
+    <span class="hljs-comment">// Assuming the platform has an API for handling returns  </span>
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">post</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>/return.json`</span>, {  
+            <span class="hljs-attr">reason</span>: reason  
+        });  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">return</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {   
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error processing return:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
+    }  
+}
+
+<span class="hljs-comment">// Example usage:  </span>
+(<span class="hljs-title function_">async</span> () =&gt; {  
+    <span class="hljs-keyword">const</span> orderId = <span class="hljs-number">1234567890</span>; <span class="hljs-comment">// Example order ID  </span>
+    <span class="hljs-keyword">const</span> email = <span class="hljs-string">&quot;customer@example.com&quot;</span>; <span class="hljs-comment">// Example customer email  </span>
+    <span class="hljs-keyword">const</span> productId = <span class="hljs-number">987654321</span>; <span class="hljs-comment">// Example product ID</span>
+
+    <span class="hljs-keyword">const</span> order = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getOrderById</span>(orderId);  
+    <span class="hljs-keyword">const</span> customerOrders = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getOrderByEmail</span>(email);  
+    <span class="hljs-keyword">const</span> customer = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getCustomerByEmail</span>(email);  
+    <span class="hljs-keyword">const</span> product = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getProductById</span>(productId);
+
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Order:&#x27;</span>, order);  
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Customer Orders:&#x27;</span>, customerOrders);  
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Customer:&#x27;</span>, customer);  
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Product:&#x27;</span>, product);
+
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">cancelOrder</span>(orderId);  
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">returnOrder</span>(orderId, <span class="hljs-string">&quot;Damaged item&quot;</span>);  
 })();
 </code></pre>
-<h2>Key Information to Retrieve</h2>
-<p>The core information we want to retrieve from the UPS tracking API (or any carrier API) includes:</p>
+<h2>Handling Subscriptions</h2>
+<p>If your platform supports subscriptions, you might also need to include additional functions for managing these. For instance, you may need to:</p>
 <ul>
-<li><strong>Ship Date</strong>: The date the package was shipped.</li>
-<li><strong>Tracking Status</strong>: Whether the package is in transit, delivered, or another state (e.g., label created).</li>
-<li><strong>Last Scan</strong>: The most recent scan or checkpoint the package passed through.</li>
-<li><strong>Expected Delivery Date</strong>: The estimated date the package is expected to arrive.</li>
-<li><strong>Transit History</strong>: A detailed history of the package's journey, including each checkpoint it passed through.</li>
+<li>Pause a subscription</li>
+<li>Cancel a subscription</li>
+<li>Retrieve subscription details</li>
 </ul>
-<h2>Enhancing the Company Policy Processor</h2>
-<p>The information retrieved from the carrier can directly influence how your chatbot responds to customer inquiries. For example, if a package is delayed and hasn't moved in several days, the Company Policy Processor might escalate the issue to a human agent or provide the customer with a more detailed update.</p>
-<p>This integration allows for more personalized and relevant responses, helping to reassure customers during their wait times and giving them accurate information based on real-time tracking updates.</p>
-<p>By integrating with different carriers’ APIs, you ensure that your chatbot can handle various tracking requests, no matter which service was used to ship the order. This flexibility is key to delivering a consistent customer experience across all orders.</p>
+<p>While Shopify offers some subscription functionality through third-party apps, platforms like ReCharge have their own API for subscription management, which would require a separate integration.</p>
+<h2>Integrating with the Company Policy Processor</h2>
+<p>The Company Policy Processor, introduced earlier, will manage all of these eCommerce functions. It ensures that customer interactions adhere to the policies you’ve defined. For example, if a customer requests a return after the allowed window has passed, the policy processor will check the policy before initiating the return.</p>
+<p>The Company Policy Processor will call the appropriate eCommerce functions depending on the situation—whether it's fetching an order, processing a return, or canceling a subscription—ensuring that the chatbot operates within your defined guidelines.</p>
+<p>By integrating your chatbot with an eCommerce platform, you ensure that it has real-time access to the customer and order data it needs to resolve issues quickly and efficiently, reducing the burden on human agents while maintaining high-quality customer service.</p>
 
 
 			<div class="article-nav">
 				<div>
-					<a href="chapter-8.html">&larr; CH08: Integrating an eCommerce Platform</a>
+					<a href="chapter-8.html">&larr; CH08: Integrating a Help Desk</a>
 				</div>
 				<div>
-					<a href="chapter-10.html">CH10: Designing a Company Policy Processor &rarr;</a>
+					<a href="chapter-10.html">CH10: Integrating a Carrier &rarr;</a>
 				</div>
 			</div>
 			<div class="github">

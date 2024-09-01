@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 8</strong></p><h1 class="chapt-hdr__title">Integrating an eCommerce Platform</h1></header></title>
+	<title><header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 8</strong></p><h1 class="chapt-hdr__title">Integrating a Help Desk</h1></header></title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
@@ -23,159 +23,134 @@
 		<h1><a href="/">Automated <span>Agents</span></a></h1>
 	</header>
 	<nav class="nav-list">
-		<ul class="sidebar"><li class="nav-part "><h2><a href="content.html">Table of Content</a></h2></li><li class="nav-part "><h2>Front</h2><ul><li class="nav-chapt "><a href="intro.html"  title="Introduction">Introduction</a></li></ul></li><li class="nav-part "><h2><a href="part-one-intro.html">Understanding Chatbots</a></h2><ul><li class="nav-chapt "><a href="chapter-1.html"  title="A Place to Start">CH01: A Place to Start</a></li><li class="nav-chapt "><a href="chapter-2.html"  title="Solving People Problems">CH02: Solving People Problems</a></li><li class="nav-chapt "><a href="chapter-3.html"  title="Integration">CH03: Integration</a></li><li class="nav-chapt "><a href="chapter-4.html"  title="Artificial Intelligence">CH04: Artificial Intelligence</a></li><li class="nav-chapt "><a href="chapter-5.html"  title="Protecting Users">CH05: Protecting Users</a></li></ul></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Under the Hood</a></h2><ul><li class="nav-chapt "><a href="chapter-6.html"  title="Integrating AI">CH06: Integrating AI</a></li><li class="nav-chapt "><a href="chapter-7.html"  title="Integrating a Help Desk">CH07: Integrating a Help Desk</a></li><li class="nav-chapt selected"><a href="chapter-8.html"  title="Integrating an eCommerce Platform">CH08: Integrating an eCommerce Platform</a></li><li class="nav-chapt "><a href="chapter-9.html"  title="Integrating a Carrier">CH09: Integrating a Carrier</a></li><li class="nav-chapt "><a href="chapter-10.html"  title="Designing a Company Policy Processor">CH10: Designing a Company Policy Processor</a></li></ul></li></ul>
+		<ul class="sidebar"><li class="nav-part "><h2><a href="content.html">Table of Content</a></h2></li><li class="nav-part "><h2>Front</h2><ul><li class="nav-chapt "><a href="intro.html"  title="Introduction">Introduction</a></li></ul></li><li class="nav-part "><h2><a href="part-one-intro.html">Understanding Chatbots</a></h2><ul><li class="nav-chapt "><a href="chapter-1.html"  title="A Place to Start">CH01: A Place to Start</a></li><li class="nav-chapt "><a href="chapter-2.html"  title="Solving People Problems">CH02: Solving People Problems</a></li><li class="nav-chapt "><a href="chapter-3.html"  title="Integration">CH03: Integration</a></li><li class="nav-chapt "><a href="chapter-4.html"  title="Artificial Intelligence">CH04: Artificial Intelligence</a></li><li class="nav-chapt "><a href="chapter-5.html"  title="Protecting Users">CH05: Protecting Users</a></li></ul></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Under the Hood</a></h2><ul><li class="nav-chapt "><a href="chapter-6.html"  title="The Chat Application">CH06: The Chat Application</a></li><li class="nav-chapt "><a href="chapter-7.html"  title="Integrating AI">CH07: Integrating AI</a></li><li class="nav-chapt selected"><a href="chapter-8.html"  title="Integrating a Help Desk">CH08: Integrating a Help Desk</a></li><li class="nav-chapt "><a href="chapter-9.html"  title="Integrating an eCommerce Platform">CH09: Integrating an eCommerce Platform</a></li><li class="nav-chapt "><a href="chapter-10.html"  title="Integrating a Carrier">CH10: Integrating a Carrier</a></li><li class="nav-chapt "><a href="chapter-11.html"  title="Designing a Company Policy Processor">CH11: Designing a Company Policy Processor</a></li></ul></li><li class="nav-part "><h2><a href="part-three-intro.html">Beyond eCommerce</a></h2></li></ul>
 	</nav>
 </div>
 	</section>
 	<section class="content">
 		<article>
-			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 8</strong></p><h1 class="chapt-hdr__title">Integrating an eCommerce Platform</h1></header>
+			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 8</strong></p><h1 class="chapt-hdr__title">Integrating a Help Desk</h1></header>
 			
-			<p>Just as integrating with a helpdesk system is crucial for managing customer service interactions, integrating with an eCommerce platform is vital for accessing order and customer data. Whether you're using Shopify, Magento, WooCommerce, or another platform, the primary focus is to retrieve and manage customer and order information effectively.</p>
-<p>At a high level, we need to perform a few key actions:</p>
-<ul>
-<li><strong>Get order by ID</strong></li>
-<li><strong>Get order by customer email</strong></li>
-<li><strong>Retrieve customer information by email</strong></li>
-<li><strong>Get product information by ID</strong></li>
-<li><strong>Cancel an order</strong></li>
-<li><strong>Process a return</strong></li>
-</ul>
-<p>While all eCommerce platforms should offer these core features, some platforms may also support additional features like subscriptions, which require further support for actions such as pausing or canceling a subscription.</p>
-<h2>Example with Shopify</h2>
-<p>Let's take Shopify as an example and implement a generic JavaScript integration for these functions. Shopify provides a well-documented API that allows developers to perform the necessary operations to retrieve and manage orders, customers, and products.</p>
-<p>Here’s a simple implementation of these functions in JavaScript:</p>
+			<p>When building a chatbot for eCommerce, integrating with a helpdesk system is crucial to ensure smooth communication and efficient resolution of customer issues. Every helpdesk platform, from Zendesk to Freshdesk, has its own set of features, strengths, and weaknesses. However, they all share some fundamental capabilities that we can leverage to build robust integrations.</p>
+<p>Key functions like retrieving a ticket, fetching the latest customer message, replying to that message, assigning the ticket to a particular agent, handing off to a human agent, or adding internal notes are essential for a well-rounded integration. The goal is to streamline these actions so that the chatbot can effectively manage customer interactions—from classification and response to collaboration with human agents.</p>
+<p>Helpdesk platforms typically provide comprehensive API documentation, which can be used to implement these functions precisely. This documentation allows developers to interact with the helpdesk’s backend, perform necessary actions, and integrate them seamlessly into the chatbot’s workflow.</p>
+<p>Below is an example of how an integration with Zendesk’s API might look in JavaScript:</p>
 <pre><code class="language-JavaScript"><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;axios&#x27;</span>);
 
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SHOPIFY_API_URL</span> = <span class="hljs-string">&#x27;https://your_store.myshopify.com/admin/api/2023-07&#x27;</span>;  
-<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">SHOPIFY_ACCESS_TOKEN</span> = <span class="hljs-string">&#x27;your_access_token&#x27;</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">ZENDESK_API_URL</span> = <span class="hljs-string">&#x27;https://your_subdomain.zendesk.com/api/v2&#x27;</span>;  
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">ZENDESK_API_TOKEN</span> = <span class="hljs-string">&#x27;your_api_token&#x27;</span>;  
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">ZENDESK_EMAIL</span> = <span class="hljs-string">&#x27;your_email@example.com&#x27;</span>;
 
 <span class="hljs-comment">// Set up Axios for API calls  </span>
-<span class="hljs-keyword">const</span> shopifyApi = axios.<span class="hljs-title function_">create</span>({  
-    <span class="hljs-attr">baseURL</span>: <span class="hljs-variable constant_">SHOPIFY_API_URL</span>,  
+<span class="hljs-keyword">const</span> zendeskApi = axios.<span class="hljs-title function_">create</span>({  
+    <span class="hljs-attr">baseURL</span>: <span class="hljs-variable constant_">ZENDESK_API_URL</span>,  
+    <span class="hljs-attr">auth</span>: {  
+        <span class="hljs-attr">username</span>: <span class="hljs-variable constant_">ZENDESK_EMAIL</span>,  
+        <span class="hljs-attr">password</span>: <span class="hljs-variable constant_">ZENDESK_API_TOKEN</span>  
+    },  
     <span class="hljs-attr">headers</span>: {  
-        <span class="hljs-string">&#x27;X-Shopify-Access-Token&#x27;</span>: <span class="hljs-variable constant_">SHOPIFY_ACCESS_TOKEN</span>,  
         <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>  
     }  
 });
 
-<span class="hljs-comment">// Function to get order by ID  </span>
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getOrderById</span>(<span class="hljs-params">orderId</span>) {  
+<span class="hljs-comment">// Function to get a ticket by ID  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getTicket</span>(<span class="hljs-params">ticketId</span>) {  
     <span class="hljs-keyword">try</span> {  
-        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>.json`</span>);  
-        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">order</span>;  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> zendeskApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/tickets/<span class="hljs-subst">${ticketId}</span>.json`</span>);  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">ticket</span>;  
     } <span class="hljs-keyword">catch</span> (error) {  
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching order by ID:&#x27;</span>, error);  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching ticket:&#x27;</span>, error);  
         <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-<span class="hljs-comment">// Function to get order by customer email  </span>
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getOrderByEmail</span>(<span class="hljs-params">email</span>) {  
+<span class="hljs-comment">// Function to get the latest message from a ticket  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getLatestMessage</span>(<span class="hljs-params">ticketId</span>) {  
     <span class="hljs-keyword">try</span> {  
-        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/orders.json&#x27;</span>, {  
-            <span class="hljs-attr">params</span>: {  
-                <span class="hljs-attr">email</span>: email  
+        <span class="hljs-keyword">const</span> ticket = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getTicket</span>(ticketId);  
+        <span class="hljs-keyword">return</span> ticket.<span class="hljs-property">latest_comment</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching latest message:&#x27;</span>, error);  
+        <span class="hljs-keyword">throw</span> error;  
+    }  
+}
+
+<span class="hljs-comment">// Function to reply to a ticket  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">replyToTicket</span>(<span class="hljs-params">ticketId, message</span>) {  
+    <span class="hljs-keyword">try</span> {  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> zendeskApi.<span class="hljs-title function_">post</span>(<span class="hljs-string">`/tickets/<span class="hljs-subst">${ticketId}</span>.json`</span>, {  
+            <span class="hljs-attr">ticket</span>: {  
+                <span class="hljs-attr">comment</span>: {  
+                    <span class="hljs-attr">body</span>: message,  
+                    <span class="hljs-attr">public</span>: <span class="hljs-literal">true</span>  
+                }  
             }  
         });  
-        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">orders</span>;  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">ticket</span>;  
     } <span class="hljs-keyword">catch</span> (error) {  
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching orders by email:&#x27;</span>, error);  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error replying to ticket:&#x27;</span>, error);  
         <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-<span class="hljs-comment">// Function to get customer information by email  </span>
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getCustomerByEmail</span>(<span class="hljs-params">email</span>) {  
+<span class="hljs-comment">// Function to assign the ticket to an agent  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">assignTicket</span>(<span class="hljs-params">ticketId, agentId</span>) {  
     <span class="hljs-keyword">try</span> {  
-        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/customers/search.json&#x27;</span>, {  
-            <span class="hljs-attr">params</span>: {  
-                <span class="hljs-attr">query</span>: <span class="hljs-string">`email:<span class="hljs-subst">${email}</span>`</span>  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> zendeskApi.<span class="hljs-title function_">put</span>(<span class="hljs-string">`/tickets/<span class="hljs-subst">${ticketId}</span>.json`</span>, {  
+            <span class="hljs-attr">ticket</span>: {  
+                <span class="hljs-attr">assignee_id</span>: agentId  
             }  
         });  
-        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">customers</span>[<span class="hljs-number">0</span>];  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">ticket</span>;  
     } <span class="hljs-keyword">catch</span> (error) {  
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching customer by email:&#x27;</span>, error);  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error assigning ticket:&#x27;</span>, error);  
         <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
-<span class="hljs-comment">// Function to get product information by ID  </span>
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getProductById</span>(<span class="hljs-params">productId</span>) {  
+<span class="hljs-comment">// Function to add a note to the ticket  </span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">addNoteToTicket</span>(<span class="hljs-params">ticketId, note</span>) {  
     <span class="hljs-keyword">try</span> {  
-        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">get</span>(<span class="hljs-string">`/products/<span class="hljs-subst">${productId}</span>.json`</span>);  
-        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">product</span>;  
-    } <span class="hljs-keyword">catch</span> (error) {  
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error fetching product by ID:&#x27;</span>, error);  
-        <span class="hljs-keyword">throw</span> error;  
-    }  
-}
-
-<span class="hljs-comment">// Function to cancel an order  </span>
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">cancelOrder</span>(<span class="hljs-params">orderId</span>) {  
-    <span class="hljs-keyword">try</span> {  
-        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">post</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>/cancel.json`</span>);  
-        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">order</span>;  
-    } <span class="hljs-keyword">catch</span> (error) {  
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error canceling order:&#x27;</span>, error);  
-        <span class="hljs-keyword">throw</span> error;  
-    }  
-}
-
-<span class="hljs-comment">// Function to process a return  </span>
-<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">returnOrder</span>(<span class="hljs-params">orderId, reason</span>) {  
-    <span class="hljs-comment">// Assuming the platform has an API for handling returns  </span>
-    <span class="hljs-keyword">try</span> {  
-        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> shopifyApi.<span class="hljs-title function_">post</span>(<span class="hljs-string">`/orders/<span class="hljs-subst">${orderId}</span>/return.json`</span>, {  
-            <span class="hljs-attr">reason</span>: reason  
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> zendeskApi.<span class="hljs-title function_">post</span>(<span class="hljs-string">`/tickets/<span class="hljs-subst">${ticketId}</span>.json`</span>, {  
+            <span class="hljs-attr">ticket</span>: {  
+                <span class="hljs-attr">comment</span>: {  
+                    <span class="hljs-attr">body</span>: note,  
+                    <span class="hljs-attr">public</span>: <span class="hljs-literal">false</span>  
+                }  
+            }  
         });  
-        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">return</span>;  
-    } <span class="hljs-keyword">catch</span> (error) {   
-        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error processing return:&#x27;</span>, error);  
+        <span class="hljs-keyword">return</span> response.<span class="hljs-property">data</span>.<span class="hljs-property">ticket</span>;  
+    } <span class="hljs-keyword">catch</span> (error) {  
+        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&#x27;Error adding note to ticket:&#x27;</span>, error);  
         <span class="hljs-keyword">throw</span> error;  
     }  
 }
 
 <span class="hljs-comment">// Example usage:  </span>
 (<span class="hljs-title function_">async</span> () =&gt; {  
-    <span class="hljs-keyword">const</span> orderId = <span class="hljs-number">1234567890</span>; <span class="hljs-comment">// Example order ID  </span>
-    <span class="hljs-keyword">const</span> email = <span class="hljs-string">&quot;customer@example.com&quot;</span>; <span class="hljs-comment">// Example customer email  </span>
-    <span class="hljs-keyword">const</span> productId = <span class="hljs-number">987654321</span>; <span class="hljs-comment">// Example product ID</span>
+    <span class="hljs-keyword">const</span> ticketId = <span class="hljs-number">123456</span>; <span class="hljs-comment">// Example ticket ID  </span>
+    <span class="hljs-keyword">const</span> agentId = <span class="hljs-number">78910</span>; <span class="hljs-comment">// Example agent ID  </span>
+    <span class="hljs-keyword">const</span> message = <span class="hljs-string">&quot;Here is the update you requested.&quot;</span>;  
+    <span class="hljs-keyword">const</span> note = <span class="hljs-string">&quot;Customer mentioned a possible return request.&quot;</span>;
 
-    <span class="hljs-keyword">const</span> order = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getOrderById</span>(orderId);  
-    <span class="hljs-keyword">const</span> customerOrders = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getOrderByEmail</span>(email);  
-    <span class="hljs-keyword">const</span> customer = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getCustomerByEmail</span>(email);  
-    <span class="hljs-keyword">const</span> product = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getProductById</span>(productId);
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">replyToTicket</span>(ticketId, message);  
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">assignTicket</span>(ticketId, agentId);  
+    <span class="hljs-keyword">await</span> <span class="hljs-title function_">addNoteToTicket</span>(ticketId, note);
 
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Order:&#x27;</span>, order);  
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Customer Orders:&#x27;</span>, customerOrders);  
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Customer:&#x27;</span>, customer);  
-    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Product:&#x27;</span>, product);
-
-    <span class="hljs-keyword">await</span> <span class="hljs-title function_">cancelOrder</span>(orderId);  
-    <span class="hljs-keyword">await</span> <span class="hljs-title function_">returnOrder</span>(orderId, <span class="hljs-string">&quot;Damaged item&quot;</span>);  
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Actions completed successfully.&#x27;</span>);  
 })();
 </code></pre>
-<h2>Handling Subscriptions</h2>
-<p>If your platform supports subscriptions, you might also need to include additional functions for managing these. For instance, you may need to:</p>
-<ul>
-<li>Pause a subscription</li>
-<li>Cancel a subscription</li>
-<li>Retrieve subscription details</li>
-</ul>
-<p>While Shopify offers some subscription functionality through third-party apps, platforms like ReCharge have their own API for subscription management, which would require a separate integration.</p>
-<h2>Integrating with the Company Policy Processor</h2>
-<p>The Company Policy Processor, introduced earlier, will manage all of these eCommerce functions. It ensures that customer interactions adhere to the policies you’ve defined. For example, if a customer requests a return after the allowed window has passed, the policy processor will check the policy before initiating the return.</p>
-<p>The Company Policy Processor will call the appropriate eCommerce functions depending on the situation—whether it's fetching an order, processing a return, or canceling a subscription—ensuring that the chatbot operates within your defined guidelines.</p>
-<p>By integrating your chatbot with an eCommerce platform, you ensure that it has real-time access to the customer and order data it needs to resolve issues quickly and efficiently, reducing the burden on human agents while maintaining high-quality customer service.</p>
+<p>This code demonstrates how to interact with Zendesk’s API to perform key actions. These actions—getting a ticket, responding to messages, assigning tickets, and adding notes—are fundamental to the chatbot's ability to handle customer interactions effectively.</p>
+<p>Later in our discussion on the <strong>Company Policy Processor</strong>, we'll show how this help desk integration plays a crucial role. For instance, after the chatbot classifies an intent (such as a "Where is my order?" request), it can use this integration to log the interaction, add notes for human agents, and send a response, all while adhering to company policy guidelines.</p>
+<p>By understanding and implementing these integrations, we can build a chatbot that not only responds to customer queries but also operates seamlessly within the existing customer service infrastructure, ensuring efficient and accurate resolutions.</p>
 
 
 			<div class="article-nav">
 				<div>
-					<a href="chapter-7.html">&larr; CH07: Integrating a Help Desk</a>
+					<a href="chapter-7.html">&larr; CH07: Integrating AI</a>
 				</div>
 				<div>
-					<a href="chapter-9.html">CH09: Integrating a Carrier &rarr;</a>
+					<a href="chapter-9.html">CH09: Integrating an eCommerce Platform &rarr;</a>
 				</div>
 			</div>
 			<div class="github">

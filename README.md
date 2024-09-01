@@ -20,12 +20,13 @@ Current Status: **Draft**
 | 1.4 | Chapter 4 | Artificial Intelligence | :pencil2: | 
 | 1.5 | Chapter 5 | Protecting Users | :pencil2: |
 | **2** | **Part Two** | Understanding Chatbots  | :pencil2: |
-| 2.1 | Chapter 6 | Integrating AI | :pencil2: | 
-| 2.1 | Chapter 7 | Integrating a Help Desk | :pencil2: | 
-| 2.1 | Chapter 8 | Integrating an eCommerce Platform | :pencil2: | 
-| 2.1 | Chapter 9 | Integrating a Carrier | :pencil2: | 
-| 2.1 | Chapter 10 | Designing a Company Policy Processor | :pencil2: | 
-| **3** | **Part Three** | (title pending) | :pencil2: |
+| 2.1 | Chapter 6 | The Chat Application | :pencil2: | 
+| 2.2 | Chapter 7 | Integrating AI | :pencil2: | 
+| 2.3 | Chapter 8 | Integrating a Help Desk | :pencil2: | 
+| 2.4 | Chapter 9 | Integrating an eCommerce Platform | :pencil2: | 
+| 2.5 | Chapter 10 | Integrating a Carrier | :pencil2: | 
+| 2.6 | Chapter 11 | Designing a Company Policy Processor | :pencil2: | 
+| **3** | **Part Three** | Beyond eCommerce | :pencil2: |
 
 ---
 

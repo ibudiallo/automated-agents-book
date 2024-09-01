@@ -81,40 +81,56 @@
 				"chapters": [
 					{
 						"name": "Chapter 6",
-						"title": "Integrating AI",
+						"title": "The Chat Application",
 						"slug": "chapter-6.html",
 						"content": "c06.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 7",
-						"title": "Integrating a Help Desk",
+						"title": "Integrating AI",
 						"slug": "chapter-7.html",
 						"content": "c07.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 8",
-						"title": "Integrating an eCommerce Platform",
+						"title": "Integrating a Help Desk",
 						"slug": "chapter-8.html",
 						"content": "c08.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 9",
-						"title": "Integrating a Carrier",
+						"title": "Integrating an eCommerce Platform",
 						"slug": "chapter-9.html",
 						"content": "c09.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 10",
-						"title": "Designing a Company Policy Processor",
+						"title": "Integrating a Carrier",
 						"slug": "chapter-10.html",
 						"content": "c10.md",
 						"template": "content.template.html"
+					},
+					{
+						"name": "Chapter 11",
+						"title": "Designing a Company Policy Processor",
+						"slug": "chapter-11.html",
+						"content": "c11.md",
+						"template": "content.template.html"
 					}
 				]
+
+			},
+			{
+				"name": "Part Three",
+				"title": "Beyond eCommerce",
+				"folder": "part-three",
+				"slug": "part-three-intro.html",
+				"content": "intro.md",
+				"template": "content.template.html"
 
 			}
 		]
