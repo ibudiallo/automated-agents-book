@@ -207,6 +207,7 @@ function buildParts() {
 			const giturl = [GITROOT, part.folder, part.content].join("/");
 			const output = renderPaths(contentPath, templatePath, {
 				sidebar,
+				PAGE_TITLE: part.title,
 				TITLE: html(h("h1", {}, part.title)),
 				ASSET_PATH,
 				PreviousURL: getPreviousLink(partIndex, null),
@@ -223,8 +224,10 @@ function buildParts() {
 			const chapTemplate = path.join("src", "templates", chapt.template);
 			const contentPath = path.join(...["book", part.folder, chapt.content].filter(notEmpty));
 			const giturl = [GITROOT, part.folder, chapt.content].join("/");
+			const pageTitle = chapt.name ? `${chapt.name}: ${chapt.title}` : chapt.title;
 			const output = renderPaths(contentPath, chapTemplate, {
 				sidebar,
+				PAGE_TITLE: pageTitle,
 				TITLE: formatChapterHeader(chapt.name, chapt.title),
 				ASSET_PATH,
 				PreviousURL: getPreviousLink(partIndex, chaptIndex),
