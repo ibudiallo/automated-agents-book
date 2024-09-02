@@ -20,6 +20,7 @@ article pre {
   background: #e2f2f9;
   color: #444;
   border: 1px solid #cdcdcd;
+  margin-bottom: 2em;
 }
 /* Base color: saturation 0; */
 .hljs-subst {

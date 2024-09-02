@@ -158,12 +158,14 @@ article pre {
 }
 
 article .block-meta,
-article .block-instruct {
+article .block-instruct,
+article .block-analogy {
 	padding: 1em;
 	margin-bottom: 2em;
 }
 article .block-meta h3,
-article .block-instruct h3 {
+article .block-instruct h3,
+article .block-analogy h3 {
 	text-transform: uppercase;
 	color: #806431;
 	font-size: 1.3em;
@@ -177,6 +179,13 @@ article .block-instruct {
 article .block-instruct p {
 	font-family: Roboto, Arial, sans-serif;
 	font-size: .9em;
+}
+article .block-analogy {
+	background-color: #dae2f8;
+}
+article .block-analogy p {
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 1.1em;
 }
 
 /** Article Header **/
