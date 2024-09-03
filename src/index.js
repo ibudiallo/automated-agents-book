@@ -190,6 +190,19 @@ const formatChapterHeader = (chapt, title) => {
 	);
 };
 
+const getMeta = (part) => {
+	const meta = part.meta;
+	if (!meta) {
+		return "";
+	}
+
+	const out = Object.keys(meta)
+		.map(key => {
+			return h("meta", { name: key, content: meta[key] }, null, true);
+		});
+	return html(out);
+}
+
 function buildParts() {
 	const obj = {};
 	obj["content.html"] = buildTOC();
@@ -205,9 +218,11 @@ function buildParts() {
 			const contentPath = path.join(...fullPath);
 			const templatePath = path.join("src", "templates", part.template);
 			const giturl = [GITROOT, part.folder, part.content].join("/");
+			const metaTags = getMeta(part);
 			const output = renderPaths(contentPath, templatePath, {
 				sidebar,
 				PAGE_TITLE: part.title,
+				META_TAGS: metaTags,
 				TITLE: html(h("h1", {}, part.title)),
 				ASSET_PATH,
 				PreviousURL: getPreviousLink(partIndex, null),
@@ -228,6 +243,7 @@ function buildParts() {
 			const output = renderPaths(contentPath, chapTemplate, {
 				sidebar,
 				PAGE_TITLE: pageTitle,
+				META_TAGS: "",
 				TITLE: formatChapterHeader(chapt.name, chapt.title),
 				ASSET_PATH,
 				PreviousURL: getPreviousLink(partIndex, chaptIndex),

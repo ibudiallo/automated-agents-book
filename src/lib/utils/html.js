@@ -17,7 +17,7 @@ const renderOne = (jml) => {
 		return jml;
 	}
 	if (jml.selfClosing) {
-		return `<${jml.name}${addProps(jml.props)} />"}`
+		return `<${jml.name}${addProps(jml.props)} />`
 	}
 	return `<${jml.name}${addProps(jml.props)}>${renderChildren(jml.children)}</${jml.name}>`;
 };

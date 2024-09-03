@@ -32,6 +32,10 @@
 				"slug": "part-one-intro.html",
 				"content": "intro.md",
 				"template": "content.template.html",
+				"meta": {
+					"description": "This section explores the functional purpose of chatbots. The focus is on building practical applications that integrate seamlessly with various tools and provide real value to users, rather than just mimicking human behavior.",
+					"keywords": "AI functionality, chatbots, practical applications, problem solving, integration"
+				},
 				"chapters": [
 					{
 						"name": "Chapter 1",
