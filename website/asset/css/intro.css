@@ -156,16 +156,27 @@ article pre {
 	overflow: auto;
 	font-size: .9em;
 }
+article em {
+	font-style: italic;
+	color: var(--accent-green-700);
+}
+article p > code {
+	font-family: monospace;
+	font-size: .9em;
+	background-color: #f0f0f0;
+}
 
 article .block-meta,
 article .block-instruct,
-article .block-analogy {
+article .block-analogy,
+article .block-ref {
 	padding: 1em;
 	margin-bottom: 2em;
 }
 article .block-meta h3,
 article .block-instruct h3,
-article .block-analogy h3 {
+article .block-analogy h3,
+article .block-ref h3 {
 	text-transform: uppercase;
 	color: #806431;
 	font-size: 1.3em;
@@ -203,6 +214,75 @@ article .block-analogy p {
 	font-size: 3em;
 	margin-bottom: .5em;
 }
+
+/** Chat window **/
+.chat-window {
+	position: relative;
+	margin: 1em 1em 2em 1em;
+	border-radius: 9px;
+	background-color: var(--neutral-color-100);
+	padding: 3em 1em 1em 1em;
+	overflow: hidden;
+	box-shadow: 0 6px 24px rgba(0,0,0, .1);
+}
+.chat-window::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: " ";
+	display: block;
+	height: 32px;
+	background-color: var(--neutral-color-300);
+	width: 100%;
+	z-index: 1;
+	border-bottom: 1px solid #ccc;
+}
+.chat-window::after {
+	position: absolute;
+	z-index: 2;
+	top: 6px;
+	left: 0;
+	content: attr(data-title);
+	color: #555;
+	width: 100%;
+	text-align: center;
+	font-family: arial;
+	font-weight: bold;
+}
+.chat-window .bubble {
+	position: relative;
+	margin-bottom: 1em;
+}
+.chat-window .bubble p {
+	padding: .5em 1em;
+	border-radius: 6px;
+	color: var(--accent-blue-100);
+	box-shadow: 0 6px 8px rgba(0,0,0,.13);
+	background-color: var(--accent-blue-500);
+	width: 50%;
+	margin: 0;
+	font-size: 1em;
+	font-family: arial;
+}
+.chat-window .bubble::after {
+	display: block;
+	content: attr(data-info);
+	clear: both;
+	color: #555;
+	padding: .5em 1em 0 .5em;
+}
+.chat-window .bubble.left p {
+	float: left;
+}
+.chat-window .bubble.right p {
+	background-color: #e4e8ed;
+	color: #333;
+	float: right;
+}
+.chat-window .bubble.right::after {
+	text-align: right;
+}
+
 
 /** TOC**/
 .toc-list {

@@ -33,8 +33,44 @@
 			<h1>Understanding Chatbots</h1>
 			
 			<p>"The Expanse" is one of my favorite sci-fi shows. Set hundreds of years into the future, humanity has colonized the solar system, and space travel has become routine thanks to the fictional Epstein Drive. Technology is at its peak, yet one noticeable absence is a friendly, conversational robot.</p>
-<p>I remember coming across a Reddit forum where people discussed the lack of AI in the series. This surprised me because I saw AI present in almost every scene. Not in the form of the familiar C-3PO, but rather as a tool. When characters encounter a problem requiring computation, they simply ask aloud, and the AI provides the solution—efficiently, without unnecessary conversation or personality. Yet, we often fail to recognize it as AI unless it speaks or exhibits a human-like demeanor.</p>
+<p>I remember coming across a Reddit forum where people discussed the lack of AI in the series. This surprised me because I saw AI present in almost every scene. Not in the form of the familiar C-3PO, but rather as a tool. When characters encounter a problem requiring computation, they simply ask aloud, and the AI provides the solution, efficiently, without unnecessary conversation or personality. Yet, we often fail to recognize it as AI unless it speaks or exhibits a human-like demeanor.</p>
 <p>To me, the true power of AI, or any computer, lies in its ability to solve problems. We may not be building space travel technology after reading this book, but at the very least, we can develop AI that functions similarly to those in The Expanse: When you have a question, you ask it, and it finds the solution.</p>
+<p>When we talk about chatbots today, it's easy to assume that a sophisticated system like ChatGPT might be behind your website's modest chatbot. But that’s often overkill. Sure, it might be able to answer your user's questions, but it’s like attaching a jet engine to a tricycle. Unnecessary and impractical. Most users don’t visit your website’s chatbot to get general information. For that, they can easily go to Google or ChatGPT itself.</p>
+<p>Chatbots have existed for decades, but Siri was a game changer, especially in shaping the public’s perception of AI. Here was an AI that lived in your phone and could answer almost any question you had. For an Apple product, however, Siri often failed, frequently redirecting users to a Google search. But for the first time, the public saw software that could listen, understand, and respond. I’d like to focus on Siri a bit because its inner workings are quite similar to the chatbots we’ll be discussing in this book.</p>
+<p>Although you can ask Siri general questions, it shines when answering practical ones: “Can you call Mom?” “What’s the weather like?” “Who invented the airplane?” These queries are easily classified and redirected to an application with an integrated API that provides an answer. When you asked Siri to “Call Mom,” Siri didn’t just automatically know who “Mom” was. It converted your speech to text, sent it to a classifier to determine the intent, "making a call." Then passed it to an entity recognition engine that identified “Mom” as the contact. In the background, it would execute a function. If you saved your mother's phone number under "Mom," it would call her. Otherwise, it would fail, and Siri would say, "I can't find Mom."</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> nextAction = <span class="hljs-title class_">MakePhoneCall</span>({ <span class="hljs-attr">contactName</span>: <span class="hljs-string">&quot;Mom&quot;</span> });
+<span class="hljs-keyword">if</span> (nextAction) {
+	<span class="hljs-keyword">return</span> <span class="hljs-title function_">nextAction</span>();
+} <span class="hljs-keyword">else</span> {
+	<span class="hljs-keyword">return</span> <span class="hljs-title function_">siriSay</span>(<span class="hljs-string">&quot;I can&#x27;t find Mom&quot;</span>);
+}
+</code></pre>
+<p>This integration with the Phone app allowed Siri to make calls, and similar integrations with the Weather app, a knowledge base, and search engines gave Siri a wide range of capabilities. Each new integration made Siri seem smarter. But what made Siri appear particularly intelligent to the public was its voice. The simple fact that Siri had a pleasant, human-like voice gave it a persona, making it feel intelligent and almost human.</p>
+<p>While this book will only briefly explore voice capabilities, our focus is on building something practical—something that solves problems effectively rather than trying to mimic human behavior.</p>
+<div class="block-ref">
+<p>TARS is a highly advanced AI robot in the movie <em>Interstellar</em>. He could communicate in a very human-like manner, even making jokes.</p>
+<div class="chat-window" data-title="TARS and Cooper - Interstellar">
+<div class="bubble left" data-info="TARS">
+<p>I have a cue light I can use to show you when I'm joking if you like.</p>
+</div>
+<div class="bubble right" data-info="Cooper">
+<p>That’d probably help.</p>
+</div>
+<div class="bubble left" data-info="TARS">
+<p>Yeah, you can use it to find your way back to the ship after I blow you out the airlock.</p>
+</div>
+<div class="bubble right" data-info="Cooper">
+<p>What’s your humor setting, TARS?</p>
+</div>
+<div class="bubble left" data-info="TARS">
+<p>That’s 100 percent.</p>
+</div>
+<div class="bubble right" data-info="Cooper">
+<p>Let’s bring it on down to 75, please.</p>
+</div>
+</div>
+<p>The humor and personality that TARS displays are entertaining and give the robot a human-like quality. However, these features are secondary to its primary function: solving problems and assisting the crew on a mission. Similarly, while a chatbot might have a friendly persona or even crack a joke, its main purpose should always be to efficiently resolve customer issues. Just like TARS, our chatbot should be effective first and personable second.</p>
+</div>
 
 
 			<div class="article-nav">
