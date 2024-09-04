@@ -187,6 +187,9 @@ article .block-meta {
 article .block-instruct {
 	background-color: #f3e8e2;
 }
+article .block-ref {
+	background-color: var(--accent-green-100);
+}
 article .block-instruct p {
 	font-family: Roboto, Arial, sans-serif;
 	font-size: .9em;
@@ -281,6 +284,12 @@ article .block-analogy p {
 }
 .chat-window .bubble.right::after {
 	text-align: right;
+}
+
+@media (max-width: 768px) {
+	.chat-window .bubble p {
+		width: 75%;
+	}
 }
 
 
