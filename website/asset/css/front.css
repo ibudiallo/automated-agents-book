@@ -105,21 +105,28 @@ main {
 
 .front-wip {
 	padding: 2em 1em;
-	background-color: #ffecc8;
+	background-color: var(--accent-green-100);
 	text-align: center;
-	border-top: 1px solid orange;
-	border-bottom: 1px solid orange;
+	border-top: 1px solid var(--accent-green-300);
+	border-bottom: 1px solid var(--accent-green-300);
 }
 .front-wip p {
 	line-height: 1.3em;
 	margin-bottom: .5em;
+	color: #555;
 }
 .front-wip i img {
-	width: 18px;
+	width: 16px;
 }
 .front-wip {
 	font-size: 1.3em;
 }
+.front-wip__git a {
+	text-decoration: none;
+	color: #333;
+	font-weight: bold;
+}
+
 .front-read {
 	padding: 2em 1em;
 }
@@ -202,6 +209,15 @@ main {
 	padding: 3px 6px;
 	width: 100%;
 	color: #fff;
+}
+
+@media (max-width: 768px) {
+	.front-about {
+		display: block;
+	}
+	.about-pic {
+		margin-bottom: 1em;
+	}
 }
 
 footer {
