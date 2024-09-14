@@ -15,7 +15,7 @@ main {
 	width: 100%;
 	height: 450px;
 	background-color: #333;
-	background: url(../images/hero.jpg) no-repeat;
+	background: url(../images/hero.jpg) top center no-repeat;
 	background-size: cover;
 	overflow: hidden;
 }
@@ -67,7 +67,7 @@ main {
 
 @media (max-width: 768px) {
 	.hero-hdr {
-		height: 250px;
+		height: auto;
 	}
 	.hero-hdr__title {
 		position: relative;
@@ -78,6 +78,11 @@ main {
 	.hero-hdr__title h1 {
 		font-size: 2em;
 		text-align: center;
+	}
+	.hero-hdr__author {
+		position: relative;
+		text-align: center;
+		left: 0;
 	}
 }
 

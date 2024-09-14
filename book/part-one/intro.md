@@ -15,7 +15,7 @@ const nextAction = MakePhoneCall({ contactName: "Mom" });
 if (nextAction) {
 	return nextAction();
 } else {
-	return siriSay("I can't find Mom");
+	return siriSay("I can't find", { contactName: "Mom" });
 }
 ```
 
