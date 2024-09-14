@@ -63,6 +63,25 @@
 <p>In essence, the purpose of a chatbot is not to replace human interaction but to complement it. By handling the volume of simpler tasks, chatbots allow companies to provide better, faster service while freeing up human agents to tackle more challenging customer concerns. When used correctly, chatbots become an integral part of a comprehensive customer service strategy, enhancing the overall customer experience rather than detracting from it.</p>
 <h2>The role of AI in a chatbot</h2>
 <p>It’s important to acknowledge that chatbots are powered by AI, or machine learning to be more accurate. The common assumption is that chatbots follow a straightforward process. You set an application endpoint that prepares the user input then sends it to the AI. The AI understands the input then generates a response. Here the chatbot is essentially a thinly veiled wrapper around a sophisticated AI like ChatGPT. The idea is that you train the AI with company information and it becomes capable of answering customer questions seamlessly.</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> <span class="hljs-title function_">chatEndPoint</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">req, res</span>) =&gt; {
+  <span class="hljs-comment">// Step 1: Initialize AI with configuration for eCommerce chatbot</span>
+  <span class="hljs-keyword">const</span> ai = <span class="hljs-title function_">getAi</span>({ <span class="hljs-attr">type</span>: <span class="hljs-string">&quot;ecommerce&quot;</span> });
+
+  <span class="hljs-comment">// Step 2: Get the user input from the request body</span>
+  <span class="hljs-keyword">const</span> userInput = req.<span class="hljs-property">body</span>.<span class="hljs-property">textInput</span>;
+
+  <span class="hljs-comment">// Step 3: Process the input with AI to understand the message</span>
+  ai.<span class="hljs-title function_">process</span>(userInput);
+
+  <span class="hljs-comment">// Step 4: Generate a reply based on AI&#x27;s processing</span>
+  <span class="hljs-keyword">const</span> response = ai.<span class="hljs-title function_">generateReply</span>();
+
+  <span class="hljs-comment">// Step 5: Return the generated response to the client</span>
+  <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">200</span>).<span class="hljs-title function_">send</span>({ <span class="hljs-attr">content</span>: response });
+};
+
+app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&quot;/chat&quot;</span>, chatEndPoint);
+</code></pre>
 <p>In this model, your application is merely a small REST endpoint, while the AI handles the heavy lifting. The chatbot is seen as the decision-maker and resolver of customer issues, providing immediate solutions based on its training. However, this assumption is incorrect, especially in the context of eCommerce.</p>
 <p>We could, in theory, build a chatbot without any AI by simply focusing on keywords that are common to the type of messages we expect from our audience. For example, if our customers frequently ask, "Where is my order?" we could write a script that looks for those words and responds with tracking information. For simple and repetitive queries, this could be perfectly fine—potentially handling around 10% of all messages. This approach alone would already be an improvement over having no automation at all.</p>
 <p>However, this keyword-based approach comes with its limitations. While it might work for straightforward queries, it runs the risk of producing <strong>false positives</strong>, incorrectly responding to messages that contain the keywords but have an entirely different intent. For example, a message like, <em>"I want to cancel my order, but I don't know where my tracking number is,"</em> may trigger the same response as "Where is my order?" even though the customer is requesting something entirely different. These false positives could lead to frustration and a poor user experience, undermining the very purpose of having a chatbot in the first place.</p>
