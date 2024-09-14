@@ -27,12 +27,15 @@ main {
 	height: 100%;
 	background-color: rgba(0,0,0, .7);
 }
-.hero-hdr__img {
+.hero-hdr__logo {
 	z-index: 1;
-	position: absolute;
-
+	position: relative;
+	width: 100px;
+	margin: 0 auto;
+    padding-top: 2em;
 }
-.hero-hdr__img img {
+
+.hero-hdr__logo img {
 	width: 100%;
 }
 .hero-hdr__title {
@@ -133,7 +136,7 @@ main {
 .front-read a {
 	display: block;
 	padding: 1em 2em;
-	background-color: #3498db;
+	background-color: #137DAF;
 	color: #fff;
 	border-radius: 6px;
 	margin: 0 auto;
@@ -141,9 +144,10 @@ main {
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
+	transition: background-color .2s;
 }
 .front-read a:hover {
-	background-color: #2980b9;
+	background-color: #189CDD;
 }
 
 @media (max-width: 768px) {
@@ -226,7 +230,7 @@ footer {
 	background-color: #efe9dc;
 }
 footer p {
-	color: #866134;
+	color: #60431f;
 }
 footer p span {
 	color: #9e9488;
