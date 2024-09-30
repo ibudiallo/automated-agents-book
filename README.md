@@ -4,6 +4,9 @@ This repository serves to track the progress of the book [Automated Agents](http
 
 Current Status: **Draft**
 
+## Description
+
+In this book, we’ll explore the purpose and functionality of chatbots, how they integrate with eCommerce platforms, helpdesk software, and shipping carriers. And why integration, not just AI, makes them powerful tools for customer support. For those interested in the technical details, this book transitions into hands-on guidance, covering everything from using AI tools like Spacy for intent classification to designing custom policy processors tailored to specific business needs. Whether you're a developer or a business leader, this book aims to equip you with the knowledge you need to navigate the world of chatbots and make them work effectively for your organization.
 
 
 ## Table of Content
@@ -35,4 +38,6 @@ Current Status: **Draft**
 
 - [x] Import the book in it's current state to github
 - [x] Add a license
-- [ ] Update read me with clear section to explain how the book will be written
+- [x] Update read me with clear section to explain how the book will be written
+- [ ] Finalize the meta sections for each chapter. They seem random right now. Ex: Fun facts should better transition based on the chapter content.
+- [ ] Add the table of content for Part three. 
