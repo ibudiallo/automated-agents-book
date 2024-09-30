@@ -19,7 +19,7 @@ Current Status: **Draft**
 | 1.3 | Chapter 3 | Integration| :pencil2: | 
 | 1.4 | Chapter 4 | Artificial Intelligence | :pencil2: | 
 | 1.5 | Chapter 5 | Protecting Users | :pencil2: |
-| **2** | **Part Two** | Understanding Chatbots  | :pencil2: |
+| **2** | **Part Two** | Under the Hood  | :pencil2: |
 | 2.1 | Chapter 6 | The Chat Application | :pencil2: | 
 | 2.2 | Chapter 7 | Integrating AI | :pencil2: | 
 | 2.3 | Chapter 8 | Integrating a Help Desk | :pencil2: | 
