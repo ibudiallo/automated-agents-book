@@ -33,8 +33,6 @@ const html = (jml) => {
 	return renderChildren(jml);
 };
 
-
-
 export {
 	h, html
 };

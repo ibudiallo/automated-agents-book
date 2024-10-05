@@ -11,14 +11,15 @@ In this book, we’ll explore the purpose and functionality of chatbots, how the
 
 ## Table of Content
 
-:pencil2: Draft  
-:heavy_check_mark: Complete
+* :pencil2: Draft 
+* :bookmark_tabs: Editing
+* :heavy_check_mark: Complete
 
 | # | Section | Title | Status |
 |---| ------- | ----- | ------ |
 | **1** | **Part One** | Understanding Chatbots  | :pencil2: |
-| 1.1 | Chapter 1 | A Place to Start | :pencil2: | 
-| 1.2 | Chapter 2 | Solving People Problems | :pencil2: | 
+| 1.1 | Chapter 1 | A Place to Start | :bookmark_tabs: | 
+| 1.2 | Chapter 2 | Solving People Problems | :bookmark_tabs: | 
 | 1.3 | Chapter 3 | Integration| :pencil2: | 
 | 1.4 | Chapter 4 | Artificial Intelligence | :pencil2: | 
 | 1.5 | Chapter 5 | Protecting Users | :pencil2: |
