@@ -67,9 +67,16 @@
 					},
 					{
 						"name": "Chapter 5",
-						"title": "Protecting Users",
+						"title": "The Core Application",
 						"slug": "chapter-5.html",
 						"content": "c05.md",
+						"template": "content.template.html"
+					},
+					{
+						"name": "Chapter 6",
+						"title": "Protecting Users",
+						"slug": "chapter-6.html",
+						"content": "c06.md",
 						"template": "content.template.html"
 					}
 				]
@@ -84,45 +91,45 @@
 				"template": "content.template.html",
 				"chapters": [
 					{
-						"name": "Chapter 6",
-						"title": "The Chat Application",
-						"slug": "chapter-6.html",
-						"content": "c06.md",
-						"template": "content.template.html"
-					},
-					{
 						"name": "Chapter 7",
-						"title": "Integrating AI",
+						"title": "The Chat Application",
 						"slug": "chapter-7.html",
 						"content": "c07.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 8",
-						"title": "Integrating a Help Desk",
+						"title": "Integrating AI",
 						"slug": "chapter-8.html",
 						"content": "c08.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 9",
-						"title": "Integrating an eCommerce Platform",
+						"title": "Integrating a Help Desk",
 						"slug": "chapter-9.html",
 						"content": "c09.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 10",
-						"title": "Integrating a Carrier",
+						"title": "Integrating an eCommerce Platform",
 						"slug": "chapter-10.html",
 						"content": "c10.md",
 						"template": "content.template.html"
 					},
 					{
 						"name": "Chapter 11",
-						"title": "Designing a Company Policy Processor",
+						"title": "Integrating a Carrier",
 						"slug": "chapter-11.html",
 						"content": "c11.md",
+						"template": "content.template.html"
+					},
+					{
+						"name": "Chapter 12",
+						"title": "Designing a Company Policy Processor",
+						"slug": "chapter-12.html",
+						"content": "c12.md",
 						"template": "content.template.html"
 					}
 				]
