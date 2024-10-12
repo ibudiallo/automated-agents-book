@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Chapter 8: Integrating AI</title>
+	<title>Chapter 8: The Chat Application</title>
 	<link rel="short icon" type="image/png" href="./asset/favicon.png">
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,79 +24,90 @@
 		<h1><a href="/">Automated <span>Agents</span></a></h1>
 	</header>
 	<nav class="nav-list">
-		<ul class="sidebar"><li class="nav-part "><h2><a href="content.html">Table of Content</a></h2></li><li class="nav-part "><h2>Front</h2><ul><li class="nav-chapt "><a href="intro.html"  title="Introduction">Introduction</a></li></ul></li><li class="nav-part "><h2><a href="part-one-intro.html">Understanding Chatbots</a></h2><ul><li class="nav-chapt "><a href="chapter-1.html"  title="A Place to Start">CH01: A Place to Start</a></li><li class="nav-chapt "><a href="chapter-2.html"  title="Solving People Problems">CH02: Solving People Problems</a></li><li class="nav-chapt "><a href="chapter-3.html"  title="Integration">CH03: Integration</a></li><li class="nav-chapt "><a href="chapter-4.html"  title="Artificial Intelligence">CH04: Artificial Intelligence</a></li><li class="nav-chapt "><a href="chapter-5.html"  title="The Core Application">CH05: The Core Application</a></li><li class="nav-chapt "><a href="chapter-6.html"  title="Protecting Users">CH06: Protecting Users</a></li></ul></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Under the Hood</a></h2><ul><li class="nav-chapt "><a href="chapter-7.html"  title="The Chat Application">CH07: The Chat Application</a></li><li class="nav-chapt selected"><a href="chapter-8.html"  title="Integrating AI">CH08: Integrating AI</a></li><li class="nav-chapt "><a href="chapter-9.html"  title="Integrating a Help Desk">CH09: Integrating a Help Desk</a></li><li class="nav-chapt "><a href="chapter-10.html"  title="Integrating an eCommerce Platform">CH10: Integrating an eCommerce Platform</a></li><li class="nav-chapt "><a href="chapter-11.html"  title="Integrating a Carrier">CH11: Integrating a Carrier</a></li><li class="nav-chapt "><a href="chapter-12.html"  title="Designing a Company Policy Processor">CH12: Designing a Company Policy Processor</a></li></ul></li><li class="nav-part "><h2><a href="part-three-intro.html">Beyond eCommerce</a></h2></li></ul>
+		<ul class="sidebar"><li class="nav-part "><h2><a href="content.html">Table of Content</a></h2></li><li class="nav-part "><h2>Front</h2><ul><li class="nav-chapt "><a href="intro.html"  title="Introduction">Introduction</a></li></ul></li><li class="nav-part "><h2><a href="part-one-intro.html">Understanding Chatbots</a></h2><ul><li class="nav-chapt "><a href="chapter-1.html"  title="A Place to Start">CH01: A Place to Start</a></li><li class="nav-chapt "><a href="chapter-2.html"  title="Solving People Problems">CH02: Solving People Problems</a></li><li class="nav-chapt "><a href="chapter-3.html"  title="Integration">CH03: Integration</a></li><li class="nav-chapt "><a href="chapter-4.html"  title="Artificial Intelligence">CH04: Artificial Intelligence</a></li><li class="nav-chapt "><a href="chapter-5.html"  title="The Script">CH05: The Script</a></li><li class="nav-chapt "><a href="chapter-6.html"  title="The Core Application">CH06: The Core Application</a></li><li class="nav-chapt "><a href="chapter-7.html"  title="Protecting Users">CH07: Protecting Users</a></li></ul></li><li class="nav-part selected"><h2><a href="part-two-intro.html">Under the Hood</a></h2><ul><li class="nav-chapt selected"><a href="chapter-8.html"  title="The Chat Application">CH08: The Chat Application</a></li><li class="nav-chapt "><a href="chapter-9.html"  title="Integrating AI">CH09: Integrating AI</a></li><li class="nav-chapt "><a href="chapter-10.html"  title="Integrating a Help Desk">CH10: Integrating a Help Desk</a></li><li class="nav-chapt "><a href="chapter-11.html"  title="Integrating an eCommerce Platform">CH11: Integrating an eCommerce Platform</a></li><li class="nav-chapt "><a href="chapter-12.html"  title="Integrating a Carrier">CH12: Integrating a Carrier</a></li><li class="nav-chapt "><a href="chapter-13.html"  title="Designing a Company Policy Processor">CH13: Designing a Company Policy Processor</a></li></ul></li><li class="nav-part "><h2><a href="part-three-intro.html">Beyond eCommerce</a></h2></li></ul>
 	</nav>
 </div>
 	</section>
 	<section class="content">
 		<article>
-			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 8</strong></p><h1 class="chapt-hdr__title">Integrating AI</h1></header>
+			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 8</strong></p><h1 class="chapt-hdr__title">The Chat Application</h1></header>
 			
-			<p>Incorporating AI into your chatbot doesn’t mean you have to build everything from scratch. There are powerful, well-established tools that can streamline this process, allowing you to focus on integrating and refining AI components rather than reinventing the wheel.</p>
-<p>One such tool is <strong>spaCy</strong>, an advanced Natural Language Processing (NLP) library that's well-suited for many of the tasks required in an eCommerce chatbot. SpaCy offers out-of-the-box solutions for essential functions like entity recognition, intent classification, and sentiment analysis. These capabilities can be leveraged to enhance your chatbot's ability to understand and respond to customer queries effectively.</p>
-<p><strong>1. Entity Recognition</strong>: SpaCy’s entity recognition models can identify important pieces of information within customer messages, such as order numbers, product names, or dates. By recognizing these entities, your application can better understand the context of the customer’s request.</p>
-<p><strong>2. Intent Classification</strong>: One of the most crucial tasks for any chatbot is determining what the customer wants—whether they're asking about an order, inquiring about return policies, or seeking product information. SpaCy can be used to build an intent classifier, a model that categorizes customer messages into predefined intents.</p>
-<p><strong>3. Sentiment Analysis</strong>: Understanding the tone of a customer’s message can be just as important as understanding its content. By incorporating sentiment analysis, your chatbot can detect whether a customer is frustrated, confused, or satisfied, allowing it to adjust its responses accordingly.</p>
-<h2><strong>Building AI Services Independently</strong></h2>
-<p>To integrate these AI capabilities, you can develop an independent service that takes different models as parameters to fulfill specific needs. This modular approach allows you to scale and customize your AI components as your chatbot's requirements evolve.</p>
-<p><strong>Pretrained Models as a Baseline</strong></p>
-<p>Starting from scratch isn’t necessary when there are numerous pretrained models available online. These models serve as a solid baseline, allowing you to focus on refining and adapting them to your specific use cases. By creating a training pipeline, you can continuously improve these models based on real-world data from your application.</p>
-<h2>Example: Classifying "Where is My Order" (WISMO) Intents</h2>
-<p>Let's take a closer look at how you might use spaCy to build a classifier for "Where is My Order" (WISMO) intents. Below is a simplified example in pseudo code:</p>
-<pre><code class="language-python"><span class="hljs-keyword">import</span> spacy  
-<span class="hljs-keyword">from</span> spacy.util <span class="hljs-keyword">import</span> minibatch, compounding
+			<p>The chatbot application is the central hub that orchestrates the entire interaction between a user and the AI. It’s important to distinguish this application from the AI itself; the AI serves as a tool within the application rather than the application being a form of AI. This application manages various integrations with eCommerce platforms, helpdesk software, and other tools, making them accessible to end users to enhance their experience.</p>
+<p>To function effectively, the chatbot application requires certain information to serve customers properly. For instance, when a customer sends a message, the application must first understand what the message means. This is where AI comes into play, assisting the application by identifying the intent behind the customer's message. Beyond this, the application needs to interact seamlessly with the eCommerce platform to retrieve order details, communicate with helpdesk systems to manage tickets, and potentially utilize any other tools that may help in resolving a customer’s issue. The application acts as an operating system of sorts, coordinating these tools and resources to support the user efficiently.</p>
+<p>You can build this chatbot application in any programming language that you are comfortable with, as long as it adheres to the integration requirements of the various systems it connects to. To give you a practical example, let’s consider a JavaScript implementation that handles a web request, identifies the client using an API key, fetches the client's configuration (such as their helpdesk and eCommerce platform), and processes the user’s message using AI. The application then runs the company policy to prepare an appropriate response and sends this response back to the user.</p>
+<p>Here’s a basic example of how such an application might look in JavaScript:</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;express&#x27;</span>);
+<span class="hljs-keyword">const</span> fetch = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;node-fetch&#x27;</span>);
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
 
-<span class="hljs-comment"># Load a pretrained spaCy model  </span>
-nlp = spacy.load(<span class="hljs-string">&quot;en_core_web_sm&quot;</span>)
+app.<span class="hljs-title function_">use</span>(express.<span class="hljs-title function_">json</span>());
 
-<span class="hljs-comment"># Define training data  </span>
-training_data = [  
-    (<span class="hljs-string">&quot;Where is my order?&quot;</span>, {<span class="hljs-string">&quot;cats&quot;</span>: {<span class="hljs-string">&quot;WISMO&quot;</span>: <span class="hljs-number">1.0</span>, <span class="hljs-string">&quot;Other&quot;</span>: <span class="hljs-number">0.0</span>}}),  
-    (<span class="hljs-string">&quot;I need to know the status of my package&quot;</span>, {<span class="hljs-string">&quot;cats&quot;</span>: {<span class="hljs-string">&quot;WISMO&quot;</span>: <span class="hljs-number">1.0</span>, <span class="hljs-string">&quot;Other&quot;</span>: <span class="hljs-number">0.0</span>}}),  
-    (<span class="hljs-string">&quot;What is your return policy?&quot;</span>, {<span class="hljs-string">&quot;cats&quot;</span>: {<span class="hljs-string">&quot;WISMO&quot;</span>: <span class="hljs-number">0.0</span>, <span class="hljs-string">&quot;Other&quot;</span>: <span class="hljs-number">1.0</span>}}),  
-    <span class="hljs-comment"># Add more examples  </span>
-]
+<span class="hljs-comment">// Endpoint to handle incoming messages</span>
+app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/chat&#x27;</span>, <span class="hljs-title function_">async</span> (req, res) =&gt; {
+    <span class="hljs-keyword">const</span> apiKey = req.<span class="hljs-property">headers</span>[<span class="hljs-string">&#x27;x-api-key&#x27;</span>];
+    <span class="hljs-keyword">const</span> userMessage = req.<span class="hljs-property">body</span>.<span class="hljs-property">message</span>;
 
-<span class="hljs-comment"># Add the text categorizer to the pipeline if it doesn&#x27;t exist  </span>
-<span class="hljs-keyword">if</span> <span class="hljs-string">&quot;textcat&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> nlp.pipe_names:  
-    textcat = nlp.create_pipe(<span class="hljs-string">&quot;textcat&quot;</span>)  
-    nlp.add_pipe(textcat, last=<span class="hljs-literal">True</span>)  
-<span class="hljs-keyword">else</span>:  
-    textcat = nlp.get_pipe(<span class="hljs-string">&quot;textcat&quot;</span>)
+    <span class="hljs-comment">// Step 1: Identify the client using the API key</span>
+    <span class="hljs-keyword">const</span> clientConfig = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetchClientConfig</span>(apiKey);
+    <span class="hljs-keyword">if</span> (!clientConfig) {
+        <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">404</span>).<span class="hljs-title function_">send</span>(<span class="hljs-string">&#x27;Client configuration not found.&#x27;</span>);
+    }
 
-<span class="hljs-comment"># Add labels to the text classifier  </span>
-textcat.add_label(<span class="hljs-string">&quot;WISMO&quot;</span>)  
-textcat.add_label(<span class="hljs-string">&quot;Other&quot;</span>)
+    <span class="hljs-comment">// Step 2: Process the user&#x27;s message with AI to determine intent</span>
+    <span class="hljs-keyword">const</span> intent = <span class="hljs-keyword">await</span> <span class="hljs-title function_">identifyIntent</span>(userMessage, clientConfig.<span class="hljs-property">aiModel</span>);
+    
+    <span class="hljs-comment">// Step 3: Run the company policy based on the identified intent</span>
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-title function_">runCompanyPolicy</span>(intent, clientConfig);
+    
+    <span class="hljs-comment">// Step 4: Send the response back to the user</span>
+    res.<span class="hljs-title function_">json</span>({ response });
+});
 
-<span class="hljs-comment"># Training loop  </span>
-optimizer = nlp.begin_training()  
-<span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):  
-    losses = {}  
-    batches = minibatch(training_data, size=compounding(<span class="hljs-number">4.0</span>, <span class="hljs-number">32.0</span>, <span class="hljs-number">1.001</span>))  
-    <span class="hljs-keyword">for</span> batch <span class="hljs-keyword">in</span> batches:  
-        texts, annotations = <span class="hljs-built_in">zip</span>(*batch)  
-        nlp.update(texts, annotations, sgd=optimizer, drop=<span class="hljs-number">0.2</span>, losses=losses)  
-    <span class="hljs-built_in">print</span>(losses)
+<span class="hljs-comment">// Fetch client configuration based on API key</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">fetchClientConfig</span>(<span class="hljs-params">apiKey</span>) {
+    <span class="hljs-comment">// Here you&#x27;d typically make a database query or API call</span>
+    <span class="hljs-comment">// For demonstration, we return a mock configuration</span>
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">ecommercePlatform</span>: <span class="hljs-string">&#x27;Shopify&#x27;</span>,
+        <span class="hljs-attr">helpdesk</span>: <span class="hljs-string">&#x27;Zendesk&#x27;</span>,
+        <span class="hljs-attr">aiModel</span>: <span class="hljs-string">&#x27;IntentClassifier&#x27;</span>,
+        <span class="hljs-attr">supportedIntents</span>: [<span class="hljs-string">&#x27;TrackOrder&#x27;</span>, <span class="hljs-string">&#x27;ReturnOrder&#x27;</span>]
+    };
+}
 
-<span class="hljs-comment"># Save the model  </span>
-nlp.to_disk(<span class="hljs-string">&quot;wismo_classifier&quot;</span>)
+<span class="hljs-comment">// Identify the intent of the user&#x27;s message</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">identifyIntent</span>(<span class="hljs-params">message, aiModel</span>) {
+    <span class="hljs-comment">// Placeholder for AI model processing</span>
+    <span class="hljs-comment">// You would call your AI service here</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;TrackOrder&#x27;</span>;  <span class="hljs-comment">// Example intent</span>
+}
 
-<span class="hljs-comment"># Test the classifier  </span>
-doc = nlp(<span class="hljs-string">&quot;Can you tell me where my order is?&quot;</span>)  
-<span class="hljs-built_in">print</span>(doc.cats)
+<span class="hljs-comment">// Run the company policy based on intent</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">runCompanyPolicy</span>(<span class="hljs-params">intent, clientConfig</span>) {
+    <span class="hljs-comment">// Placeholder for policy execution</span>
+    <span class="hljs-comment">// This is where you&#x27;d integrate with your eCommerce and helpdesk platforms</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`Processing intent: <span class="hljs-subst">${intent}</span>`</span>;  <span class="hljs-comment">// Example response</span>
+}
+
+app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Chatbot application running on port 3000&#x27;</span>);
+});
 </code></pre>
-<p>In this pseudo code, we've defined a simple pipeline using spaCy to train a classifier for WISMO intents. This classifier can then be integrated into your chatbot's AI service to detect when customers are inquiring about their order status.</p>
-<h2><strong>Exploring Other Tools</strong></h2>
-<p>While spaCy is a powerful and versatile tool, it's just one of many options available. For example, <strong>FastText</strong> is another widely-used NLP library that excels in text classification tasks. Depending on your specific needs, you might find that other open-source tools better fit your use case.</p>
-<p>The key takeaway is that integrating AI into your chatbot doesn't require building everything from scratch. By leveraging existing tools and resources, you can rapidly develop and deploy AI components that enhance your chatbot's ability to serve customers effectively.</p>
+<p>In this example, the chatbot application acts as the backbone of the customer service operation, leveraging AI to interpret messages and various integrations to gather and relay the necessary information to users. This modular approach ensures that the chatbot can adapt to different business requirements and provide a seamless experience for both customers and agents.</p>
+<div class="block-analogy">
+<h3>Analogy</h3>
+<p>Let's use the analogy of a self-checkout machine in a grocery store to understand the chatbot application. Much like these machines, the chatbot application is designed to handle a wide variety of tasks efficiently. A self-checkout machine can process almost any item a customer might purchase—scanning barcodes, weighing produce like bananas, or even allowing a manager to manually enter a price for an item without a barcode. It is built to facilitate specific, predictable interactions that revolve around completing a transaction.</p>
+<p>Similarly, the chatbot application is designed to process various customer service requests, from checking order statuses to handling returns or addressing product inquiries. It integrates with multiple systems, like eCommerce platforms and helpdesks, to gather all the necessary information to resolve customer issues efficiently. The application knows how to communicate with these systems, just like the self-checkout machine knows how to interact with the store’s inventory system.</p>
+<p>However, you wouldn’t ask a self-checkout machine, “How tall is the Eiffel Tower?” Not because it couldn't potentially provide the answer—developers could add a feature for trivia if they wanted—but because it is irrelevant to the machine’s primary function. The same principle applies to the chatbot application. It is not built to chat for the sake of conversation or answer unrelated questions. Its purpose is to address specific customer needs within a given context, using its integrated tools to provide meaningful support.</p>
+</div>
 
 
 			<div class="article-nav">
 				<div>
-					<a href="chapter-7.html">&larr; CH07: The Chat Application</a>
+					<a href="part-two-intro.html">&larr; Part Two: Under the Hood</a>
 				</div>
 				<div>
-					<a href="chapter-9.html">CH09: Integrating a Help Desk &rarr;</a>
+					<a href="chapter-9.html">CH09: Integrating AI &rarr;</a>
 				</div>
 			</div>
 			<div class="github">

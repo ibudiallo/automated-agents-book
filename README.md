@@ -22,15 +22,18 @@ In this book, we’ll explore the purpose and functionality of chatbots, how the
 | 1.2 | Chapter 2 | Solving People Problems | :bookmark_tabs: | 
 | 1.3 | Chapter 3 | Integration| :bookmark_tabs: | 
 | 1.4 | Chapter 4 | Artificial Intelligence | :pencil2: | 
-| 1.5 | Chapter 5 | The Core Application | :pencil2: |
-| 1.6 | Chapter 6 | Protecting Users | :pencil2: |
+| 1.5 | Chapter 5 | The Script | :pencil2: |
+| 1.6 | Chapter 6 | The Core Application | :pencil2: |
+| 1.7 | Chapter 7 | Protecting Users | :pencil2: |
 | **2** | **Part Two** | Under the Hood  | :pencil2: |
-| 2.1 | Chapter 7 | The Chat Application | :pencil2: | 
-| 2.2 | Chapter 8 | Integrating a Help Desk | :pencil2: | 
-| 2.3 | Chapter 9 | Integrating an eCommerce Platform | :pencil2: | 
-| 2.4 | Chapter 10 | Integrating a Carrier | :pencil2: | 
-| 2.5 | Chapter 11 | Designing a Company Policy Processor | :pencil2: | 
+| 2.1 | Chapter 8 | The Chat Application | :pencil2: |
+| 2.2 | Chapter 9 | Integrating AI | :pencil2: | 
+| 2.2 | Chapter 10 | Integrating a Help Desk | :pencil2: | 
+| 2.3 | Chapter 11 | Integrating an eCommerce Platform | :pencil2: | 
+| 2.4 | Chapter 12 | Integrating a Carrier | :pencil2: | 
+| 2.5 | Chapter 13 | Designing a Company Policy Processor | :pencil2: | 
 | **3** | **Part Three** | Beyond eCommerce | :pencil2: |
+| 3.1 | TBD | TBD | :pencil2: |
 
 ---
 

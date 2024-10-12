@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Chapter 6: Protecting Users</title>
+	<title>Chapter 6: The Core Application</title>
 	<link rel="short icon" type="image/png" href="./asset/favicon.png">
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,51 +24,59 @@
 		<h1><a href="/">Automated <span>Agents</span></a></h1>
 	</header>
 	<nav class="nav-list">
-		<ul class="sidebar"><li class="nav-part "><h2><a href="content.html">Table of Content</a></h2></li><li class="nav-part "><h2>Front</h2><ul><li class="nav-chapt "><a href="intro.html"  title="Introduction">Introduction</a></li></ul></li><li class="nav-part selected"><h2><a href="part-one-intro.html">Understanding Chatbots</a></h2><ul><li class="nav-chapt "><a href="chapter-1.html"  title="A Place to Start">CH01: A Place to Start</a></li><li class="nav-chapt "><a href="chapter-2.html"  title="Solving People Problems">CH02: Solving People Problems</a></li><li class="nav-chapt "><a href="chapter-3.html"  title="Integration">CH03: Integration</a></li><li class="nav-chapt "><a href="chapter-4.html"  title="Artificial Intelligence">CH04: Artificial Intelligence</a></li><li class="nav-chapt "><a href="chapter-5.html"  title="The Core Application">CH05: The Core Application</a></li><li class="nav-chapt selected"><a href="chapter-6.html"  title="Protecting Users">CH06: Protecting Users</a></li></ul></li><li class="nav-part "><h2><a href="part-two-intro.html">Under the Hood</a></h2><ul><li class="nav-chapt "><a href="chapter-7.html"  title="The Chat Application">CH07: The Chat Application</a></li><li class="nav-chapt "><a href="chapter-8.html"  title="Integrating AI">CH08: Integrating AI</a></li><li class="nav-chapt "><a href="chapter-9.html"  title="Integrating a Help Desk">CH09: Integrating a Help Desk</a></li><li class="nav-chapt "><a href="chapter-10.html"  title="Integrating an eCommerce Platform">CH10: Integrating an eCommerce Platform</a></li><li class="nav-chapt "><a href="chapter-11.html"  title="Integrating a Carrier">CH11: Integrating a Carrier</a></li><li class="nav-chapt "><a href="chapter-12.html"  title="Designing a Company Policy Processor">CH12: Designing a Company Policy Processor</a></li></ul></li><li class="nav-part "><h2><a href="part-three-intro.html">Beyond eCommerce</a></h2></li></ul>
+		<ul class="sidebar"><li class="nav-part "><h2><a href="content.html">Table of Content</a></h2></li><li class="nav-part "><h2>Front</h2><ul><li class="nav-chapt "><a href="intro.html"  title="Introduction">Introduction</a></li></ul></li><li class="nav-part selected"><h2><a href="part-one-intro.html">Understanding Chatbots</a></h2><ul><li class="nav-chapt "><a href="chapter-1.html"  title="A Place to Start">CH01: A Place to Start</a></li><li class="nav-chapt "><a href="chapter-2.html"  title="Solving People Problems">CH02: Solving People Problems</a></li><li class="nav-chapt "><a href="chapter-3.html"  title="Integration">CH03: Integration</a></li><li class="nav-chapt "><a href="chapter-4.html"  title="Artificial Intelligence">CH04: Artificial Intelligence</a></li><li class="nav-chapt "><a href="chapter-5.html"  title="The Script">CH05: The Script</a></li><li class="nav-chapt selected"><a href="chapter-6.html"  title="The Core Application">CH06: The Core Application</a></li><li class="nav-chapt "><a href="chapter-7.html"  title="Protecting Users">CH07: Protecting Users</a></li></ul></li><li class="nav-part "><h2><a href="part-two-intro.html">Under the Hood</a></h2><ul><li class="nav-chapt "><a href="chapter-8.html"  title="The Chat Application">CH08: The Chat Application</a></li><li class="nav-chapt "><a href="chapter-9.html"  title="Integrating AI">CH09: Integrating AI</a></li><li class="nav-chapt "><a href="chapter-10.html"  title="Integrating a Help Desk">CH10: Integrating a Help Desk</a></li><li class="nav-chapt "><a href="chapter-11.html"  title="Integrating an eCommerce Platform">CH11: Integrating an eCommerce Platform</a></li><li class="nav-chapt "><a href="chapter-12.html"  title="Integrating a Carrier">CH12: Integrating a Carrier</a></li><li class="nav-chapt "><a href="chapter-13.html"  title="Designing a Company Policy Processor">CH13: Designing a Company Policy Processor</a></li></ul></li><li class="nav-part "><h2><a href="part-three-intro.html">Beyond eCommerce</a></h2></li></ul>
 	</nav>
 </div>
 	</section>
 	<section class="content">
 		<article>
-			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 6</strong></p><h1 class="chapt-hdr__title">Protecting Users</h1></header>
+			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 6</strong></p><h1 class="chapt-hdr__title">The Core Application</h1></header>
 			
-			<h2>Security and Data Privacy.</h2>
-<p>When it comes to training AI models for customer service, security and data privacy are paramount. The process of training often involves trainers reviewing customer messages to fine-tune the AI's responses. However, this practice raises significant privacy concerns, as these messages may contain sensitive information that should not be exposed to anyone outside of the intended conversation.</p>
-<p>To mitigate these risks, it's essential to implement several key strategies:</p>
+			<h2>The Technical Architecture of a Chatbot</h2>
+<p>To understand how a chatbot effectively serves customers, it’s important to break down its technical architecture. At the core of this system is the application, which orchestrates various components to ensure seamless interaction between the customer, the AI, and the underlying systems that support the business.</p>
+<p><img src="./asset/images/chatbot.svg" alt="Chatbot Architecture" /></p>
+<h3>The Application Core</h3>
+<p>The application is the backbone of the chatbot, responsible for managing all interactions and ensuring that every customer query is handled efficiently and accurately. Within the application, several key components work together:</p>
 <ol>
-<li><strong>Data Obfuscation with Entity Recognition:</strong>
+<li><strong>Company Policy Processor</strong>
 <ul>
-<li><strong>Overview:</strong> Before trainers access customer messages for training purposes, those messages should be processed through an entity recognition system. This system identifies and obfuscates personal information such as names, addresses, and product details, replacing them with generic placeholders.</li>
-<li><strong>Action:</strong> By obfuscating sensitive information, you can ensure that trainers are working with anonymized data, minimizing the risk of accidental data exposure while still allowing them to improve the AI's performance.</li>
+<li>For each customer intent—such as tracking an order, returning an item, or checking inventory—the application has a dedicated <strong>Company Policy Processor</strong>. This processor ensures that the chatbot’s responses are aligned with the company’s specific policies and commitments.</li>
+<li>For example, if a customer wants to track an order, the policy processor will enforce the company’s shipping policy, checking if the order is within the processing time before providing a tracking update.</li>
 </ul>
 </li>
-<li><strong>Application Infrastructure and Data Security:</strong>
+<li><strong>Integration Layer</strong>
 <ul>
-<li><strong>Overview:</strong> The underlying infrastructure of the application must prioritize data privacy at every level. This includes ensuring that all customer data is encrypted both at rest and in transit. Encryption adds a layer of protection that makes it difficult for unauthorized parties to access or decipher customer information.</li>
-<li><strong>Action:</strong> Implement strong encryption protocols and regularly audit your infrastructure to identify and fix any potential vulnerabilities. This helps protect customer data from breaches and ensures that sensitive information remains secure throughout the AI training and deployment processes.</li>
+<li>The application connects to various systems through an <strong>Integration Layer</strong>. This layer ensures that the chatbot has access to real-time data and can execute actions based on customer requests. Key integrations include:
+<ul>
+<li><strong>eCommerce Platforms</strong> (e.g., Shopify, Magento, WooCommerce): These integrations allow the chatbot to retrieve order information, process returns, and update inventory.</li>
+<li><strong>Helpdesk Software</strong> (e.g., Zendesk, Freshdesk, Kustomer): These connections enable the chatbot to log support tickets, escalate issues, and track customer interactions.</li>
+<li><strong>Carrier Services</strong> (e.g., USPS, UPS, FedEx): These integrations provide real-time shipping updates and tracking information, allowing the chatbot to inform customers about the status of their shipments.</li>
 </ul>
 </li>
-<li><strong>GDPR Compliance and Data Removal Pipeline:</strong>
+</ul>
+</li>
+<li><strong>AI Models</strong>
 <ul>
-<li><strong>Overview:</strong> In regions governed by GDPR (General Data Protection Regulation) or similar data privacy laws, customers have the right to request that their data be deleted. To comply with these regulations, it's crucial to have a well-defined pipeline in place that allows for the efficient removal of customer data from your systems.</li>
-<li><strong>Action:</strong> Develop a GDPR-compliant process that automatically triggers data deletion when requested by a customer. This process should be integrated into your application’s infrastructure, ensuring that customer data is completely removed from both active databases and backup systems within the required timeframe.</li>
+<li>The <strong>AI Models</strong> are managed and controlled by the application. These models serve specific functions within the chatbot’s workflow:
+<ul>
+<li><strong>Intent Classification:</strong> The AI determines what the customer wants, categorizing the request into specific intents like “track order” or “return item.”</li>
+<li><strong>Sentiment Analysis:</strong> The AI assesses the tone of the customer’s message to gauge whether the customer is satisfied, frustrated, or neutral. This helps tailor the response to the customer’s emotional state.</li>
+<li><strong>Reason Extraction:</strong> The AI identifies underlying reasons for the customer’s request, such as the cause for a return, enabling more precise and relevant responses.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
-<p>By implementing these strategies, you can create a secure and privacy-focused environment for AI training and deployment. This not only protects sensitive customer information but also builds trust with your users, who can be confident that their data is handled with the utmost care and in compliance with relevant privacy regulations.</p>
-<p>In summary, security and data privacy are critical components of any AI-driven customer service system. Through data obfuscation, strong encryption, and GDPR compliance, you can safeguard customer information and ensure that your AI training practices adhere to the highest standards of privacy and security.</p>
-<h2>Expanding Insights Beyond eCommerce</h2>
-<p>Understanding how an eCommerce chatbot operates offers valuable insights into the functionality of other AI-driven tools, such as Siri or Google Assistant. These virtual assistants, much like eCommerce chatbots, rely heavily on integration with various external services to provide useful responses. For example, when you ask Siri to set a reminder or Google Assistant to play a song, they’re tapping into integrated apps and services like your calendar, music apps, or smart home devices.</p>
-<p>Similarly, when these assistants encounter a query they can’t classify or handle directly, they often resort to a fallback option—like performing a Google search. This is akin to an eCommerce chatbot either leveraging its existing integrations to provide a solution or escalating the issue to a human agent when it’s unable to resolve the customer’s query.</p>
-<p>The underlying design principles are consistent across these platforms: AI systems are most effective when they are deeply integrated with other tools and services. As more integrations are developed and added to these chatbots, their utility and effectiveness will continue to grow. This expandable and adaptable design framework ensures that both eCommerce chatbots and virtual assistants like Siri or Google Assistant will evolve to meet the increasingly complex demands of their users.</p>
+<p>While the AI models play a crucial role in interpreting customer input, the application ultimately manages these models. The AI helps identify what the customer wants and extracts key information, but the application and its integrated systems handle the actual processing and response.</p>
+<p><img src="./asset/images/infrastructure.svg" alt="Infrastructure" /></p>
 
 
 			<div class="article-nav">
 				<div>
-					<a href="chapter-5.html">&larr; CH05: The Core Application</a>
+					<a href="chapter-5.html">&larr; CH05: The Script</a>
 				</div>
 				<div>
-					<a href="part-two-intro.html">Part Two: Under the Hood &rarr;</a>
+					<a href="chapter-7.html">CH07: Protecting Users &rarr;</a>
 				</div>
 			</div>
 			<div class="github">
