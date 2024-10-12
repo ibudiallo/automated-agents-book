@@ -20,16 +20,16 @@ In this book, we’ll explore the purpose and functionality of chatbots, how the
 | **1** | **Part One** | Understanding Chatbots  | :pencil2: |
 | 1.1 | Chapter 1 | A Place to Start | :bookmark_tabs: | 
 | 1.2 | Chapter 2 | Solving People Problems | :bookmark_tabs: | 
-| 1.3 | Chapter 3 | Integration| :pencil2: | 
+| 1.3 | Chapter 3 | Integration| :bookmark_tabs: | 
 | 1.4 | Chapter 4 | Artificial Intelligence | :pencil2: | 
-| 1.5 | Chapter 5 | Protecting Users | :pencil2: |
+| 1.5 | Chapter 5 | The Core Application | :pencil2: |
+| 1.6 | Chapter 6 | Protecting Users | :pencil2: |
 | **2** | **Part Two** | Under the Hood  | :pencil2: |
-| 2.1 | Chapter 6 | The Chat Application | :pencil2: | 
-| 2.2 | Chapter 7 | Integrating AI | :pencil2: | 
-| 2.3 | Chapter 8 | Integrating a Help Desk | :pencil2: | 
-| 2.4 | Chapter 9 | Integrating an eCommerce Platform | :pencil2: | 
-| 2.5 | Chapter 10 | Integrating a Carrier | :pencil2: | 
-| 2.6 | Chapter 11 | Designing a Company Policy Processor | :pencil2: | 
+| 2.1 | Chapter 7 | The Chat Application | :pencil2: | 
+| 2.2 | Chapter 8 | Integrating a Help Desk | :pencil2: | 
+| 2.3 | Chapter 9 | Integrating an eCommerce Platform | :pencil2: | 
+| 2.4 | Chapter 10 | Integrating a Carrier | :pencil2: | 
+| 2.5 | Chapter 11 | Designing a Company Policy Processor | :pencil2: | 
 | **3** | **Part Three** | Beyond eCommerce | :pencil2: |
 
 ---
