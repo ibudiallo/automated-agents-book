@@ -35,8 +35,8 @@
 			<p>When we bought our very first PlayStation console, it came with <em>Tekken 3</em>. We played almost every single day. My favorite character was Eddie Gordo, and unlike the newbies who just mashed random buttons, I actually knew how to play him. But one thing that always fascinated me in <em>Tekken</em> was the behavior of the CPU-controlled opponents. In practice mode, you could configure your opponent to block every single attack. No matter what move I tried, the CPU would effortlessly anticipate and block it, almost as if it were reading my mind. Switch the mode to attacking, and suddenly the CPU would give me a beating like a pro player.</p>
 <p>When I was a kid, we called it the CPU. Today, most people would call it the "AI" in the game. However, looking back, I realize that the humble PS One didn’t have the resources to run anything close to what we now call artificial intelligence. It wasn’t "thinking" or predicting my moves like modern AI might; it was just a well-written program executing specific rules set by the developers. In fact, even in many modern games, CPU opponents still don’t use true AI. They rely on complex patterns and scripted responses to simulate intelligence.</p>
 <p>This brings us to an interesting observation: the term "AI" is often used as a catch-all for any complex, intelligent-seeming software. But in reality, much of what we call AI today—especially in video games or even some chatbots—isn’t intelligence in the human sense. It's simply advanced programming designed to give the illusion of intelligence.</p>
-<p>As the saying goes, "Any sufficiently advanced software is indistinguishable from AI." Whether it’s a character blocking every move in <em>Tekken</em> or a chatbot answering questions, the line between advanced software and what we perceive as AI often gets blurred. In this chapter, we'll explore what AI really is, how it's different from other forms of software, and how it fits into the bigger picture—especially when building chatbots.</p>
-<h3>What is AI?</h3>
+<p>Any sufficiently advanced software is indistinguishable from AI. Whether it’s a character blocking every move in <em>Tekken</em> or a chatbot answering questions, the line between advanced software and what we perceive as AI often gets blurred. In this chapter, we'll explore what AI really is, how it's different from other forms of software, and how it fits into the bigger picture—especially when building chatbots.</p>
+<h2>What is AI?</h2>
 <p>Artificial Intelligence refers to the simulation of human intelligence by machines that are designed to perform tasks that typically require human cognitive functions, such as problem-solving, learning, and understanding language. AI has many applications, but when it comes to chatbots, we're working with a specific subset of AI.</p>
 <p>In the context of chatbots, AI is not a monolithic entity. It relies on several key components working together:</p>
 <ul>
@@ -53,6 +53,109 @@
 <p>Each of these AI tools works in tandem to make chatbots more responsive and capable of handling complex customer inquiries. Instead of a simple script that looks for keywords, AI in chatbots ensures better understanding and more personalized interactions, improving the overall customer experience.</p>
 <p>When we think of AI in the context of chatbots, it’s easy to imagine a single, all-encompassing model that handles everything from understanding the user’s intent to generating a response. But in reality, we can leverage multiple AI models, each with their own unique specialty.</p>
 <p>By using multiple AI passes, we can extract more nuanced information from user messages, making the chatbot not only more responsive but also more empathetic and contextually aware. This multi-layered approach ensures that the chatbot isn’t just reacting to what the customer is saying but is also considering how they are saying it and why they might be saying it. Each additional AI model we add becomes a new feature that can enhance the chatbot’s effectiveness in resolving customer issues.</p>
+<h2>Classifier</h2>
+<p>A <strong>classifier's</strong> main job is to categorize or classify input data into predefined categories. In the context of chatbots, a classifier helps to determine the type of question or request a user is making by analyzing their input and mapping it to a specific class, or intent.</p>
+<p>At a basic level, the classifier works by learning from a large dataset of labeled examples during its training process. For instance, if the goal is to identify whether a user is asking about an order status, making a return, or requesting help with a product, the classifier is trained on thousands of real-world examples of user queries related to these categories.</p>
+<p>When a user sends a message to the chatbot, the classifier takes this message and analyzes it to predict the most likely category or intent. The accuracy of this prediction depends on the quality of the training data and how well the classifier is tuned to handle the various nuances of language.</p>
+<p>In eCommerce, the classifier is particularly useful because customer queries often fall into specific, repeated categories—like order tracking, product details, or shipping concerns. By efficiently classifying these inquiries, the chatbot can provide faster, more accurate responses, ultimately improving the user experience and reducing the need for human intervention.</p>
+<p>In summary, a classifier allows a chatbot to understand the type of message it’s receiving and respond in a relevant way, forming the backbone of a chatbot's ability to interpret and act on user inputs.</p>
+<h3>Sentiment Analyzer</h3>
+<p>A <strong>sentiment analyzer</strong> is a crucial tool in chatbots that allows them to detect and interpret the emotional tone or attitude behind a user's message. Rather than just focusing on what the user says, a sentiment analyzer helps the chatbot understand <em>how</em> the user is feeling, whether they are happy, frustrated, neutral, or upset.</p>
+<p>A sentiment analyzer uses natural language processing (NLP) techniques to assess the emotional content of a message. It does this by examining the words, phrases, and sentence structure to determine the overall tone. The process often involves:</p>
+<ol>
+<li>
+<p><strong>Lexical Analysis</strong>: The sentiment analyzer looks at specific words (e.g., "happy," "angry," "terrible") and assigns them positive, negative, or neutral sentiment scores.</p>
+</li>
+<li>
+<p><strong>Contextual Understanding</strong>: Beyond just words, it also considers the context and combinations of words. For example, "I didn't like it" is negative, but "I thought I wouldn't like it, but I did!" is positive. The sentiment analyzer uses context to avoid misclassifying such cases.</p>
+</li>
+<li>
+<p><strong>Polarity Score</strong>: Many sentiment analyzers will produce a score, called a "polarity score," which ranges from very negative to very positive. This numerical value helps the chatbot measure how strong the emotion is and adjust its responses accordingly.</p>
+</li>
+</ol>
+<h3>Role in Chatbots</h3>
+<p>In chatbot systems, sentiment analysis plays an essential role in managing user interactions effectively. It helps the chatbot gauge the user's emotional state and respond in a more empathetic and relevant manner. Here’s how it benefits the interaction:</p>
+<ol>
+<li>
+<p><strong>Tone-Adjusted Responses</strong>: If the sentiment analyzer detects that a customer is frustrated or angry (e.g., "This is taking forever!"), the chatbot can offer a more empathetic response, such as "I'm really sorry for the delay, let me help you right away!"—rather than a neutral or scripted reply.</p>
+</li>
+<li>
+<p><strong>Escalation Triggers</strong>: In many cases, if the sentiment analysis reveals that a customer is extremely dissatisfied or upset, the chatbot can automatically escalate the conversation to a human agent who can handle the situation more delicately.</p>
+</li>
+<li>
+<p><strong>Improving User Experience</strong>: By recognizing emotions, the chatbot can not only provide the right answers but also foster a better relationship with the customer. A message like "I'm having a hard time with your product" might prompt the chatbot to offer more assistance, while a positive message like "This is great, thanks!" may receive a cheerful confirmation in return.</p>
+</li>
+<li>
+<p><strong>Personalizing Responses</strong>: Chatbots that are aware of the customer’s emotional state can adapt their responses to better match the situation. If a user is happy, the chatbot might keep the conversation light and friendly. If a user is upset, the chatbot might prioritize offering solutions and minimize pleasantries.</p>
+</li>
+</ol>
+<h3>Applications in eCommerce</h3>
+<p>In the eCommerce world, sentiment analysis can be especially useful because customer interactions are often charged with emotion—especially when things go wrong. Sentiment analysis helps in:</p>
+<ul>
+<li>
+<p><strong>Handling Complaints</strong>: When a customer expresses frustration about a delayed package or a defective product, the sentiment analyzer identifies the negative emotion and prompts the chatbot to be more apologetic and helpful.</p>
+</li>
+<li>
+<p><strong>Upselling or Cross-Selling</strong>: If the sentiment analyzer detects that a customer is pleased with their purchase or experience, the chatbot might see this as an opportunity to suggest related products or offer discounts.</p>
+</li>
+<li>
+<p><strong>Proactive Support</strong>: For neutral or mildly negative sentiment, the chatbot can offer proactive help. For example, if a user seems unsure (e.g., "I'm not sure this is the right product"), the chatbot might suggest more information or recommend alternatives.</p>
+</li>
+</ul>
+<p>Sentiment analysis gives chatbots the ability to "read between the lines" and respond to not just the words but also the emotions of users. By doing so, it can create more satisfying and human-like interactions, even in automated customer service settings.</p>
+<h2>Entity Recognition</h2>
+<p><strong>Entity recognition</strong> is a key AI feature in chatbots that enables the system to identify and extract specific pieces of information from a user's message. This could include names, dates, locations, product names, or order numbers. Rather than interpreting the whole message as a block of text, entity recognition breaks it down and highlights the most important elements, allowing the chatbot to process the message with a more precise understanding of the user's needs.</p>
+<h3>How Does Entity Recognition Work?</h3>
+<p>Entity recognition, often called named entity recognition (NER), is a natural language processing (NLP) technique that categorizes different parts of the text into predefined categories, such as:</p>
+<ol>
+<li><strong>Person Names</strong>: Recognizing individuals, e.g., "John Doe."</li>
+<li><strong>Locations</strong>: Identifying places, e.g., "New York" or "the office."</li>
+<li><strong>Dates and Times</strong>: Understanding references to specific dates or time periods, e.g., "tomorrow," "August 15," or "next week."</li>
+<li><strong>Product Names</strong>: Recognizing specific product names in an eCommerce context, e.g., "iPhone 14" or "Sony headphones."</li>
+<li><strong>Numbers</strong>: Identifying numeric values, such as "2 items," or order numbers, e.g., "Order #123456."</li>
+<li><strong>Monetary Values</strong>: Identifying currency or prices, e.g., "$150" or "€200."</li>
+<li><strong>Email Addresses</strong>: Recognizing and extracting email addresses.</li>
+<li><strong>Other Specific Entities</strong>: Depending on the chatbot's domain, entity recognition can be customized to pick out important categories specific to that context, such as order status, shipping companies, or special product features.</li>
+</ol>
+<h3>How Entity Recognition Works in Chatbots</h3>
+<p>Entity recognition allows a chatbot to extract meaningful information from customer messages, helping it better understand and respond to the user's request. Here's how it works:</p>
+<ol>
+<li>
+<p><strong>Breaking Down the Message</strong>: When a customer types a message like "I need help with my order #123456," entity recognition identifies "order #123456" as a key element (in this case, the order number). It classifies "order #123456" as an entity related to order management, which the chatbot can use to look up relevant information in the eCommerce system.</p>
+</li>
+<li>
+<p><strong>Understanding User Intent</strong>: Recognizing specific entities in the message gives the chatbot context about what the customer is referring to. For example, if a user says, "I'm going to be out of town from July 5th to July 10th, can you delay my shipment?" the chatbot identifies "July 5th" and "July 10th" as dates and "shipment" as a relevant entity. The bot can then provide a more accurate response, such as offering to adjust the shipping date.</p>
+</li>
+<li>
+<p><strong>Providing Precise Responses</strong>: Entity recognition enables the chatbot to offer specific answers by connecting these recognized entities to backend systems or databases. If a user asks, "Where's my Sony headphones order?" the chatbot identifies "Sony headphones" as the product entity and can use this to track the order status more efficiently.</p>
+</li>
+<li>
+<p><strong>Data Extraction for Further Use</strong>: Even if the chatbot isn't able to fully resolve a query, it can pass along extracted entities (like order numbers, product names, or dates) to a human agent, saving time and reducing back-and-forth questioning.</p>
+</li>
+</ol>
+<h3>Applications in eCommerce</h3>
+<p>Entity recognition is especially valuable in eCommerce chatbots because customers often provide critical details in their queries that the chatbot must capture to function effectively. Here are some common use cases:</p>
+<ol>
+<li>
+<p><strong>Order Status Inquiries</strong>: When a user asks, "Where is my order #123456?" entity recognition pulls out the order number, allowing the chatbot to instantly look up the order and provide the customer with real-time shipping updates.</p>
+</li>
+<li>
+<p><strong>Product Availability</strong>: If a customer inquires, "Do you have iPhone 14 in stock?" entity recognition extracts "iPhone 14" as the product and can cross-reference it with the inventory to check availability.</p>
+</li>
+<li>
+<p><strong>Returns and Refunds</strong>: When a customer says, "I want to return my laptop I bought last week," the entity recognition system identifies "return" as the action and "laptop" as the product, making it easier for the chatbot to guide the customer through the return process.</p>
+</li>
+<li>
+<p><strong>Appointment Scheduling</strong>: If a business chatbot is involved in booking or scheduling, a customer might say, "I need an appointment on Friday at 3 PM." The bot recognizes "Friday" and "3 PM" as entities related to time, allowing it to check availability and confirm or reschedule appointments.</p>
+</li>
+<li>
+<p><strong>Billing Issues</strong>: When a user mentions, "I was charged $100 on my last order," entity recognition highlights "$100" as a monetary value and "last order" as an important reference, allowing the chatbot to quickly find and resolve the billing issue.</p>
+</li>
+</ol>
+<h3>Why It's Important</h3>
+<p>Without entity recognition, chatbots would struggle to handle complex or detailed queries. The ability to extract and categorize important pieces of information allows a chatbot to go beyond generic conversations and provide truly valuable assistance to users. It turns a chatbot into a functional tool that understands specific details and can act on them accordingly, making it indispensable for eCommerce platforms and other industries where precision is critical.</p>
+<h2>The role of AI in the chatbot</h2>
+<p>You can think of AI as one of the many integrations. It's initial goal is to extract information out of the customers message.</p>
 <h2>The Hand off</h2>
 <p>In an ideal world, a chatbot or AI system would be able to handle every customer inquiry seamlessly. However, the reality is that AI has limitations and can't always provide the necessary solution. When a chatbot encounters an issue it cannot resolve, the next step is crucial: the hand-off to a human agent.</p>
 <p>The hand-off process is not just about transferring the conversation; it's about ensuring a smooth transition from automated to human assistance. When an AI can't answer a question or resolve an issue, it should be able to recognize its limitations and immediately initiate a hand-off. This is vital to maintaining a positive customer experience, as a quick and efficient hand-off shows that the company values their time and concerns.</p>
