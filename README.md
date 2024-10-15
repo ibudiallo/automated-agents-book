@@ -21,7 +21,7 @@ In this book, we’ll explore the purpose and functionality of chatbots, how the
 | 1.1 | Chapter 1 | A Place to Start | :bookmark_tabs: | 
 | 1.2 | Chapter 2 | Solving People Problems | :bookmark_tabs: | 
 | 1.3 | Chapter 3 | Integration| :bookmark_tabs: | 
-| 1.4 | Chapter 4 | Artificial Intelligence | :pencil2: | 
+| 1.4 | Chapter 4 | Artificial Intelligence | :bookmark_tabs: | 
 | 1.5 | Chapter 5 | The Script | :pencil2: |
 | 1.6 | Chapter 6 | The Core Application | :pencil2: |
 | 1.7 | Chapter 7 | Protecting Users | :pencil2: |
