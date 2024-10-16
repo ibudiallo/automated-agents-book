@@ -67,7 +67,7 @@
 					},
 					{
 						"name": "Chapter 5",
-						"title": "The Workflow",
+						"title": "The Workflow ",
 						"slug": "chapter-5.html",
 						"content": "c05.md",
 						"template": "content.template.html"
