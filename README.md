@@ -17,7 +17,7 @@ In this book, we’ll explore the purpose and functionality of chatbots, how the
 
 | # | Section | Title | Status |
 |---| ------- | ----- | ------ |
-| **1** | **Part One** | [Understanding Chatbots](blob/master/book/part-one/intro.md)  | :pencil2: |
+| **1** | **Part One** | [Understanding Chatbots](book/part-one/intro.md)  | :pencil2: |
 | 1.1 | Chapter 1 | A Place to Start | :bookmark_tabs: | 
 | 1.2 | Chapter 2 | Solving People Problems | :bookmark_tabs: | 
 | 1.3 | Chapter 3 | Integration| :bookmark_tabs: | 
