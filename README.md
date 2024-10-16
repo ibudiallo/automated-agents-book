@@ -23,7 +23,7 @@ In this book, we’ll explore the purpose and functionality of chatbots, how the
 | 1.3 | Chapter 3 | Integration| :bookmark_tabs: | 
 | 1.4 | Chapter 4 | Artificial Intelligence | :bookmark_tabs: | 
 | 1.5 | Chapter 5 | The Workflow | :bookmark_tabs:  |
-| 1.6 | Chapter 6 | The Core Application | :pencil2: |
+| 1.6 | Chapter 6 | The Core Application | :bookmark_tabs: |
 | 1.7 | Chapter 7 | Protecting Users | :pencil2: |
 | **2** | **Part Two** | Under the Hood  | :pencil2: |
 | 2.1 | Chapter 8 | The Chat Application | :pencil2: |

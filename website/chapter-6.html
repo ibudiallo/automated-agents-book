@@ -33,50 +33,25 @@
 			<header class="chapt-hdr"><p class="chapt-hdr__sub"><strong>Chapter 6</strong></p><h1 class="chapt-hdr__title">The Core Application</h1></header>
 			
 			<p>We now have all the pieces in place: layered AI models that can determine a customer’s intent and extract key metadata, integrations that can retrieve order status or track packages, and workflows that guide our chatbot in handling different customer issues. But there's one critical component left: the core application that ties everything together. This application is the brain behind the chatbot, interfacing between customers and our services to turn it into a fully functional customer service solution.</p>
+<p><img src="./asset/images/chatbot.svg" alt="Chatbot Architecture" /></p>
 <h3>Interfacing with Customers</h3>
 <p>So how do we get customers to interact with our chatbot? As mentioned before, it’s rare for a company to build a customer service portal entirely from scratch. Most rely on existing helpdesk platforms like Zendesk, Freshdesk, or Salesforce, which come with well-documented APIs for integration. These helpdesks are where customers initiate their communication, whether through email, SMS, or live chat, and they become the gateway for our chatbot.</p>
 <p>The entry point for our chatbot is through the helpdesk. This allows us to standardize customer interactions, no matter the medium. When a customer sends a message—whether it's via email, SMS, or a live chat window—the helpdesk notifies our application through an event or webhook. For example, when a customer submits a new email, the helpdesk system pings our core application with the relevant ticket ID and customer message.</p>
 <p>At this point, the application steps in. It processes the message, determining if the chatbot can respond based on the customer’s intent and the available data. Within milliseconds, our system can either generate an appropriate response or, if necessary, pass the conversation to a human agent for more complex cases.</p>
 <p>This notification system is a crucial interface, allowing the chatbot to work in tandem with the helpdesk. Every time a customer replies, the helpdesk notifies us again, providing a seamless flow of interaction. Additionally, the helpdesk API can tell us the communication channel the customer used—email, SMS, or chat—so we can tailor our responses accordingly. For example, an SMS may call for a shorter, more concise reply, ensuring that we don’t overwhelm the customer with a wall of text.</p>
 <p>In essence, the helpdesk acts as the bridge between the customer and the chatbot, while the core application orchestrates the responses and actions that follow.</p>
-<h3>Interfacing with our Services.</h3>
-<p>Pending</p>
-<h2>The Technical Architecture of a Chatbot</h2>
-<p>To understand how a chatbot effectively serves customers, it’s important to break down its technical architecture. At the core of this system is the application, which orchestrates various components to ensure seamless interaction between the customer, the AI, and the underlying systems that support the business.</p>
-<p><img src="./asset/images/chatbot.svg" alt="Chatbot Architecture" /></p>
-<h3>The Application Core</h3>
-<p>The application is the backbone of the chatbot, responsible for managing all interactions and ensuring that every customer query is handled efficiently and accurately. Within the application, several key components work together:</p>
-<ol>
-<li><strong>Company Policy Processor</strong>
-<ul>
-<li>For each customer intent—such as tracking an order, returning an item, or checking inventory—the application has a dedicated <strong>Company Policy Processor</strong>. This processor ensures that the chatbot’s responses are aligned with the company’s specific policies and commitments.</li>
-<li>For example, if a customer wants to track an order, the policy processor will enforce the company’s shipping policy, checking if the order is within the processing time before providing a tracking update.</li>
-</ul>
-</li>
-<li><strong>Integration Layer</strong>
-<ul>
-<li>The application connects to various systems through an <strong>Integration Layer</strong>. This layer ensures that the chatbot has access to real-time data and can execute actions based on customer requests. Key integrations include:
-<ul>
-<li><strong>eCommerce Platforms</strong> (e.g., Shopify, Magento, WooCommerce): These integrations allow the chatbot to retrieve order information, process returns, and update inventory.</li>
-<li><strong>Helpdesk Software</strong> (e.g., Zendesk, Freshdesk, Kustomer): These connections enable the chatbot to log support tickets, escalate issues, and track customer interactions.</li>
-<li><strong>Carrier Services</strong> (e.g., USPS, UPS, FedEx): These integrations provide real-time shipping updates and tracking information, allowing the chatbot to inform customers about the status of their shipments.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>AI Models</strong>
-<ul>
-<li>The <strong>AI Models</strong> are managed and controlled by the application. These models serve specific functions within the chatbot’s workflow:
-<ul>
-<li><strong>Intent Classification:</strong> The AI determines what the customer wants, categorizing the request into specific intents like “track order” or “return item.”</li>
-<li><strong>Sentiment Analysis:</strong> The AI assesses the tone of the customer’s message to gauge whether the customer is satisfied, frustrated, or neutral. This helps tailor the response to the customer’s emotional state.</li>
-<li><strong>Reason Extraction:</strong> The AI identifies underlying reasons for the customer’s request, such as the cause for a return, enabling more precise and relevant responses.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>While the AI models play a crucial role in interpreting customer input, the application ultimately manages these models. The AI helps identify what the customer wants and extracts key information, but the application and its integrated systems handle the actual processing and response.</p>
+<h3>Interfacing with Our Services</h3>
+<p>Our services—the integration layer, the workflow system, and the AI models—form the backbone of the chatbot's functionality. Each of these components is designed as a modular service, allowing them to be easily upgraded, extended, or customized based on the specific needs of a business. This modularity ensures that our system can adapt to various client requirements without major overhauls.</p>
+<p>For example, let’s say we onboard a client that uses a different eCommerce platform than we currently support. Adding this new platform to our chatbot’s capabilities would be straightforward, as long as the new system provides similar functionality, such as retrieving order statuses, canceling orders, or updating customer details. Our integration services are flexible and can be expanded to accommodate new platforms, ensuring that the chatbot continues to operate seamlessly across different systems.</p>
+<p>Moreover, each client may have specific business rules that our chatbot must respect. For instance, a company might want to prevent the chatbot from automatically canceling orders, reserving that action solely for human agents. To support this, the eCommerce integration service must be able to enforce these rules at the service level, ensuring compliance with the client's policies without requiring manual intervention.</p>
+<p>Additionally, each of our integration services often involves complex rules like rate limiting, throttling API requests, or handling authentication securely. Our core application should manage these complexities behind the scenes, ensuring that the end-user experience remains smooth and uninterrupted. The customer should never be aware of these background processes—whether it's waiting for an API response or authenticating a service connection—because the application is built to handle these seamlessly.</p>
+<p>By structuring our integrations, workflow, and AI as modular, independent services, we give the chatbot flexibility and scalability. We can extend its capabilities, apply custom business rules, and integrate with new platforms without disrupting the core functionality, making it a future-proof solution for companies with evolving needs.</p>
+<h3>An Admin Interface</h3>
+<p>To ensure that clients can fully leverage the chatbot’s capabilities, an intuitive admin dashboard is essential. This interface serves as a central hub where clients can gain insights into how the chatbot is resolving customer issues and configure its functionality according to their business needs.</p>
+<p>One of the primary features of the admin interface should be the ability to set up which <strong>Actions</strong> the chatbot will support, such as tracking orders, processing returns, or handling inquiries about product availability. Clients should have control over the chatbot's workflows, configuring specific rules, branching logic, and the language it uses to communicate with customers. This customization ensures that the chatbot aligns with each client’s unique branding and customer service style.</p>
+<p>A key function of this dashboard is <strong>providing metrics</strong> that give clients a clear picture of the chatbot’s performance. As discussed in Chapter Two, the main reason customers turn to a chatbot is often because the user interface has already failed them. In many ways, the chatbot is here to treat a symptom. By using metrics, we can better understand where customers are struggling and address the root cause before frustration escalates. For example, if metrics show that many users cannot find their order number, this could prompt the client to adjust their process, such as prominently displaying order numbers in confirmation emails. The dashboard could even provide <strong>insights</strong> into the most common issues the chatbot resolves, helping businesses anticipate problems and improve their overall user experience.</p>
+<p>In addition to the client-facing dashboard, an <strong>internal admin interface</strong> would be crucial for managing the chatbot system as a whole. This internal admin would allow for operational control, such as putting the chatbot into maintenance mode without impacting client performance. It could also enable or disable new features as they are developed and rolled out. With this flexibility, internal teams can ensure smooth updates and maintenance while minimizing disruption to client operations.</p>
+<p>By providing both client-facing and internal admin interfaces, we give businesses the tools to monitor and optimize their chatbot, while allowing for seamless management of the system’s broader architecture. The admin interface becomes not just a control center but a vital resource for continuous improvement and proactive customer service.</p>
 <p><img src="./asset/images/infrastructure.svg" alt="Infrastructure" /></p>
 
 
