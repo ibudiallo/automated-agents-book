@@ -157,7 +157,8 @@ function getNextLink(partIndex, chaptIndex) {
 			return "";
 		}
 		if (!part.chapters) {
-			return  html(h("a", { href: part.slug }, partFormat(part) + " &rarr;"));
+			return "";
+			// return  html(h("a", { href: part.slug }, partFormat(part) + " &rarr;"));
 		}
 		const chapt = part.chapters[0];
 		return html(h("a", { href: chapt.slug }, chaptFormat(chapt) + " &rarr;"));
