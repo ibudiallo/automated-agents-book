@@ -166,6 +166,12 @@ article p > code {
 	background-color: #f0f0f0;
 }
 
+article blockquote {
+	border-left: 2px solid #cdcdcd;
+	padding-left: 1em;
+
+}
+
 article .block-meta,
 article .block-instruct,
 article .block-analogy,
