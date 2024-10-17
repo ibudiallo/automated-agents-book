@@ -273,7 +273,16 @@ const SiteUrl = function(opt) {
 }
 
 const buildSitemap = () => {
-	const urls = [];
+	const urls = [
+		(new SiteUrl({
+			loc: `https://automatedagentsbook.com/index.html`,
+			priority: 1,
+		})).toString(),
+		(new SiteUrl({
+			loc: `https://automatedagentsbook.com/content.html`,
+			priority: 1,
+		})).toString()
+	];
 	toc.sections.parts.map( (part, partIndex) => {
 		if (part.name === "toc") {
 			return ;
