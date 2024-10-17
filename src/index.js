@@ -258,9 +258,57 @@ function buildParts() {
 	return obj;
 }
 
+const SiteUrl = function(opt) {
+	this.loc = opt.loc;
+	this.priority = opt.priority || .75;
+	const lastmod = (new Date()).toJSON();
+	this.toString = () => {
+		return [`<url>`,
+			`\t<loc>${opt.loc}</loc>`,
+			`\t<changefreq>weekly</changefreq>`,
+			`\t<priority>${(opt.priority || .75).toFixed(2)}</priority>`,
+			`\t<lastmod>${lastmod}</lastmod>`,
+		`</url>`].join("\n");
+	}
+}
+
+const buildSitemap = () => {
+	const urls = [];
+	toc.sections.parts.map( (part, partIndex) => {
+		if (part.name === "toc") {
+			return ;
+		}
+		if(!part.slug) {
+
+		} else {
+			urls.push((new SiteUrl({
+				loc: `https://automatedagentsbook.com/${part.slug}`,
+				priority: 1,
+			})).toString())
+		}
+		
+
+		part.chapters?.map((chapt, chaptIndex) => {
+			urls.push((new SiteUrl({
+				loc: `https://automatedagentsbook.com/${chapt.slug}`,
+			})).toString())
+		});
+
+	});
+	let content = [
+		`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">`,
+		...urls,
+		`</urlset>`
+	];
+	return {
+		"sitemap.xml": content.join("\n"),
+	};
+};
+
 const structure = {
 	"index.html": buildFront(),
 	...buildParts(),
+	...buildSitemap(),
 }
 Object.keys(structure)
 .map(key => {
