@@ -17,14 +17,14 @@ In this book, we’ll explore the purpose and functionality of chatbots, how the
 
 | # | Section | Title | Status |
 |---| ------- | ----- | ------ |
-| **1** | **Part One** | [Understanding Chatbots](book/part-one/intro.md)  | :pencil2: |
+| **1** | **Part One** | [Understanding Chatbots](book/part-one/intro.md)  | :bookmark_tabs: |
 | 1.1 | Chapter 1 | [A Place to Start](book/part-one/c01.md) | :bookmark_tabs: | 
 | 1.2 | Chapter 2 | [Solving People Problems](book/part-one/c02.md) | :bookmark_tabs: | 
 | 1.3 | Chapter 3 | [Integration](book/part-one/c03.md) | :bookmark_tabs: | 
 | 1.4 | Chapter 4 | [Artificial Intelligence](book/part-one/c04.md) | :bookmark_tabs: | 
 | 1.5 | Chapter 5 | [The Workflow](book/part-one/c05.md) | :bookmark_tabs:  |
 | 1.6 | Chapter 6 | [The Core Application](book/part-one/c06.md) | :bookmark_tabs: |
-| 1.7 | Chapter 7 | [Protecting Users](book/part-one/c07.md) | :pencil2: |
+| 1.7 | Chapter 7 | [Protecting Users](book/part-one/c07.md) | :bookmark_tabs: |
 | **2** | **Part Two** | [Under the Hood](book/part-two/intro.md)  | :pencil2: |
 | 2.1 | Chapter 8 | [The Chat Application](book/part-two/c08.md) | :pencil2: |
 | 2.2 | Chapter 9 | [Integrating AI](book/part-two/c09.md) | :pencil2: | 
