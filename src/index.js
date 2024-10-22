@@ -6,6 +6,7 @@ import { renderPaths, render } from "./lib/utils/renderer.js";
 import path from "path";
 
 const toc = readJsonFile("./toc.json");
+const tocj = readJsonFile("./toc2.json");
 
 const BOOK_PATH = "book";
 const OUT_PATH = "website";
@@ -59,6 +60,61 @@ const buildSidebar = (selectedPart, selectedChapt) => {
 	]);
 	const out = html(obj);
 	return render(filepath, { sidebar: out})
+};
+
+const buildTOC2 = () => {
+	const pagesInOrder = tocj.toc;
+	const elements = [];
+
+	const get = (id) => {
+		for(let i = 0, l = tocj.pages.length; i < l; i++) {
+			const page = tocj.pages[i];
+			if (page.id === id) {
+				return page;
+			}
+		}
+		return false;
+	}
+
+	pagesInOrder.map(page => {
+		const current = get(page);
+		if(current.root) {
+			elements.push(
+				h("li", { class: "toc-list-root"}, 
+					h("a", { href: current.slug}, current.name)
+				)
+			)
+		} else if(current.section) {
+			elements.push(
+				h("li", { class: "toc-list-section"}, 
+					h("h2", {}, 
+						h("a", { href: current.slug}, [
+							current.name,
+							": ",
+							current.title
+						])
+					)
+				)
+			)
+		} else {
+			elements.push(
+				h("li", { class: "toc-list-chapter"}, 
+					h("a", { href: current.slug}, [
+						h("span", { class: "toc-chapt__name"}, current.name+ ": "),
+						current.title
+					])
+				)
+			)
+		}
+	});
+	
+	const output = html(h("ul", {}, elements));
+	const templatePath = path.join("src", "templates", "toc.template.html")
+	return render(templatePath, {
+		content: output,
+		TITLE: "Table of Content",
+		ASSET_PATH,
+	});
 };
 
 const buildTOC = () => {
@@ -207,6 +263,7 @@ const getMeta = (part) => {
 function buildParts() {
 	const obj = {};
 	obj["content.html"] = buildTOC();
+	obj["temp.html"] = buildTOC2();
 
 	toc.sections.parts.map( (part, partIndex) => {
 		if (part.name === "toc") {

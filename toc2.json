@@ -1,0 +1,165 @@
+{
+	"toc": [
+		"homepage", "toc", "intro", "part-1", "chapter-1", "chapter-2", "chapter-3",
+		"chapter-4", "chapter-5", "chapter-6", "chapter-7", "part-2", "chapter-8",
+		"chapter-9", "chapter-10", "chapter-11", "chapter-12", "chapter-13", "part-3"
+	],
+	"pages": [
+		{
+			"id": "homepage",
+			"name": "Home",
+			"title": "Automated Agents",
+			"content" : "front.md",
+			"slug": "index.html",
+			"root": true
+		},
+		{
+			"id": "toc",
+			"name": "Table of Content",
+			"title": "Table of Content",
+			"content" : "auto",
+			"slug": "content.html",
+			"root": true
+		},
+		{
+			"id": "intro",
+			"title": "Introduction",
+			"name": "Introduction",
+			"slug": "intro.html",
+			"content": "intro.md",
+			"template": "content.template.html",
+			"root": true
+		},
+		{
+			"id": "part-1",
+			"name": "Part I",
+			"title": "Understanding Chatbots",
+			"slug": "intro.html",
+			"content": "part-one/intro.md",
+			"template": "content.template.html",
+			"section": true
+		},
+		{
+			"id": "chapter-1",
+			"name": "Chapter 1",
+			"title": "A Place to Start",
+			"slug": "chapter-1.html",
+			"content": "part-one/c01.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-2",
+			"name": "Chapter 2",
+			"title": "Solving People Problems",
+			"slug": "chapter-2.html",
+			"content": "part-one/c02.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-3",
+			"name": "Chapter 3",
+			"title": "Integration",
+			"slug": "chapter-3.html",
+			"content": "part-one/c03.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-4",
+			"name": "Chapter 4",
+			"title": "Artificial Intelligence",
+			"slug": "chapter-4.html",
+			"content": "part-one/c04.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-5",
+			"name": "Chapter 5",
+			"title": "The Workflow ",
+			"slug": "chapter-5.html",
+			"content": "part-one/c05.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-6",
+			"name": "Chapter 6",
+			"title": "The Core Application",
+			"slug": "chapter-6.html",
+			"content": "part-one/c06.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-7",
+			"name": "Chapter 7",
+			"title": "Protecting Users",
+			"slug": "chapter-7.html",
+			"content": "part-one/c07.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "part-2",
+			"name": "Part II",
+			"title": "Understanding Chatbots",
+			"slug": "intro.html",
+			"content": "part-two/intro.md",
+			"template": "content.template.html",
+			"section": true
+		},
+		{
+			"id": "chapter-8",
+			"name": "Chapter 8",
+			"title": "The Chat Application",
+			"slug": "chapter-8.html",
+			"content": "part-two/c08.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-9",
+			"name": "Chapter 9",
+			"title": "Integrating AI",
+			"slug": "chapter-9.html",
+			"content": "part-two/c09.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-10",
+			"name": "Chapter 10",
+			"title": "Integrating a Help Desk",
+			"slug": "chapter-10.html",
+			"content": "part-two/c10.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-11",
+			"name": "Chapter 11",
+			"title": "Integrating an eCommerce Platform",
+			"slug": "chapter-11.html",
+			"content": "part-two/c11.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-12",
+			"name": "Chapter 12",
+			"title": "Integrating a Carrier",
+			"slug": "chapter-12.html",
+			"content": "part-two/c12.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "chapter-13",
+			"name": "Chapter 13",
+			"title": "Designing a Company Policy Processor",
+			"slug": "chapter-13.html",
+			"content": "part-two/c13.md",
+			"template": "content.template.html"
+		},
+		{
+			"id": "part-3",
+			"name": "Part III",
+			"title": "Beyond eCommerce",
+			"slug": "intro.html",
+			"content": "part-three/intro.md",
+			"template": "content.template.html",
+			"section": true
+		}
+	]
+}

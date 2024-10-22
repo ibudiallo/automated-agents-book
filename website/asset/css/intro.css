@@ -208,6 +208,37 @@ article .block-analogy p {
 	font-size: 1.1em;
 }
 
+/* Toc */
+.toc-list-root {
+	list-style-type: lower-roman;
+	margin-left: 2em;
+}
+.toc-list-root a {
+	text-decoration: none;
+	color: #966711;
+	font-family: Helvetica, Arial, sans-serif;
+}
+.toc-list-section {
+	list-style-type: none;
+}
+.toc-list-section h2 {
+	font-size: 1.3em;
+}
+.toc-list-section h2 a {
+	text-transform: uppercase;
+	color: #cb8709;
+	margin-bottom: .5em;
+	text-decoration: none;
+}
+.toc-list-chapter {
+	margin-left: 1.5em;
+	list-style-type: none;
+}
+.toc-list-chapter a {
+	text-decoration: none;
+	color: #966711
+}
+
 /** Article Header **/
 .chapt-hdr {
 	border-bottom: 1px solid #e2cca4;
@@ -315,7 +346,6 @@ article .block-analogy p {
 	margin-bottom: .5em;
 }
 .toc-list h2 a {
-	color: #cb8709;
 	text-decoration: none;
 }
 .toc-list ul {
@@ -323,9 +353,6 @@ article .block-analogy p {
 	list-style-type: none;
 }
 .toc-list ul a {
-	text-decoration: none;
-	color: #966711;
-	font-family: Helvetica, Arial, sans-serif;
 }
 
 .toc-chapt__name {
