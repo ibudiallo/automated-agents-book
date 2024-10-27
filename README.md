@@ -8,6 +8,11 @@ Current Status: **Draft**
 
 In this book, we’ll explore the purpose and functionality of chatbots, how they integrate with eCommerce platforms, helpdesk software, and shipping carriers. And why integration, not just AI, makes them powerful tools for customer support. For those interested in the technical details, this book transitions into hands-on guidance, covering everything from using AI tools like Spacy for intent classification to designing custom policy processors tailored to specific business needs. Whether you're a developer or a business leader, this book aims to equip you with the knowledge you need to navigate the world of chatbots and make them work effectively for your organization.
 
+## Current Status
+
+* The content of part one is completed. It will go through an editing process to correct any mistakes. Additionally, I would like to add several side notes through out part one that will be good to know, but not important.
+* I am working on the structure of part two. Trying to build a working application that I can use as an example through out the section. 
+* It would be nice to have figures. I've experimented with lucid charts, but I would like to add something easy to read and consistent.
 
 ## Table of Content
 

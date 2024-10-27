@@ -99,7 +99,7 @@ const buildSidebar = (pageId) => {
 	]);
 	const out = html(obj);
 	return render(filepath, { sidebar: out});
-}
+};
 
 const buildTOC = () => {
 	const pagesInOrder = tocj.toc;
