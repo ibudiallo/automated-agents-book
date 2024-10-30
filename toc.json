@@ -138,7 +138,7 @@
 		{
 			"id": "chapter-11",
 			"name": "Chapter 11",
-			"title": "Integrating an eCommerce Platform",
+			"title": "Integrating eCommerce",
 			"slug": "chapter-11.html",
 			"content": "part-two/c11.md",
 			"template": "content.template.html"
@@ -154,7 +154,7 @@
 		{
 			"id": "chapter-13",
 			"name": "Chapter 13",
-			"title": "Designing a Company Policy Processor",
+			"title": "Designing a Workflow",
 			"slug": "chapter-13.html",
 			"content": "part-two/c13.md",
 			"template": "content.template.html"

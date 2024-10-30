@@ -68,7 +68,7 @@ const getNLink = (id) => {
 	}
 	const pageId = tocj.toc[index];
 	const current = getToc(pageId);
-	return html(h("a", { href: current.slug }, "&larr; " + chaptFormat(current)));
+	return html(h("a", { href: current.slug }, chaptFormat(current) + " &rarr;"));
 };
 
 const buildSidebar = (pageId) => {
