@@ -78,3 +78,4 @@ const JML = () => {
     const isJML = (j) => ["name", "props", "children"].every(e => Object.keys(j).includes(e));
     return { h: ml, render };
 };
+
