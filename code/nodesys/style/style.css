@@ -1,0 +1,75 @@
+.node-window {
+	width: 100%;
+	height: 100vh;
+	background-color: #cdcdcd;
+	position: relative;
+}
+.node-grid {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.node-element {
+	position: absolute;
+	top: 200px;
+	left: 200px;
+	background-color: #2c2c33;
+	width: 200px;
+	border-radius: 6px;
+	min-height: 100px;
+	box-shadow: 3px 3px 6px rgba(0,0,0, .2);
+}
+.node-element-title {
+	color: #fff;
+	padding: 6px;
+	background-color: #2f5b75;
+	border-radius: 6px 6px 0 0;
+}
+.node-status-icon {
+	position: relative;
+	display: inline-block;
+	width: 16px;
+	height:10px;
+	margin-right: 6px;
+}
+.icon-open {
+	position: absolute;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #fff;
+  border-left: 10px solid transparent;
+  width: 0px;
+  height: 0;
+}
+.node-element-content {
+	margin: 12px 0;
+}
+.node-element-input {
+	position: relative;
+	height: 16px;
+	margin: 6px 0;
+	padding: 0 12px;
+	color: #cdcdcd;
+}
+.node-input-dot {
+	position: absolute;
+	left: -4px;
+	top: 6px;
+	display: block;
+	width: 8px;
+	height: 8px;
+	background-color: green;
+	border-radius: 50%;
+	z-index: 3;
+}
+.node-output-dot {
+	position: absolute;
+	right: -4px;
+	top: 6px;
+	display: block;
+	width: 8px;
+	height: 8px;
+	background-color: red;
+	border-radius: 50%;
+	z-index: 3;
+}

@@ -1,4 +1,4 @@
-const SVG = (() => {
+const HNode = (() => {
 	const SVG_NS = "http://www.w3.org/2000/svg";
 	const { h, render } = JML();
 	const DEFAULT_WIDTH = 200;
@@ -6,7 +6,11 @@ const SVG = (() => {
 	const LINE_HEIGHT = 12;
 
 	const svgWrapper = (content, width, height) => {
-		return h("svg", { version: "1.1", width: 600, height: 600}, content);
+		return h("div", { class: "node-window" },
+			h("div", { class: "node-grid"}, 
+				content
+			)
+		);
 	}
 
 	const drawSvg = (root, json) => {
@@ -67,37 +71,35 @@ const SVG = (() => {
 
 	const commentNode = (data) => {
 		const parentNode = {};
-		const width = 200 || DEFAULT_WIDTH;
 		const onCreate = (e) => {
 			parentNode.node = e.target;
 		};
-		return h("g", { width, id: `comment-${data.id}`, transform: `translate(${data.coord.x}, ${data.coord.y})`, onCreate}, [
-			h("rect", { width, height: 100, rx : 6, x: 0, y: 0, fill: "#333"}),
-			titleBar(data.title, { width }, parentNode),
-			textSnippet(data.content),
-		]);
+		return h("div", { class: "node-element", id: `comment-${data.id}`, style: `left: ${data.coord.x}px; top: ${data.coord.y}px`, onCreate}, [
+				titleBar(data.title, parentNode),
+				h("div", { class: "node-element-content"}, [
+					textSnippet(data.content),
+				]),
+			]
+		);
 	}
 
-	const titleBar = (title, props, parent) => {
+	const titleBar = (title, parent) => {
 		const onCreate = (e) => {
 			parent.titleBar = e.target;
-			makeDraggable(parent.node, e.target);
+			//makeDraggable(parent.node, e.target);
 		};
-		return h("g", { ...props, onCreate }, [
-			h("rect", { width: "100%", height: LINE_HEIGHT * 2, rx : 3, x: 0, y: 0, fill: "#cdcdcd", ...props}),
-			h("circle", { cx: PADDING * 2, cy: PADDING * 2, fill: "#8bc34a", r: 6}),
-			h("text", { x: 24, y: 17, style: "pointer-events: none" }, title),
+		return h("div", { class: "node-element-title", onCreate }, [
+			h("span", { class: "node-status-icon" }, h("i", { class: "icon-open"})),
+			h("span", {}, title),
 		]);
 	};
 
 	const textSnippet = (content) => {
-		const max = 12;
-		const text = content.length < max
-			? content
-			: content.substr(0, max) + "...";
-		return h("g", {}, 
-			h("text", { x: 12, y: 50, width: 60, fill: "#f0f0f0" }, text)
-		);
+		return h("div", { class: "node-element-input"}, [
+			h("span", { class: "node-input-dot"}),
+			h("span", { class: "node-input-text-snippet"}, content),
+			h("span", { class: "node-output-dot"}),
+		]);
 	}
 
 	return {
@@ -105,11 +107,12 @@ const SVG = (() => {
 	}
 })();
 
-const App = (() => {
+const App2 = (() => {
 
 	const init = () => {
+		console.log(111)
 		const root = document.getElementById("root");
-		const box = SVG.render(root, getJsonData());
+		const box = HNode.render(root, getJsonData());
 	};
 
 	return {
@@ -119,5 +122,5 @@ const App = (() => {
 
 
 window.addEventListener("load", () => {
-	//App.init();
+	App2.init();
 }, false) 

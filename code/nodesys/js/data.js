@@ -16,8 +16,8 @@ const getJsonData = () => {
 				value: null,
 			},
 			coord: {
-				x: 200,
-				y: 0
+				x: 10,
+				y: 20
 			}
 		},{
 			id: "0000002",
@@ -30,7 +30,7 @@ const getJsonData = () => {
 				nodeId: ["0000001"]
 			},
 			coord: {
-				x: 0,
+				x: 200,
 				y: 150
 			}
 		}]
