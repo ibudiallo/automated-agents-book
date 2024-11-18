@@ -5,7 +5,7 @@ const HNode = (() => {
 	const PADDING = 6;
 	const LINE_HEIGHT = 12;
 
-	const svgWrapper = (content, width, height) => {
+	const wrapper = (content, width, height) => {
 		return h("div", { class: "node-window" },
 			h("div", { class: "node-grid"}, 
 				content
@@ -13,7 +13,10 @@ const HNode = (() => {
 		);
 	}
 
+	let jsonData = null;
+
 	const drawSvg = (root, json) => {
+		jsonData = json;
 		const entries = [];
 		json.data.map(data => {
 			switch(data.type) {
@@ -24,8 +27,40 @@ const HNode = (() => {
 				throw `Unknown node ${data.type}`;
 			}
 		});
-		const html = svgWrapper(entries);
+		const html = wrapper(entries);
 		return render(root, html);
+	};
+
+	const makeDraggable2 = (node, pos) => {
+		let currentPos = {};
+		const startDrag = (e) => {
+			if (!e.target.classList.contains("node-element-title")) {
+				return;
+			}
+			const bcr = node.getBoundingClientRect();
+			currentPos.x = e.clientX - bcr.x;
+			currentPos.y = e.clientY - bcr.y;
+			node.addEventListener("mousemove", drag, false);
+			window.addEventListener("mouseup", endDrag);
+		};
+		const drag = (e) => {
+			const x = e.clientX - currentPos.x;
+			const y = e.clientY - currentPos.y;
+			currentPos.x = x;
+			currentPos.y = y;
+			node.setAttribute("style", `left: ${x}px; top: ${y}px;`);
+			console.log(x, y)
+			return;
+		};
+		const endDrag = () => {
+			node.removeEventListener("mousemove", drag);
+			window.removeEventListener("mouseup", endDrag);
+		};
+
+		node.addEventListener('mousedown', startDrag);
+		//svg.addEventListener('mousemove', drag);
+		//win.addEventListener('mouseup', endDrag);
+		//svg.addEventListener('mouseleave', endDrag);
 	};
 
 	// https://www.petercollingridge.co.uk/tutorials/svg/interactive/dragging/
@@ -70,9 +105,11 @@ const HNode = (() => {
 	};
 
 	const commentNode = (data) => {
+		const parentNodeA = getParentNode(data.parent) 
 		const parentNode = {};
 		const onCreate = (e) => {
-			parentNode.node = e.target;
+			makeDraggable2(e.target, data.coord);
+
 		};
 		return h("div", { class: "node-element", id: `comment-${data.id}`, style: `left: ${data.coord.x}px; top: ${data.coord.y}px`, onCreate}, [
 				titleBar(data.title, parentNode),
@@ -100,7 +137,17 @@ const HNode = (() => {
 			h("span", { class: "node-input-text-snippet"}, content),
 			h("span", { class: "node-output-dot"}),
 		]);
-	}
+	};
+
+	const getParentNode = (parentTag) => {
+		if (!parentTag) {
+			return null;
+		}
+		if (!jsonData) {
+			throw Error("json data is missing");
+		}
+		return jsonData.data.find(entry => parentTag.id === entry.nodeId);
+	};
 
 	return {
 		render: drawSvg,
@@ -110,7 +157,6 @@ const HNode = (() => {
 const App2 = (() => {
 
 	const init = () => {
-		console.log(111)
 		const root = document.getElementById("root");
 		const box = HNode.render(root, getJsonData());
 	};

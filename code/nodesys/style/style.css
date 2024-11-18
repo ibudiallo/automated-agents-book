@@ -73,3 +73,10 @@
 	border-radius: 50%;
 	z-index: 3;
 }
+.node-input-text-snippet {
+	display: inline-block;
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}

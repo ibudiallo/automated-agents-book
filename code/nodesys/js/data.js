@@ -7,13 +7,16 @@ const getJsonData = () => {
 			title: "Comment",
 			content: "Here we make a long comment",
 			parent: null,
-			input: {
-				type: "Value",
-				value: null,
-			},
+			input: [{
+				id: "0001-0001-01234",
+				type: "TEXT",
+				value: "Here we make a long comment",
+			}],
 			output: {
-				type: "VALUE",
-				value: null,
+				type: "INPUT_VALUE",
+				value: {
+					id: "0001-0001-01234"
+				},
 			},
 			coord: {
 				x: 10,
@@ -24,7 +27,9 @@ const getJsonData = () => {
 			type: "Comment",
 			title: "Comment",
 			content: "Enter comment here",
-			parent: null,
+			parent: {
+				nodeId: "0000001"
+			},
 			input: {
 				type: "NODE",
 				nodeId: ["0000001"]
